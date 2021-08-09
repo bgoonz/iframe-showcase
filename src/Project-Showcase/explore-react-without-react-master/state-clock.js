@@ -4,14 +4,11 @@
     constructor(props = {}) {
       this.props = Object.freeze(clone(props));
       this.state = {};
-      Object.assign(this.state,this.props);
+      Object.assign(this.state, this.props);
     }
     setState(newState) {
-      Object.assign(this.state,newState);
-      Racked.render(
-        R`<Clock />`,
-        document.getElementById('root')
-      );
+      Object.assign(this.state, newState);
+      Racked.render(R`<Clock />`, document.getElementById("root"));
     }
   }
 
@@ -20,13 +17,10 @@
   class Clock extends Racked.Component {
     constructor(props) {
       super(props);
-      this.state = {date: new Date()};
+      this.state = { date: new Date() };
     }
     componentDidMount() {
-      this.timerID = setInterval(
-        () => this.tick(),
-        1000
-      );
+      this.timerID = setInterval(() => this.tick(), 1000);
     }
     componentWillUnmount() {
       clearInterval(this.timerID);
@@ -41,112 +35,123 @@
     }
     tick() {
       this.setState({
-        date: new Date()
+        date: new Date(),
       });
     }
   }
 
-  Racked.render(
-    R`<Clock />`,
-    document.getElementById('root')
-  );
+  Racked.render(R`<Clock />`, document.getElementById("root"));
 
   function render(textrack, where) {
     const rack = fc(textrack);
-    let isClass = false, component;
-    if ( ! rack ) {
+    let isClass = false,
+      component;
+    if (!rack) {
       return textrack;
     }
 
-    const parser = document.createTreeWalker(rack,NodeFilter.SHOW_ALL);
+    const parser = document.createTreeWalker(rack, NodeFilter.SHOW_ALL);
     const stack = [];
-    let html = '';
+    let html = "";
 
     do {
       const node = parser.currentNode;
-      switch( node.nodeType ) {
+      switch (node.nodeType) {
         case Node.ELEMENT_NODE: {
           const name = node.tagName.toLowerCase();
           const CapitalizedNameIndex = textrack.toLowerCase().indexOf(name);
           let CapitalizedName = name;
-          if ( CapitalizedNameIndex >= 0 ) {
-            CapitalizedName = textrack.substr(CapitalizedNameIndex,name.length);
+          if (CapitalizedNameIndex >= 0) {
+            CapitalizedName = textrack.substr(
+              CapitalizedNameIndex,
+              name.length
+            );
           }
           // see if it's a ract component (if there's a function called <CapitalizedName>))
           try {
-            const props = Array.from(node.attributes)
-              .reduce((all,{name,value}) => {
+            const props = Array.from(node.attributes).reduce(
+              (all, { name, value }) => {
                 try {
                   all[name] = JSON.parse(unescape(value));
-                } catch(e) {
+                } catch (e) {
                   all[name] = value;
                 }
                 return all;
-              },{});
+              },
+              {}
+            );
             isClass = eval(`descendent(${CapitalizedName},Component)`);
             let componentHtml;
-            if ( isClass ) {
-              component = eval(`new ${CapitalizedName}(${JSON.stringify(props)})`);
-              componentHtml = component.render(); 
+            if (isClass) {
+              component = eval(
+                `new ${CapitalizedName}(${JSON.stringify(props)})`
+              );
+              componentHtml = component.render();
             } else {
-              componentHtml = eval(`${CapitalizedName}(${JSON.stringify(props)})`);
+              componentHtml = eval(
+                `${CapitalizedName}(${JSON.stringify(props)})`
+              );
             }
-            const renderedAgainComponentHtml = render(componentHtml,null);
-            if ( componentHtml !== renderedAgainComponentHtml ) {
-              componentHtml = renderedAgainComponentHtml; 
+            const renderedAgainComponentHtml = render(componentHtml, null);
+            if (componentHtml !== renderedAgainComponentHtml) {
+              componentHtml = renderedAgainComponentHtml;
             }
             html += componentHtml;
             break;
-          } catch(e) {
+          } catch (e) {
             // console.warn(e);
             // not a ract component so we need to close it
             stack.push(node);
             // and report it
-            html += `<${name}${node.attributes.length ? ' ' + 
-              Array.from(node.attributes)
-              .map( attr => `${attr.name}="${attr.value}"` )
-              .join(' ') : ''}>`;
+            html += `<${name}${
+              node.attributes.length
+                ? " " +
+                  Array.from(node.attributes)
+                    .map((attr) => `${attr.name}="${attr.value}"`)
+                    .join(" ")
+                : ""
+            }>`;
             break;
           }
         }
         default: {
-          if ( !! node.nodeValue ) {
-            const renderedAgainComponentHtml = render(node.nodeValue,null);
-            if ( renderedAgainComponentHtml !== node.nodeValue ) {
+          if (!!node.nodeValue) {
+            const renderedAgainComponentHtml = render(node.nodeValue, null);
+            if (renderedAgainComponentHtml !== node.nodeValue) {
               html += renderedAgainComponentHtml;
             } else {
-              html += node.nodeValue || '';
+              html += node.nodeValue || "";
             }
           }
           break;
         }
       }
-      if ( ! node.nextSibling && ! node.childNodes.length ) {
-        const parent = stack.pop(); 
-        if ( !! parent && ! VOID_ELEMENTS.has(parent.localName)) {
+      if (!node.nextSibling && !node.childNodes.length) {
+        const parent = stack.pop();
+        if (!!parent && !VOID_ELEMENTS.has(parent.localName)) {
           // close it
           html += `</${parent.tagName.toLowerCase()}>`;
         }
       }
-    } while(parser.nextNode());
+    } while (parser.nextNode());
 
-    if ( ! where ) {
+    if (!where) {
       return html;
     } else {
       where.innerHTML = html;
       //where.insertAdjacentHTML('afterBegin', html);
-      if ( isClass ) {
+      if (isClass) {
         component.componentDidMount();
       }
     }
   }
 
-  function descendent(cls,superClass) {
-    let {prototype} = cls;
+  function descendent(cls, superClass) {
+    let { prototype } = cls;
     let checks = 0;
-    while( !! prototype && checks < 100 ) {
+    while (!!prototype && checks < 100) {
       checks += 1;
-      if ( prototype === superClass.prototype ) {
+      if (prototype === superClass.prototype) {
         return true;
       }
       prototype = Object.getPrototypeOf(prototype);

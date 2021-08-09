@@ -1,7 +1,6 @@
-var Piece = function() {
-};
+var Piece = function () {};
 
 Piece.prototype.movePaths = [];
-Piece.prototype.setCurrentPosition = function(currentPosition) {
-	this.currentPosition = currentPosition;
+Piece.prototype.setCurrentPosition = function (currentPosition) {
+  this.currentPosition = currentPosition;
 };
