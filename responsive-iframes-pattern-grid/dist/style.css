@@ -1,20 +1,22 @@
 /* iframe */
 
 .iframe {
-  border: 3px solid #131c28;
   overflow: hidden;
   background: #fff;
-  border: 10px solid gold;
+  border: 6px solid rgb(0, 0, 0);
   border-radius: 10px;
+  resize: both;
+  padding: 1px;
 }
 body {
   overflow: scroll;
 }
 .iframe iframe {
   width: 100%;
-  height: 400px;
+  height: 470px;
   border: 0;
   display: block;
+  zoom: 1.45;
 }
 
 .iframe-header {
@@ -27,24 +29,24 @@ body {
 
 .iframe-content {
   /* ipad iframe hack */
-  height: 400px;
+  height: 600px;
   overflow: auto;
-  -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: auto;
 }
 
 .iframe-header a {
-  font-size: 15px;
+  font-size: 35px;
   color: white;
-  background: #3b4658;
+  background: #000000;
   display: block;
   padding: 15px;
   text-align: center;
   border-bottom: 3px solid #131c28;
 }
-
 .iframe-header a:hover,
 .iframe-header a:focus {
-  background: #6a798e;
+  background: #000000;
+  background-color: black;
 }
 
 .iframe-full-screen .iframe-header {
@@ -64,15 +66,16 @@ body {
 
 .iframe-full-screen .iframe-header a {
   padding: 0;
-  height: 44px;
-  line-height: 44px;
+  background-color: black;
+  height: 24px;
+  line-height: 26px;
   text-align: center;
   border: 3px solid #131c28;
-  scrollbar-width: auto;
+
   overflow: scroll;
 }
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 2px;
   background-color: #f5f5f5;
 }
 
@@ -80,12 +83,22 @@ body {
   background-color: #000000;
   border: 2px solid #000000;
 }
-
+.iframe-full-screen .iframe.iframe-active {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  border: none;
+}
 .iframe-full-screen body {
   width: 100%;
   height: 100%;
   overflow: scroll;
-  scrollbar-width: automatically;
+
   margin-left: 30px;
   float: left;
   height: 300px;
@@ -115,22 +128,24 @@ body {
 }
 
 .wrapper {
-  max-width: 1600px;
+  max-width: 1500px;
   margin: 6px auto;
-
+  resize: both;
   display: flex;
   flex-wrap: wrap;
-  border: 10px solid gold;
-  border-radius: 25px;
+  border: 6px solid rgb(0, 0, 0);
+  border-radius: 15px;
 }
 
 .item {
   display: inline-block;
-  flex: 1 400px;
+  flex: 1 300px;
+  resize: both;
 }
 
 @media all and (max-height: 700px) {
   .iframe {
-    height: 450px;
+    height: 350px;
+    resize: both;
   }
 }

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.js"],"names":["module","exports","require"],"mappings":";;AAAA;AACAA,MAAM,CAACC,OAAP,GAAiBC,OAAO,CAAC,yBAAD,CAAxB","sourcesContent":["/* eslint global-require: 0 */\nmodule.exports = require('./ReactSeventeenAdapter');\n"],"file":"index.js"}

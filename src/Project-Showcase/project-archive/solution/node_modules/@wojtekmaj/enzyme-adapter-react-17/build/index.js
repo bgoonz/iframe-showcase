@@ -1,0 +1,6 @@
+"use strict";
+
+/* eslint global-require: 0 */
+module.exports = require('./ReactSeventeenAdapter');
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9pbmRleC5qcyJdLCJuYW1lcyI6WyJtb2R1bGUiLCJleHBvcnRzIiwicmVxdWlyZSJdLCJtYXBwaW5ncyI6Ijs7QUFBQTtBQUNBQSxNQUFNLENBQUNDLE9BQVAsR0FBaUJDLE9BQU8sQ0FBQyx5QkFBRCxDQUF4QiIsInNvdXJjZXNDb250ZW50IjpbIi8qIGVzbGludCBnbG9iYWwtcmVxdWlyZTogMCAqL1xubW9kdWxlLmV4cG9ydHMgPSByZXF1aXJlKCcuL1JlYWN0U2V2ZW50ZWVuQWRhcHRlcicpO1xuIl19
+//# sourceMappingURL=index.js.map
