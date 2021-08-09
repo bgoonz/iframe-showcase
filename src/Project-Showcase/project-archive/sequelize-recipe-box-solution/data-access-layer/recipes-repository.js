@@ -1,17 +1,17 @@
-const { Op } = require('sequelize');
+const { Op } = require("sequelize");
 let Recipe, Instruction, Ingredient, MeasurementUnit;
 let moduleError;
 
 try {
-  const db = require('../models');
+  const db = require("../models");
   ({ Recipe, Instruction, Ingredient, MeasurementUnit } = db);
   if (Recipe === undefined) {
-    moduleError = 'It looks like you need to generate the Recipe model.';
+    moduleError = "It looks like you need to generate the Recipe model.";
   }
 } catch (e) {
   console.error(e);
-  if (e.message.includes('Cannot find module')) {
-    moduleError = 'It looks like you need initialize your project.';
+  if (e.message.includes("Cannot find module")) {
+    moduleError = "It looks like you need initialize your project.";
   } else {
     moduleError = `An error was raised "${e.message}". Check the console for details.`;
   }
@@ -34,7 +34,7 @@ async function getTenNewestRecipes() {
   // Docs: https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findAll
   return await Recipe.findAll({
     limit: 10,
-    order: [['updatedAt', 'DESC']],
+    order: [["updatedAt", "DESC"]],
   });
 }
 
@@ -94,7 +94,7 @@ async function deleteRecipe(id) {
   // await recipe.destroy();
 
   // ...or...
-  console.log('hey');
+  console.log("hey");
   Recipe.destroy({ where: { id: id } }); // Why?
 }
 

@@ -1,36 +1,37 @@
-'use strict';
+"use strict";
 
 module.exports = {
-  up: ( queryInterface, Sequelize ) => {
-    return queryInterface.bulkInsert( 'People', [ {
-        firstName: 'Daniel',
-        lastName: 'Hays',
-        email: 'Cras.sed.leo@Vivamusmolestie.co.uk',
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.bulkInsert("People", [
+      {
+        firstName: "Daniel",
+        lastName: "Hays",
+        email: "Cras.sed.leo@Vivamusmolestie.co.uk",
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       {
-        firstName: 'Wade',
-        lastName: 'Woodard',
-        email: 'massa.Integer@lectus.ca',
+        firstName: "Wade",
+        lastName: "Woodard",
+        email: "massa.Integer@lectus.ca",
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       {
-        firstName: 'Frances',
-        lastName: 'Rosales',
-        email: 'ligula@velitduisemper.ca',
+        firstName: "Frances",
+        lastName: "Rosales",
+        email: "ligula@velitduisemper.ca",
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-    ] );
+    ]);
   },
 
-  down: ( queryInterface, Sequelize ) => {
-    return queryInterface.bulkDelete( 'People', {
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete("People", {
       id: {
-        [ Sequelize.Op.gt ]: 0
-      }
-    } );
-  }
+        [Sequelize.Op.gt]: 0,
+      },
+    });
+  },
 };

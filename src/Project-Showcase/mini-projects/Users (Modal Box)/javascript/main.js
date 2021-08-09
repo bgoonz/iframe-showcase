@@ -1,31 +1,32 @@
 let backWall = $("#backWall");
 let modal = $("#modalBox");
 
-$(".more").click(function(){
-    backWall.show(0);
-    modal.show(500);
-  });
+$(".more").click(function () {
+  backWall.show(0);
+  modal.show(500);
+});
 
-$(".close").click(function(){
+$(".close").click(function () {
   backWall.hide(0);
   modal.hide(0);
-})
-window.onclick = function(event) {
+});
+window.onclick = function (event) {
   if (event.target == document.getElementById("backWall")) {
     backWall.hide(0);
     modal.hide(0);
   }
 };
 
-  let more = document.querySelectorAll(".more");
+let more = document.querySelectorAll(".more");
 
-  more.forEach( (x)=> x.addEventListener("click", function(){
+more.forEach((x) =>
+  x.addEventListener("click", function () {
     var a = x.getAttribute("id");
     console.log(a);
-    let xmlRequest,obj;
+    let xmlRequest, obj;
     xmlRequest = new XMLHttpRequest();
-    xmlRequest.onreadystatechange = function(){
-      if(this.readyState === 4 && this.status === 200){
+    xmlRequest.onreadystatechange = function () {
+      if (this.readyState === 4 && this.status === 200) {
         obj = JSON.parse(this.responseText);
         $("#fullName").text(obj[a]["fullName"]);
         $("#id").text(obj[a]["id"]);
@@ -35,9 +36,10 @@ window.onclick = function(event) {
         var imageSource = obj[a]["image"];
         console.log(imageSource);
         let profile_image = document.getElementById("img");
-        profile_image.setAttribute("src",imageSource);
+        profile_image.setAttribute("src", imageSource);
       }
-    } 
-    xmlRequest.open("GET","/javascript/info.json",true);
+    };
+    xmlRequest.open("GET", "/javascript/info.json", true);
     xmlRequest.send();
-  }))
+  })
+);

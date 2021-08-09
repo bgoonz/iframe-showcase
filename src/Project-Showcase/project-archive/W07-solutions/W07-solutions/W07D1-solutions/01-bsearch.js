@@ -10,7 +10,7 @@ function recurBSearch(array, target) {
 
   // Get a reference to the middle index, and middle element
   const midIdx = Math.floor(array.length / 2);
-  const midEl = array[midIdx]
+  const midEl = array[midIdx];
   // We get a subarray that represents our left half by slicing up to but not
   // including our midIdx.
   const leftHalf = array.slice(0, midIdx);
@@ -107,12 +107,11 @@ function recurBSearchIdx(array, target) {
     // Ultimately this means taking our return value and adding on our midIdx + 1
     // Take a look at the comments below this function for an example
   } else if (target > midEl) {
-    const idxShift = recurBSearchIdx(rightHalf, target)
+    const idxShift = recurBSearchIdx(rightHalf, target);
     if (idxShift === -1) {
-      return -1
-    }
-    else {
-      return idxShift + midIdx + 1
+      return -1;
+    } else {
+      return idxShift + midIdx + 1;
     }
     // If neither of the above cases are true, we found our element and return that
     // index (the midIdx that we compared)
@@ -145,7 +144,6 @@ function recurBSearchIdx(array, target) {
 // of the subarrays are the same as the indices of our larger array (index 1 of
 // the left subarray is the same element as index 1 of the larger original).
 
-
 // Recursive Index v2
 function recurBSearchIdxV2(array, target, lo = 0, hi = array.length - 1) {
   // I'm adding a second condition to this base case that Alvin doesn't do. It's
@@ -168,7 +166,6 @@ function recurBSearchIdxV2(array, target, lo = 0, hi = array.length - 1) {
     return midIdx;
   }
 }
-
 
 // Iterative Index
 function iterBSearchIdx(array, target) {
@@ -200,5 +197,5 @@ module.exports = {
   iterBSearch,
   recurBSearchIdx,
   recurBSearchIdxV2,
-  iterBSearchIdx
-}
+  iterBSearchIdx,
+};

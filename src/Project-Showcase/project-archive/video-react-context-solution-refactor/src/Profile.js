@@ -1,5 +1,5 @@
-import React from 'react';
-import ThemeContext from './ThemeContext';
+import React from "react";
+import ThemeContext from "./ThemeContext";
 
 class Profile extends React.Component {
   static contextType = ThemeContext;

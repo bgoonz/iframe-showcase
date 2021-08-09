@@ -1,4 +1,4 @@
-const { close } = require('./test-utils');
+const { close } = require("./test-utils");
 
 after(async () => {
   if (close) {

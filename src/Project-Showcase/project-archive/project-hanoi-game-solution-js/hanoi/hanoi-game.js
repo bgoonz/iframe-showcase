@@ -8,7 +8,11 @@ class HanoiGame {
     const endTower = this.towers[endTowerIdx];
 
     // if the starting tower is empty or the end index is larger than our board
-    if (endTower === undefined || startTower === undefined || startTower.length === 0) {
+    if (
+      endTower === undefined ||
+      startTower === undefined ||
+      startTower.length === 0
+    ) {
       return false;
       // if the ending tower is empty
     } else if (endTower.length === 0) {
@@ -43,9 +47,9 @@ class HanoiGame {
 
   promptMove(reader, callback) {
     this.print();
-    reader.question("Enter a starting tower: ", start => {
+    reader.question("Enter a starting tower: ", (start) => {
       const startTowerIdx = parseInt(start);
-      reader.question("Enter an ending tower: ", end => {
+      reader.question("Enter an ending tower: ", (end) => {
         const endTowerIdx = parseInt(end);
         callback(startTowerIdx, endTowerIdx);
       });

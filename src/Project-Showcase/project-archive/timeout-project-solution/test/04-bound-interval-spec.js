@@ -5,12 +5,12 @@ chai.use(spies);
 
 const boundInterval = require("../problems/04-bound-interval.js");
 
-describe("boundInterval()", function() {
-  afterEach(function() {
+describe("boundInterval()", function () {
+  afterEach(function () {
     chai.spy.restore(global);
   });
 
-  it("should bind the callback to the given object", function() {
+  it("should bind the callback to the given object", function () {
     chai.spy.on(global, "setInterval", () => null);
     const callback = chai.spy();
     const thisArg = chai.spy();
@@ -19,7 +19,7 @@ describe("boundInterval()", function() {
     expect(bindSpy).to.have.been.called.once.with.exactly(thisArg);
   });
 
-  it("should set an interval with the bound callback and given delay", function() {
+  it("should set an interval with the bound callback and given delay", function () {
     const setIntervalSpy = chai.spy.on(global, "setInterval", () => null);
     const callback = chai.spy();
     const boundCallback = chai.spy();
@@ -31,7 +31,7 @@ describe("boundInterval()", function() {
     );
   });
 
-  it("should return the Timeout object that is returned from setInterval", function() {
+  it("should return the Timeout object that is returned from setInterval", function () {
     const intervalReturnSpy = chai.spy();
     chai.spy.on(global, "setInterval", () => intervalReturnSpy);
     expect(boundInterval(() => null, 100)).to.equal(intervalReturnSpy);

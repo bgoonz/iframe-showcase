@@ -29,7 +29,7 @@ const fancyCalculator = {
   squared: function () {
     this.total *= this.total;
     return this.total;
-  }
+  },
 };
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/

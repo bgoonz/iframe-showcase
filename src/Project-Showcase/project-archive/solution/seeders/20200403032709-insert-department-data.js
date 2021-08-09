@@ -1,30 +1,31 @@
-'use strict';
+"use strict";
 
 module.exports = {
-  up: ( queryInterface, Sequelize ) => {
-    return queryInterface.bulkInsert( 'Departments', [ {
-        name: 'Economics',
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.bulkInsert("Departments", [
+      {
+        name: "Economics",
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       {
-        name: 'Mathematics',
+        name: "Mathematics",
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       {
-        name: 'Music',
+        name: "Music",
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-    ] );
+    ]);
   },
 
-  down: ( queryInterface, Sequelize ) => {
-    return queryInterface.bulkDelete( 'Departments', {
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete("Departments", {
       id: {
-        [ Sequelize.Op.gt ]: 0
-      }
-    } );
-  }
+        [Sequelize.Op.gt]: 0,
+      },
+    });
+  },
 };

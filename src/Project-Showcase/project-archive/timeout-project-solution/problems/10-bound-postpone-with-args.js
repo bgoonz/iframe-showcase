@@ -27,7 +27,7 @@ whiskersBarkAt('Marnie'); // prints 'Whiskers is barking at Marnie' after 1000 m
 ***********************************************************************/
 
 function boundPostponeWithArgs(cb, delay, thisArg) {
-  return function(...args) {
+  return function (...args) {
     setTimeout(cb.bind(thisArg), delay, ...args);
   };
 }

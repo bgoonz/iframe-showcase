@@ -13,14 +13,14 @@ describe("form-submit", () => {
     token = getText("input[type='hidden'][name='_csrf']").attr("value");
   });
 
-  const submit = async formData => {
+  const submit = async (formData) => {
     const res = await request(app)
       .post("/create")
       .type("form")
       .set("Cookie", cookies)
       .send({
         _csrf: token,
-        ...formData
+        ...formData,
       });
     $ = cheerio.load(res.text);
   };
@@ -101,7 +101,7 @@ describe("form-submit", () => {
         lastName: "North",
         email: "joe@gmail.com",
         password: "abcdefg",
-        confirmedPassword: "abc123"
+        confirmedPassword: "abc123",
       });
     });
     it("render li elements for each error message ", () => {
@@ -119,7 +119,7 @@ describe("form-submit", () => {
         lastName: "North",
         email: "joe@gmail.com",
         password: "abcdefg",
-        confirmedPassword: "abcdefg"
+        confirmedPassword: "abcdefg",
       };
 
       await request(app)
@@ -128,7 +128,7 @@ describe("form-submit", () => {
         .set("Cookie", cookies)
         .send({
           _csrf: token,
-          ...formData
+          ...formData,
         })
         .expect(302)
         .expect("Location", "/");

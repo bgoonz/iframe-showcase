@@ -23,7 +23,7 @@ class AddItemScreen {
     console.log("1. Note");
     console.log("2. Task");
     console.log();
-    console.log("Type the number and hit \"Enter\".");
+    console.log('Type the number and hit "Enter".');
     console.log();
   }
 
@@ -33,7 +33,7 @@ class AddItemScreen {
     console.log("* CREATE A NOTE                 (c) 1987   *");
     console.log("********************************************");
     console.log();
-    console.log("(Type your text and hit \"Enter\" to return to");
+    console.log('(Type your text and hit "Enter" to return to');
     console.log("the to-do list screen, 300 characters max.)");
     console.log();
     console.log("What is the note?");
@@ -75,7 +75,7 @@ class AddItemScreen {
     console.log(`TITLE: ${title}`);
     console.log(`CATEGORY: ${this.state.getCategoryByIndex(categoryIndex)}`);
     console.log();
-    console.log("(Type your text and hit \"Enter\" to return to");
+    console.log('(Type your text and hit "Enter" to return to');
     console.log("the to-do list screen, 300 characters max.)");
     console.log();
     console.log("What is the description?");
@@ -84,10 +84,10 @@ class AddItemScreen {
 
   show() {
     this.printChoiceUi();
-    this.rl.question("> ", answer => {
+    this.rl.question("> ", (answer) => {
       if (answer === "1") {
         this.printNoteUi();
-        this.rl.question("> ", answer => {
+        this.rl.question("> ", (answer) => {
           this.state.addNote(answer);
           this.state.save();
           const screen = new ManageTasksScreen(this.rl, this.state);
@@ -95,27 +95,27 @@ class AddItemScreen {
         });
       } else if (answer === "2") {
         this.printTaskUi1();
-        this.rl.question("> ", title => {
+        this.rl.question("> ", (title) => {
           this.printTaskUi2(title);
-          this.rl.question("> ", categoryIndex => {
+          this.rl.question("> ", (categoryIndex) => {
             categoryIndex = Number.parseInt(categoryIndex) - 1;
             this.printTaskUi3(title, categoryIndex);
-            this.rl.question("> ", description => {
+            this.rl.question("> ", (description) => {
               this.state.addTask(title, description, categoryIndex);
               this.state.save();
               const screen = new ManageTasksScreen(this.rl, this.state);
               screen.show();
             });
           });
-        })
+        });
       } else {
         this.show();
       }
-    })
+    });
   }
 }
 
 exports.AddItemScreen = AddItemScreen;
 
 // Requires at bottom to prevent circular dependencies problems in node
-const { ManageTasksScreen } = require('./manage-task-screen');
+const { ManageTasksScreen } = require("./manage-task-screen");

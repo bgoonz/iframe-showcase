@@ -92,7 +92,7 @@ describe("Person", () => {
     it("should greet all the people", () => {
       expect(Person.greetAll([person, otherPerson])).to.deep.equal([
         `Hello, ${person.name}.`,
-        `Hello, ${otherPerson.name}.`
+        `Hello, ${otherPerson.name}.`,
       ]);
     });
     it("should call sayHello for every person", () => {

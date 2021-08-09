@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import { getPokemonTypes } from './store/pokemon';
+import { connect } from "react-redux";
+import { getPokemonTypes } from "./store/pokemon";
 
 class PokemonForm extends Component {
   constructor(props) {
@@ -47,9 +47,7 @@ class PokemonForm extends Component {
   renderErrors() {
     const { errors } = this.props;
     if (errors) {
-      return errors.map((error, idx) => (
-        <li key={idx}>{error}</li>
-      ));
+      return errors.map((error, idx) => <li key={idx}>{error}</li>);
     }
   }
 
@@ -115,15 +113,15 @@ class PokemonForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     types: state.pokemon.types,
-    errors: state.pokemon.errors
+    errors: state.pokemon.errors,
   };
 };
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    getPokemonTypes: () => dispatch(getPokemonTypes())
+    getPokemonTypes: () => dispatch(getPokemonTypes()),
   };
 };
 

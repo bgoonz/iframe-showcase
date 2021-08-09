@@ -1,4 +1,3 @@
-
 # Pokedex Hooks: Phase 1
 
 In today's project you will refactor class-based components that make use of
@@ -27,7 +26,7 @@ components using these two React Hooks:
 First you'll need the backend for the Pokedex application. If you don't already
 have it running from your previous work, take a moment to clone it from
 https://github.com/appacademy-starters/pokedex-backend and get it set up and
-running.  Remember you may need to get the database created and all the migrations
+running. Remember you may need to get the database created and all the migrations
 and seeds running for the backend, if you haven't already done so.
 
 The API for the backend is also documented in the repository's
@@ -44,13 +43,13 @@ application to be a function component that makes use of React Hooks!
 As you might remember, your current application comprises of the following
 components:
 
-* `App`: Does the browser routing and top-level fetches of data to draw the data
-* `LoginPanel`: Shows the login panel
-* `PokemonBrowser`: The browser that draws the list on the left after logging in
-   and has a route to the `PokemonDetail` when the route matches "/pokemon/:id"
-* `PokemonDetail`: Makes a fetch to the API on mount and update to load the
-   details of the selected Pokemon
-* `PokemonForm`: Renders a form in place of the `PokemonDetail` component to add
+- `App`: Does the browser routing and top-level fetches of data to draw the data
+- `LoginPanel`: Shows the login panel
+- `PokemonBrowser`: The browser that draws the list on the left after logging in
+  and has a route to the `PokemonDetail` when the route matches "/pokemon/:id"
+- `PokemonDetail`: Makes a fetch to the API on mount and update to load the
+  details of the selected Pokemon
+- `PokemonForm`: Renders a form in place of the `PokemonDetail` component to add
   a Pokemon, makes a fetch call to get the available types of the pokemon and
   then makes a fetch call to post the form data to the backend.
 
@@ -81,25 +80,25 @@ you should have a good understanding of how to use the basic `useState` and
 As a reminder use this as a guide for what you need to convert.
 
 | Class based                                 | Functional hooks based |
-|---------------------------------------------|------------------------|
+| ------------------------------------------- | ---------------------- |
 | any refernce to `this.state`                | `useState()`           |
 | `componentDidMount`, `componentWillUnmount` | `useEffect()`          |
 
 If you can't remember how to use the new hooks, try looking at the official
 documentation:
 
-* [Using the State Hook]
-* [Using the Effect Hook]
-* [Hooks API Reference]
+- [Using the State Hook]
+- [Using the Effect Hook]
+- [Hooks API Reference]
 
 ### A note on Redux
 
 As this app uses Redux, you'll see each component uses `connect`, `mapStateToProps`,
 and `mapDispatchToProps`. While we will be refactoring our components to use
-the Redux hooks in the next phase, for now you are *only* converting to use the
-React hooks `useState` and `useEffect`.  This means you can leave the `connect`
-wrapper in place.  The connect functions works equally well with class based or
-functional components.  You will just need to swap `this.props` for `props`
+the Redux hooks in the next phase, for now you are _only_ converting to use the
+React hooks `useState` and `useEffect`. This means you can leave the `connect`
+wrapper in place. The connect functions works equally well with class based or
+functional components. You will just need to swap `this.props` for `props`
 accordingly.
 
 ### Finish up
@@ -115,6 +114,6 @@ git commit -m "Refactor app to implement React hooks"
 In the next section we'll be refactoring the Redux part of this application, by
 utilizing the Redux specific hooks `useSelector` and `useDispatch`.
 
-[Using the State Hook]: https://reactjs.org/docs/hooks-state.html
-[Using the Effect Hook]: https://reactjs.org/docs/hooks-effect.html
-[Hooks API Reference]: https://reactjs.org/docs/hooks-reference.html
+[using the state hook]: https://reactjs.org/docs/hooks-state.html
+[using the effect hook]: https://reactjs.org/docs/hooks-effect.html
+[hooks api reference]: https://reactjs.org/docs/hooks-reference.html

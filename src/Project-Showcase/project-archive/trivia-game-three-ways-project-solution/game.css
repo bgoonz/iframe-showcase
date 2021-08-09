@@ -1,5 +1,5 @@
 body {
-  background-color: #DFDFDF;
+  background-color: #dfdfdf;
 }
 
 #game-board {
@@ -9,17 +9,20 @@ body {
   width: 600px;
 }
 
-#answer, #score {
+#answer,
+#score {
   font-size: 1.5em;
   margin: 1.25em 0;
 }
 
-#question, #value {
+#question,
+#value {
   font-size: 1.25em;
   margin: 1.25em 0;
 }
 
-#category-title, #invalid-count {
+#category-title,
+#invalid-count {
   font-size: 1em;
   margin: 1.25em 0;
 }

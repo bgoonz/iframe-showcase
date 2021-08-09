@@ -1,9 +1,9 @@
-const bodyParser = require('body-parser');
-const express = require('express');
+const bodyParser = require("body-parser");
+const express = require("express");
 let instructionRepo;
 let loadingModuleError;
 try {
-  instructionRepo = require('../../data-access-layer/instructions-repository');
+  instructionRepo = require("../../data-access-layer/instructions-repository");
 } catch (e) {
   console.error(e);
   loadingModuleError = `An error was raised "${e.message}". Check the console for details.`;
@@ -14,17 +14,27 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 function handleError(e, data, property, fileName) {
   console.error(e);
-  data[property] = `An error occurred while running the SQL in ${fileName} that reads "${e.message}". Check the console for errors.`
+  data[
+    property
+  ] = `An error occurred while running the SQL in ${fileName} that reads "${e.message}". Check the console for errors.`;
 }
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const recipeId = Number.parseInt(req.body.recipeId);
-    await instructionRepo.createNewInstruction(req.body.specification, recipeId);
-    res.redirect('/recipes/' + req.body.recipeId + '/edit');
+    await instructionRepo.createNewInstruction(
+      req.body.specification,
+      recipeId
+    );
+    res.redirect("/recipes/" + req.body.recipeId + "/edit");
   } catch (e) {
     console.error(e);
-    res.redirect('/recipes/' + req.body.recipeId + '/edit?instructionInsertError=' + e.message);
+    res.redirect(
+      "/recipes/" +
+        req.body.recipeId +
+        "/edit?instructionInsertError=" +
+        e.message
+    );
   }
 });
 

@@ -18,16 +18,16 @@ console.log(selectiveMap([-10, 4, 7, 6, -2, -9], isPositive, square));
 *******************************************************************************/
 
 function selectiveMap(array, selector, mapper) {
-    let newItems = [];
-    for (let i = 0; i < array.length; i++) {
-        let el = array[i];
-        if (selector(el)) {
-            newItems.push(mapper(el));
-        } else {
-            newItems.push(el);
-        }
+  let newItems = [];
+  for (let i = 0; i < array.length; i++) {
+    let el = array[i];
+    if (selector(el)) {
+      newItems.push(mapper(el));
+    } else {
+      newItems.push(el);
     }
-    return newItems;
+  }
+  return newItems;
 }
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/

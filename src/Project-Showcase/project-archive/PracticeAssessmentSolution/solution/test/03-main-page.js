@@ -1,18 +1,18 @@
-const chai = require('chai');
-const cheerio = require('cheerio');
-const request = require('supertest');
+const chai = require("chai");
+const cheerio = require("cheerio");
+const request = require("supertest");
 
-const haveTag = require('./utils/have-tag-with-attribute');
-const haveSelectWithOption = require('./utils/have-select-with-option');
-const htmlCollector = require('./utils/html-collector');
+const haveTag = require("./utils/have-tag-with-attribute");
+const haveSelectWithOption = require("./utils/have-select-with-option");
+const htmlCollector = require("./utils/html-collector");
 
-const { app } = require('../app.js');
+const { app } = require("../app.js");
 const { expect } = chai;
 
 chai.use(haveTag);
 chai.use(haveSelectWithOption);
 
-describe('The main page', () => {
+describe("The main page", () => {
   function randomName() {
     return (Math.random() * 1000).toString();
   }
@@ -71,17 +71,19 @@ describe('The main page', () => {
     try {
       const options = $('select[name="hairColorId"] option');
       const option = $(options[Math.floor(options.length * Math.random())]);
-      optionValue = option.attr('value');
+      optionValue = option.attr("value");
       optionText = option.text();
     } catch (e) {
-      optionError = new Error('Could not find a select dropdown with hairColors to use to submit.');
+      optionError = new Error(
+        "Could not find a select dropdown with hairColors to use to submit."
+      );
       return;
     }
 
     try {
       await request(app)
-        .post('/new-person')
-        .set('Cookie', cookies)
+        .post("/new-person")
+        .set("Cookie", cookies)
         .send(`_csrf=${token}`)
         .send(`firstName=${firstName}`)
         .send(`lastName=${lastName}`)
@@ -90,16 +92,18 @@ describe('The main page', () => {
         .send(`hairColorId=${optionValue}`)
         .expect(302);
     } catch (e) {
-      createError = new Error('Could not create a new person to test on the main screen');
+      createError = new Error(
+        "Could not create a new person to test on the main screen"
+      );
     }
-
   });
 
-
-  it('returns a 200', done => {
-    if (!app) { return done('Cannot read "app" from app.js'); }
+  it("returns a 200", (done) => {
+    if (!app) {
+      return done('Cannot read "app" from app.js');
+    }
     request(app)
-      .get('/')
+      .get("/")
       .set("accept", "html")
       .buffer()
       .parse(htmlCollector)
@@ -107,52 +111,87 @@ describe('The main page', () => {
       .expect(200, done);
   });
 
-  describe('for an added person, contains a data cell with', () => {
-    it('the firstName', () => {
-      if (!app) { return expect.fail('Cannot read "app" from app.js'); }
-      if (csrfError || optionError || createError) { return expect.fail(csrfError || optionError || createError); }
+  describe("for an added person, contains a data cell with", () => {
+    it("the firstName", () => {
+      if (!app) {
+        return expect.fail('Cannot read "app" from app.js');
+      }
+      if (csrfError || optionError || createError) {
+        return expect.fail(csrfError || optionError || createError);
+      }
 
       const re = new RegExp(`<td[^>]*>\s*${firstName}\s*</td>`);
-      expect(re.test(pageContent)).to.equal(true, `Could not find the firstName ${firstName} on the main page.`);
+      expect(re.test(pageContent)).to.equal(
+        true,
+        `Could not find the firstName ${firstName} on the main page.`
+      );
     });
-    
-    it('the lastName', () => {
-      if (!app) { return expect.fail('Cannot read "app" from app.js'); }
-      if (csrfError || optionError || createError) { return expect.fail(csrfError || optionError || createError); }
+
+    it("the lastName", () => {
+      if (!app) {
+        return expect.fail('Cannot read "app" from app.js');
+      }
+      if (csrfError || optionError || createError) {
+        return expect.fail(csrfError || optionError || createError);
+      }
 
       let namedRow = findNamedRow();
       const lastNameRegex = new RegExp(`<td[^>]*>\s*${lastName}\s*</td>`);
 
-      expect(lastNameRegex.test(namedRow)).to.equal(true, `Could not find the lastName "${lastName}" in the same table row as "${firstName}".`);
+      expect(lastNameRegex.test(namedRow)).to.equal(
+        true,
+        `Could not find the lastName "${lastName}" in the same table row as "${firstName}".`
+      );
     });
 
-    it('the biography', () => {
-      if (!app) { return expect.fail('Cannot read "app" from app.js'); }
-      if (csrfError || optionError || createError) { return expect.fail(csrfError || optionError || createError); }
+    it("the biography", () => {
+      if (!app) {
+        return expect.fail('Cannot read "app" from app.js');
+      }
+      if (csrfError || optionError || createError) {
+        return expect.fail(csrfError || optionError || createError);
+      }
 
       let namedRow = findNamedRow();
       const biographyRegex = new RegExp(`<td[^>]*>\s*${biography}\s*</td>`);
 
-      expect(biographyRegex.test(namedRow)).to.equal(true, `Could not find the biography "${biography}" in the same table row as "${firstName}".`);
+      expect(biographyRegex.test(namedRow)).to.equal(
+        true,
+        `Could not find the biography "${biography}" in the same table row as "${firstName}".`
+      );
     });
-    it('the age', () => {
-      if (!app) { return expect.fail('Cannot read "app" from app.js'); }
-      if (csrfError || optionError || createError) { return expect.fail(csrfError || optionError || createError); }
+    it("the age", () => {
+      if (!app) {
+        return expect.fail('Cannot read "app" from app.js');
+      }
+      if (csrfError || optionError || createError) {
+        return expect.fail(csrfError || optionError || createError);
+      }
 
       let namedRow = findNamedRow();
       const ageRegex = new RegExp(`<td[^>]*>\s*${age}\s*</td>`);
 
-      expect(ageRegex.test(namedRow)).to.equal(true, `Could not find the age "${age}" in the same table row as "${firstName}".`);
+      expect(ageRegex.test(namedRow)).to.equal(
+        true,
+        `Could not find the age "${age}" in the same table row as "${firstName}".`
+      );
     });
 
-    it('the hair color', () => {
-      if (!app) { return expect.fail('Cannot read "app" from app.js'); }
-      if (csrfError || optionError || createError) { return expect.fail(csrfError || optionError || createError); }
+    it("the hair color", () => {
+      if (!app) {
+        return expect.fail('Cannot read "app" from app.js');
+      }
+      if (csrfError || optionError || createError) {
+        return expect.fail(csrfError || optionError || createError);
+      }
 
       let namedRow = findNamedRow();
       const optionRegex = new RegExp(`<td[^>]*>\s*${optionText}\s*</td>`);
 
-      expect(optionRegex.test(namedRow)).to.equal(true, `Could not find the hair color "${optionText}" in the same table row as "${firstName}".`);
+      expect(optionRegex.test(namedRow)).to.equal(
+        true,
+        `Could not find the hair color "${optionText}" in the same table row as "${firstName}".`
+      );
     });
   });
 });

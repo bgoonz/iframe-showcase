@@ -10,13 +10,25 @@
  * the person's friends-of list, always a value greater than or equal to 1
  */
 
-function friendsOfRecursion(target, adjacencyList, visited, maxDistance, currentDistance) {
+function friendsOfRecursion(
+  target,
+  adjacencyList,
+  visited,
+  maxDistance,
+  currentDistance
+) {
   if (currentDistance >= maxDistance) return;
 
   visited.add(target);
 
   for (let nextFriend of adjacencyList[target]) {
-    friendsOfRecursion(nextFriend, adjacencyList, visited, maxDistance, currentDistance + 1);
+    friendsOfRecursion(
+      nextFriend,
+      adjacencyList,
+      visited,
+      maxDistance,
+      currentDistance + 1
+    );
   }
 }
 
@@ -39,5 +51,7 @@ function friendsOf(adjacencyList, target, distance) {
 try {
   exports.friendsOf = friendsOf;
 } catch (e) {
-  exports.friendsOf = () => { throw new Error('Cannot export friendsOf.') };
+  exports.friendsOf = () => {
+    throw new Error("Cannot export friendsOf.");
+  };
 }

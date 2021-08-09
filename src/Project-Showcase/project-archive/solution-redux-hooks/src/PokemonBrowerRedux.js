@@ -30,7 +30,7 @@ class PokemonBrowser extends Component {
           showForm: false,
         });
       }
-    } catch(e) {}
+    } catch (e) {}
   };
 
   showForm = () => {
@@ -73,15 +73,12 @@ class PokemonBrowser extends Component {
           })}
         </nav>
         {this.state.showForm ? (
-          <PokemonFormRedux 
-            handleCreated={this.handleCreated} 
-            hideForm={this.hideForm} 
+          <PokemonFormRedux
+            handleCreated={this.handleCreated}
+            hideForm={this.hideForm}
           />
         ) : (
-          <Route
-            path="/pokemon/:id"
-            component={PokemonDetailRedux}
-          />
+          <Route path="/pokemon/:id" component={PokemonDetailRedux} />
         )}
       </main>
     );

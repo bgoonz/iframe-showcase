@@ -29,7 +29,7 @@ class ManageCategoriesScreen {
 
   show() {
     this.printUi();
-    this.rl.question("> ", answer => {
+    this.rl.question("> ", (answer) => {
       if (["1", "2", "3", "4", "5"].includes(answer)) {
         const index = Number.parseInt(answer) - 1;
         new EditCategoryScreen(this.rl, this.state, index).show();
@@ -43,5 +43,5 @@ class ManageCategoriesScreen {
 exports.ManageCategoriesScreen = ManageCategoriesScreen;
 
 // Requires at bottom to prevent circular dependencies problems in node
-const { EditCategoryScreen } = require('./edit-category-screen');
-const { MainScreen } = require('./main-screen');
+const { EditCategoryScreen } = require("./edit-category-screen");
+const { MainScreen } = require("./main-screen");

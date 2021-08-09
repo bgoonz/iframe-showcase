@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { login } from './store/authentication';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { login } from "./store/authentication";
 
 class LoginPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'demo@example.com',
-      password: 'password',
+      email: "demo@example.com",
+      password: "password",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -18,13 +18,13 @@ class LoginPanel extends Component {
     this.props.login(this.state.email, this.state.password);
   }
 
-  updateEmail = e => {
+  updateEmail = (e) => {
     this.setState({ email: e.target.value });
-  }
+  };
 
-  updatePassword = e => {
+  updatePassword = (e) => {
     this.setState({ password: e.target.value });
-  }
+  };
 
   render() {
     if (this.props.token) {
@@ -33,14 +33,18 @@ class LoginPanel extends Component {
     return (
       <main className="centered middled">
         <form onSubmit={this.handleSubmit}>
-          <input type="text"
-                placeholder="Email"
-                value={this.state.email}
-                onChange={this.updateEmail} />
-          <input type="password"
-                placeholder="Password"
-                value={this.state.password}
-                onChange={this.updatePassword} />
+          <input
+            type="text"
+            placeholder="Email"
+            value={this.state.email}
+            onChange={this.updateEmail}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={this.updatePassword}
+          />
           <button type="submit">Login</button>
         </form>
       </main>
@@ -48,22 +52,16 @@ class LoginPanel extends Component {
   }
 }
 
-
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     token: state.authentication.token,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    login: (email, password) => dispatch(login(email, password))
+    login: (email, password) => dispatch(login(email, password)),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(
-  LoginPanel
-);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPanel);

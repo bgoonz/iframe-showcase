@@ -5,7 +5,8 @@
 // 1. Cards - array of card objects
 // 2. Inventory - object tracking number of cards left in the store
 
-export const initialCards = [ {
+export const initialCards = [
+  {
     id: 0,
     name: "Martok",
     imgUrl: "http://guide.fleetops.net/images/avatars/martok.png",
@@ -43,17 +44,18 @@ export const initialCards = [ {
   },
 ];
 
-export const initialInventory = initialCards.reduce( ( accum, el ) => {
-  accum[ el.id ] = 10;
+export const initialInventory = initialCards.reduce((accum, el) => {
+  accum[el.id] = 10;
   return accum;
-}, {} );
+}, {});
 
-export const initialDecks = [ {
+export const initialDecks = [
+  {
     name: "My Deck",
-    cards: []
+    cards: [],
   },
   {
     name: "Danny Butterwick's Deck",
-    cards: [ initialCards[ 0 ], initialCards[ 1 ], initialCards[ 2 ] ],
+    cards: [initialCards[0], initialCards[1], initialCards[2]],
   },
-]
+];

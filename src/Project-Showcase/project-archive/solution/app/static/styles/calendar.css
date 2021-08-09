@@ -1,5 +1,9 @@
-html, body, input, textarea, button {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+html,
+body,
+input,
+textarea,
+button {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 12px;
 }
 
@@ -23,7 +27,7 @@ main {
 }
 
 .appointment {
-  background-color: #0277BD;
+  background-color: #0277bd;
   border-radius: 4px;
   color: white;
   font-weight: bold;
@@ -39,7 +43,7 @@ main {
 
 .form-row {
   display: flex;
-  margin: .25em;
+  margin: 0.25em;
 }
 
 .form-row label {

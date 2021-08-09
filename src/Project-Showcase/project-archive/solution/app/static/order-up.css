@@ -1,37 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
 
-html, body, input, select, textarea, button {
+html,
+body,
+input,
+select,
+textarea,
+button {
   color: #424242;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
 }
 
 button,
 .button {
   background-color: white;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   border-radius: 4px;
   box-sizing: border-box;
   font-weight: 700;
-  padding: .65em 3em;
+  padding: 0.65em 3em;
   text-transform: uppercase;
-  transition: background-color .3s;
+  transition: background-color 0.3s;
 }
 
 button:hover,
 .button:hover {
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
 }
 
 button.micro,
 .button.micro {
   font-size: 75%;
-  padding: .45em 3em;
+  padding: 0.45em 3em;
 }
 
 form {
@@ -44,7 +50,7 @@ main {
 }
 
 select {
-  padding: .65em 3em;
+  padding: 0.65em 3em;
 }
 
 #workspace {
@@ -61,12 +67,12 @@ select {
 }
 
 .assign {
-  background-color: #1565C0;
+  background-color: #1565c0;
   color: white;
 }
 
 .assign:hover {
-  background-color: #0D47A1;
+  background-color: #0d47a1;
 }
 
 .assignment-form {
@@ -111,12 +117,12 @@ select {
 }
 
 .logout {
-  background-color: #FFAB40;
+  background-color: #ffab40;
   color: white;
 }
 
 .logout:hover {
-  background-color: #FF6D00;
+  background-color: #ff6d00;
 }
 
 .order-action-cell {
@@ -124,7 +130,7 @@ select {
 }
 
 .order-row > td {
-  border-top: 1px solid #E0E0E0;
+  border-top: 1px solid #e0e0e0;
   padding: 1em 0;
 }
 

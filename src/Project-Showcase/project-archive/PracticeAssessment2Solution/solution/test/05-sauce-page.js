@@ -22,10 +22,34 @@ describe("The sauce page", () => {
   }
 
   const pastas = [
-    { label: 'Red Chili Ramen', description: 'spicy', taste: 9, sauce: 'Red Chili Broth', noodle: 'Ramen' },
-    { label: 'Alfredo Linguini', description: 'creamy', taste: 8, sauce: 'Alfredo', noodle: 'Linguini' },
-    { label: 'Alfredo Udon', description: 'creamy', taste: 3, sauce: 'Alfredo', noodle: 'Udon' },
-    { label: 'Bolognese Linguini', description: 'creamy', taste: 7, sauce: 'Bolognese', noodle: 'Linguini' },
+    {
+      label: "Red Chili Ramen",
+      description: "spicy",
+      taste: 9,
+      sauce: "Red Chili Broth",
+      noodle: "Ramen",
+    },
+    {
+      label: "Alfredo Linguini",
+      description: "creamy",
+      taste: 8,
+      sauce: "Alfredo",
+      noodle: "Linguini",
+    },
+    {
+      label: "Alfredo Udon",
+      description: "creamy",
+      taste: 3,
+      sauce: "Alfredo",
+      noodle: "Udon",
+    },
+    {
+      label: "Bolognese Linguini",
+      description: "creamy",
+      taste: 7,
+      sauce: "Bolognese",
+      noodle: "Linguini",
+    },
   ];
   let csrfError = null;
   let optionError = null;
@@ -69,7 +93,7 @@ describe("The sauce page", () => {
 
     try {
       noodleOptions = $('select[name="noodleId"] option');
-      if (!noodleOptions.length) throw 'error';
+      if (!noodleOptions.length) throw "error";
     } catch (e) {
       optionError = new Error(
         "Could not find a select dropdown with noodles to use to submit."
@@ -96,7 +120,7 @@ describe("The sauce page", () => {
         }
       }
       if (!alfredoId) throw "No Alfredo sauce found";
-    } catch(e) {
+    } catch (e) {
       optionError = new Error(
         "Could not find a select dropdown with Alfredo sauce to use to submit."
       );
@@ -182,7 +206,6 @@ describe("The sauce page", () => {
           );
         }
       }
-
     });
 
     it("the description", () => {
@@ -204,7 +227,10 @@ describe("The sauce page", () => {
           );
         } else {
           let namedRow = findNamedRow(label);
-          expect(namedRow).to.equal('', `Found the label ${label} on the Alfredo sauce page.`);
+          expect(namedRow).to.equal(
+            "",
+            `Found the label ${label} on the Alfredo sauce page.`
+          );
         }
       }
     });
@@ -228,7 +254,10 @@ describe("The sauce page", () => {
           );
         } else {
           let namedRow = findNamedRow(label);
-          expect(namedRow).to.equal("", `Found the label ${label} on the Alfredo sauce page.`);
+          expect(namedRow).to.equal(
+            "",
+            `Found the label ${label} on the Alfredo sauce page.`
+          );
         }
       }
     });
@@ -259,7 +288,10 @@ describe("The sauce page", () => {
           );
         } else {
           let namedRow = findNamedRow(label);
-          expect(namedRow).to.equal("", `Found the label ${label} on the Alfredo sauce page.`);
+          expect(namedRow).to.equal(
+            "",
+            `Found the label ${label} on the Alfredo sauce page.`
+          );
         }
       }
     });
@@ -290,7 +322,10 @@ describe("The sauce page", () => {
           );
         } else {
           let namedRow = findNamedRow(label);
-          expect(namedRow).to.equal("", `Found the label ${label} on the Alfredo sauce page.`);
+          expect(namedRow).to.equal(
+            "",
+            `Found the label ${label} on the Alfredo sauce page.`
+          );
         }
       }
     });

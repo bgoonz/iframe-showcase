@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Ingredients', {
+    return queryInterface.createTable("Ingredients", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -14,7 +14,7 @@ module.exports = {
       },
       measurementUnitId: {
         allowNull: false,
-        references: { model: 'MeasurementUnits' },
+        references: { model: "MeasurementUnits" },
         type: Sequelize.INTEGER,
       },
       foodStuff: {
@@ -23,9 +23,9 @@ module.exports = {
       },
       recipeId: {
         allowNull: false,
-        references: { model: 'Recipes' },
+        references: { model: "Recipes" },
         type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
+        onDelete: "CASCADE",
       },
       createdAt: {
         allowNull: false,
@@ -38,6 +38,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Ingredients');
+    return queryInterface.dropTable("Ingredients");
   },
 };

@@ -1,23 +1,23 @@
-import { baseUrl } from '../config';
+import { baseUrl } from "../config";
 
-const TOKEN_KEY = 'pokedex/authentication/token';
-const SET_TOKEN = 'pokedex/authentication/SET_TOKEN';
-const REMOVE_TOKEN = 'pokedex/authentication/REMOVE_TOKEN';
+const TOKEN_KEY = "pokedex/authentication/token";
+const SET_TOKEN = "pokedex/authentication/SET_TOKEN";
+const REMOVE_TOKEN = "pokedex/authentication/REMOVE_TOKEN";
 
-export const removeToken = token => ({ type: REMOVE_TOKEN });
-export const setToken = token => ({ type: SET_TOKEN, token });
+export const removeToken = (token) => ({ type: REMOVE_TOKEN });
+export const setToken = (token) => ({ type: SET_TOKEN, token });
 
-export const loadToken = () => async dispatch => {
+export const loadToken = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN_KEY);
   if (token) {
     dispatch(setToken(token));
   }
 };
 
-export const login = (email, password) => async dispatch => {
+export const login = (email, password) => async (dispatch) => {
   const response = await fetch(`${baseUrl}/session`, {
-    method: 'put',
-    headers: { 'Content-Type': 'application/json' },
+    method: "put",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   });
 
@@ -29,9 +29,11 @@ export const login = (email, password) => async dispatch => {
 };
 
 export const logout = () => async (dispatch, getState) => {
-  const { authentication: { token } } = getState();
+  const {
+    authentication: { token },
+  } = getState();
   const response = await fetch(`${baseUrl}/session`, {
-    method: 'delete',
+    method: "delete",
     headers: { Authorization: `Bearer ${token}` },
   });
 
@@ -39,7 +41,7 @@ export const logout = () => async (dispatch, getState) => {
     window.localStorage.removeItem(TOKEN_KEY);
     dispatch(removeToken());
   }
-}
+};
 
 export default function reducer(state = {}, action) {
   switch (action.type) {
@@ -56,6 +58,7 @@ export default function reducer(state = {}, action) {
       return newState;
     }
 
-    default: return state;
+    default:
+      return state;
   }
 }

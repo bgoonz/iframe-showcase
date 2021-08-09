@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Route, useParams } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { NavLink, Route, useParams } from "react-router-dom";
 
-import { imageUrl } from './config';
-import LogoutButton from './LogoutButton';
-import PokemonDetail from './PokemonDetail';
-import PokemonForm from './PokemonForm';
-import Fab from './Fab';
-import { getPokemon, showForm } from './store/pokemon';
+import { imageUrl } from "./config";
+import LogoutButton from "./LogoutButton";
+import PokemonDetail from "./PokemonDetail";
+import PokemonForm from "./PokemonForm";
+import Fab from "./Fab";
+import { getPokemon, showForm } from "./store/pokemon";
 
-const PokemonBrowser = props => {
+const PokemonBrowser = (props) => {
   const pokemon = useSelector((state) => state.pokemon.list);
   const token = useSelector((state) => state.authentication.token);
   const formVisible = useSelector((state) => state.pokemon.formVisible);
@@ -68,6 +68,6 @@ const PokemonBrowser = props => {
       )}
     </main>
   );
-}
+};
 
 export default PokemonBrowser;

@@ -1,7 +1,7 @@
-import { Column } from './column.js';
-import { ColumnWinInspector } from './column-win-inspector.js';
-import { RowWinInspector } from './row-win-inspector.js';
-import { DiagonalWinInspector } from './diagonal-win-inspector.js';
+import { Column } from "./column.js";
+import { ColumnWinInspector } from "./column-win-inspector.js";
+import { RowWinInspector } from "./row-win-inspector.js";
+import { DiagonalWinInspector } from "./diagonal-win-inspector.js";
 
 export class Game {
   constructor(player1Name, player2Name) {
@@ -62,7 +62,7 @@ export class Game {
   }
 
   checkForTie() {
-    if (this.columns.every(x => x.isFull())) {
+    if (this.columns.every((x) => x.isFull())) {
       this.winnerNumber = 3;
     }
   }
@@ -75,7 +75,7 @@ export class Game {
       return `${this.player2Name} wins!`;
     }
     if (this.winnerNumber === 3) {
-      return `${this.player1Name} ties with ${this.player2Name}!`
+      return `${this.player1Name} ties with ${this.player2Name}!`;
     }
     return `${this.player1Name} vs. ${this.player2Name}`;
   }

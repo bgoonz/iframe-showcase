@@ -5,12 +5,12 @@ chai.use(spies);
 
 const boundTimeout = require("../problems/03-bound-timeout.js");
 
-describe("boundTimeout()", function() {
-  afterEach(function() {
+describe("boundTimeout()", function () {
+  afterEach(function () {
     chai.spy.restore(global);
   });
 
-  it("it should bind the callback to the given object", function() {
+  it("it should bind the callback to the given object", function () {
     const callback = chai.spy();
     const thisArg = chai.spy();
     const bindSpy = chai.spy.on(callback, "bind");
@@ -18,7 +18,7 @@ describe("boundTimeout()", function() {
     expect(bindSpy).to.have.been.called.once.with.exactly(thisArg);
   });
 
-  it("it should set a timeout with the bound callback and given delay", function() {
+  it("it should set a timeout with the bound callback and given delay", function () {
     const callback = chai.spy();
     const boundCallback = chai.spy();
     chai.spy.on(callback, "bind", () => boundCallback);

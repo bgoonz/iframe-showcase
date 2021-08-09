@@ -29,7 +29,7 @@ console.log(timeoutObjs); // [ Timeout {...},  Timeout {...}, Timeout {...} ]
 ***********************************************************************/
 
 function batchTimeouts(callbacks, delays) {
-  return callbacks.map(function(cb, idx) {
+  return callbacks.map(function (cb, idx) {
     return setTimeout(cb, delays[idx]);
   });
 }

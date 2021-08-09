@@ -1,7 +1,7 @@
-const jwt = require('jsonwebtoken');
-const { jwtConfig } = require('./config');
-const { User } = require('./db/models');
-const bearerToken = require('express-bearer-token');
+const jwt = require("jsonwebtoken");
+const { jwtConfig } = require("./config");
+const { User } = require("./db/models");
+const bearerToken = require("express-bearer-token");
 
 const { secret, expiresIn } = jwtConfig;
 
@@ -31,7 +31,7 @@ const restoreUser = (req, res, next) => {
   if (!token) {
     // Send a "401 Unauthorized" response status code
     // along with an "WWW-Authenticate" header value of "Bearer".
-    return res.set('WWW-Authenticate', 'Bearer').status(401).end();
+    return res.set("WWW-Authenticate", "Bearer").status(401).end();
   }
 
   return jwt.verify(token, secret, null, async (err, jwtPayload) => {
@@ -51,13 +51,18 @@ const restoreUser = (req, res, next) => {
     if (!req.user) {
       // Send a "401 Unauthorized" response status code
       // along with an "WWW-Authenticate" header value of "Bearer".
-      return res.set('WWW-Authenticate', 'Bearer').status(401).end();
+      return res.set("WWW-Authenticate", "Bearer").status(401).end();
     }
 
     return next();
   });
 };
 
-const requireAuth = [bearerToken({ cookie: { signed: true, secret: 'huh834hdxh', key: 'access_token' } }), restoreUser];
+const requireAuth = [
+  bearerToken({
+    cookie: { signed: true, secret: "huh834hdxh", key: "access_token" },
+  }),
+  restoreUser,
+];
 
 module.exports = { getUserToken, requireAuth };

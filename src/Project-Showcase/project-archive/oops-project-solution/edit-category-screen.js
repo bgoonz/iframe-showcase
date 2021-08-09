@@ -23,13 +23,13 @@ class EditCategoryScreen {
     console.log(`You are editing \"${category}\".`);
     console.log();
     console.log("What would you like to rename it? Hit");
-    console.log("\"Enter\" when you are done.");
+    console.log('"Enter" when you are done.');
     console.log();
   }
 
   show() {
     this.printUi();
-    this.rl.question("> ", answer => {
+    this.rl.question("> ", (answer) => {
       this.state.setCategory(this.categoryIndex, answer);
       this.state.save();
       new ManageCategoriesScreen(this.rl, this.state).show();
@@ -40,4 +40,4 @@ class EditCategoryScreen {
 exports.EditCategoryScreen = EditCategoryScreen;
 
 // Requires at bottom to prevent circular dependencies problems in node
-const { ManageCategoriesScreen } = require('./manage-categories-screen');
+const { ManageCategoriesScreen } = require("./manage-categories-screen");

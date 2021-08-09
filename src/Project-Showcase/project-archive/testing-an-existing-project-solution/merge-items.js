@@ -1,9 +1,9 @@
 function mergeItems(template, items) {
-  let trs = '';
+  let trs = "";
 
   let index = 1;
   for (let item of items) {
-    let form = '';
+    let form = "";
     if (!item.isComplete) {
       form = `
         <form method="POST" action="/items/${index}">
@@ -22,7 +22,7 @@ function mergeItems(template, items) {
     index += 1;
   }
 
-  return template.replace('<!-- Content here -->', trs);
+  return template.replace("<!-- Content here -->", trs);
 }
 
 exports.mergeItems = mergeItems;

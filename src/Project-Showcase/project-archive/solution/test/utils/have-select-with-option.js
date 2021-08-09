@@ -1,13 +1,13 @@
-const chai = require('chai');
-const cheerio = require('cheerio');
+const chai = require("chai");
+const cheerio = require("cheerio");
 
 module.exports = (_chai, utils) => {
   const Assertion = chai.Assertion;
 
   function assertCheckTag(selector, content) {
     const obj = this._obj;
-    
-    this.assert(obj, 'No HTML content rendered', 'No HTML content rendered');
+
+    this.assert(obj, "No HTML content rendered", "No HTML content rendered");
 
     const $ = cheerio.load(obj.toString());
 
@@ -27,5 +27,5 @@ module.exports = (_chai, utils) => {
     this.assert(good, trueMessage, falseMessage);
   }
 
-  Assertion.addMethod('haveSelectWithOption', assertCheckTag);
+  Assertion.addMethod("haveSelectWithOption", assertCheckTag);
 };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import { imageUrl } from "./config";
 import { getOnePokemon } from "./fetches/pokemon";
 
@@ -8,11 +8,11 @@ const PokemonDetail = ({ token }) => {
   const [selectedPokemon, setSelectedPokemon] = useState();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       const pokemon = await getOnePokemon(id, token);
       setSelectedPokemon(pokemon);
     })();
-  }, [id, token])
+  }, [id, token]);
 
   if (!selectedPokemon) {
     return null;
@@ -27,7 +27,9 @@ const PokemonDetail = ({ token }) => {
       >
         <div
           className="pokemon-detail-image"
-          style={{ backgroundImage: `url('${imageUrl}${selectedPokemon.imageUrl}')` }}
+          style={{
+            backgroundImage: `url('${imageUrl}${selectedPokemon.imageUrl}')`,
+          }}
         ></div>
         <h1 className="bigger">{selectedPokemon.name}</h1>
       </div>

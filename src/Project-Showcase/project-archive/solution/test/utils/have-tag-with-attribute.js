@@ -1,5 +1,5 @@
-const chai = require('chai');
-const cheerio = require('cheerio');
+const chai = require("chai");
+const cheerio = require("cheerio");
 
 module.exports = (_chai, utils) => {
   const Assertion = chai.Assertion;
@@ -7,12 +7,12 @@ module.exports = (_chai, utils) => {
   function assertCheckTag(selector, attribute, value, optionalAttribute) {
     const obj = this._obj;
 
-    this.assert(obj, 'No HTML content rendered', 'No HTML content rendered');
+    this.assert(obj, "No HTML content rendered", "No HTML content rendered");
 
     const $ = cheerio.load(obj.toString());
 
     const selections = $(selector);
-    const { '0': selection } = selections;
+    const { 0: selection } = selections;
     let good = true;
 
     let trueMessage = null;
@@ -22,15 +22,19 @@ module.exports = (_chai, utils) => {
       good = false;
       trueMessage = `Expected HTML to contain a tag selectable with ${selector}`;
       falseMessage = `Expected HTML to not contain a tag selectable with ${selector}`;
-    } else if (attribute === '@name' && value) {
+    } else if (attribute === "@name" && value) {
       good = selection.name === value;
       trueMessage = `Expected HTML to contain ${selector} with a tag name of ${value}`;
       falseMessage = `Expected HTML to not contain ${selector} with a tag name of ${value}`;
     } else if (attribute && value instanceof RegExp) {
       const attributes = selection.attribs;
 
-      const optionalAndNotPresent = optionalAttribute && !Object.keys(attributes).includes(attribute);
-      const attributePresentWithCorrectValue = attributes && attributes[attribute] && value.test(attributes[attribute]);
+      const optionalAndNotPresent =
+        optionalAttribute && !Object.keys(attributes).includes(attribute);
+      const attributePresentWithCorrectValue =
+        attributes &&
+        attributes[attribute] &&
+        value.test(attributes[attribute]);
 
       good = optionalAndNotPresent || attributePresentWithCorrectValue;
 
@@ -39,8 +43,10 @@ module.exports = (_chai, utils) => {
     } else if (attribute && value) {
       const attributes = selection.attribs;
 
-      const optionalAndNotPresent = optionalAttribute && !Object.keys(attributes).includes(attribute);
-      const attributePresentWithCorrectValue = attributes && attributes[attribute] && value === attributes[attribute];
+      const optionalAndNotPresent =
+        optionalAttribute && !Object.keys(attributes).includes(attribute);
+      const attributePresentWithCorrectValue =
+        attributes && attributes[attribute] && value === attributes[attribute];
 
       good = optionalAndNotPresent || attributePresentWithCorrectValue;
 
@@ -49,8 +55,10 @@ module.exports = (_chai, utils) => {
     } else if (attribute) {
       const attributes = selection.attribs;
 
-      const optionalAndNotPresent = optionalAttribute && !Object.keys(attributes).includes(attribute);
-      const attributePresentWithCorrectValue = attributes && Object.keys(attributes).includes(attribute);
+      const optionalAndNotPresent =
+        optionalAttribute && !Object.keys(attributes).includes(attribute);
+      const attributePresentWithCorrectValue =
+        attributes && Object.keys(attributes).includes(attribute);
 
       good = optionalAndNotPresent || attributePresentWithCorrectValue;
 
@@ -65,5 +73,5 @@ module.exports = (_chai, utils) => {
     this.assert(good, trueMessage, falseMessage);
   }
 
-  Assertion.addMethod('haveTag', assertCheckTag);
+  Assertion.addMethod("haveTag", assertCheckTag);
 };

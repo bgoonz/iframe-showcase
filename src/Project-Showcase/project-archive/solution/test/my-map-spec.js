@@ -15,21 +15,21 @@ describe("myMap()", () => {
   });
   it("should return a new array with the same elements", () => {
     const expectedArray = [2, 3, 4];
-    expect(myMap(inputArray, element => element + 1)).to.deep.equal(
+    expect(myMap(inputArray, (element) => element + 1)).to.deep.equal(
       expectedArray
     );
   });
   it("should not modify the input Array", () => {
-    myMap(inputArray, element => element + 1);
+    myMap(inputArray, (element) => element + 1);
     expect(inputArray).to.deep.equal([1, 2, 3]);
   });
   it("should not call the built in map", () => {
     const mapSpy = chai.spy.on(inputArray, "map");
-    myMap(inputArray, element => element + 1);
+    myMap(inputArray, (element) => element + 1);
     expect(mapSpy).to.not.have.been.called();
   });
   it("should call the callback for each element in the input array", () => {
-    const callback = element => element + 1;
+    const callback = (element) => element + 1;
     const callbackSpy = chai.spy(callback);
     myMap(inputArray, callbackSpy);
     expect(callbackSpy).to.have.been.called.exactly(3);

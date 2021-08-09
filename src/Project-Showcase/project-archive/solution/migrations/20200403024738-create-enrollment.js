@@ -33,37 +33,37 @@
 // 	}
 // };
 
-'use strict';
+"use strict";
 module.exports = {
-	up: (queryInterface, Sequelize) => {
-		return queryInterface.createTable('Enrollments', {
-			id: {
-				allowNull: false,
-				autoIncrement: true,
-				primaryKey: true,
-				type: Sequelize.INTEGER
-			},
-			personId: {
-				type: Sequelize.INTEGER,
-				references: { model: { tableName: 'People' } },
-				allowNull: false
-			},
-			courseId: {
-				type: Sequelize.INTEGER,
-				references: { model: { tableName: 'Courses' } },
-				allowNull: false
-			},
-			createdAt: {
-				allowNull: false,
-				type: Sequelize.DATE
-			},
-			updatedAt: {
-				allowNull: false,
-				type: Sequelize.DATE
-			}
-		});
-	},
-	down: (queryInterface, Sequelize) => {
-		return queryInterface.dropTable('Enrollments');
-	}
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable("Enrollments", {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
+      },
+      personId: {
+        type: Sequelize.INTEGER,
+        references: { model: { tableName: "People" } },
+        allowNull: false,
+      },
+      courseId: {
+        type: Sequelize.INTEGER,
+        references: { model: { tableName: "Courses" } },
+        allowNull: false,
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+    });
+  },
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable("Enrollments");
+  },
 };

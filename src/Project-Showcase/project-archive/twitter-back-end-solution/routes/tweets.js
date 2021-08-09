@@ -1,43 +1,47 @@
-const express = require('express');
-const { check } = require('express-validator');
-const { handleValidationErrors, asyncHandler } = require('../utils');
-const { requireAuth } = require('../auth');
+const express = require("express");
+const { check } = require("express-validator");
+const { handleValidationErrors, asyncHandler } = require("../utils");
+const { requireAuth } = require("../auth");
 const router = express.Router();
-const db = require('../db/models');
+const db = require("../db/models");
 
 const { Tweet, User } = db;
 
 router.use(requireAuth);
 
 router.get(
-  '/',
+  "/",
   asyncHandler(async (req, res) => {
     const tweets = await Tweet.findAll({
-      include: [{ model: User, as: 'user', attributes: ['username'] }],
-      order: [['createdAt', 'DESC']],
-      attributes: ['message'],
+      include: [{ model: User, as: "user", attributes: ["username"] }],
+      order: [["createdAt", "DESC"]],
+      attributes: ["message"],
     });
     res.json({ tweets });
   })
 );
 
 const tweetNotFoundError = (id) => {
-  const err = Error('Tweet not found');
+  const err = Error("Tweet not found");
   err.errors = [`Tweet with id of ${id} could not be found.`];
-  err.title = 'Tweet not found.';
+  err.title = "Tweet not found.";
   err.status = 404;
   return err;
 };
 
 const validateTweet = [
-  check('message').exists({ checkFalsy: true }).withMessage("Tweet can't be empty."),
+  check("message")
+    .exists({ checkFalsy: true })
+    .withMessage("Tweet can't be empty."),
   //  message cannot be longer than 280 characters:
-  check('message').isLength({ max: 280 }).withMessage("Tweet can't be longer than 280 characters."),
+  check("message")
+    .isLength({ max: 280 })
+    .withMessage("Tweet can't be longer than 280 characters."),
   handleValidationErrors,
 ];
 
 router.get(
-  '/:id',
+  "/:id",
   asyncHandler(async (req, res, next) => {
     const tweet = await Tweet.findOne({
       where: {
@@ -53,7 +57,7 @@ router.get(
 );
 
 router.post(
-  '/',
+  "/",
   validateTweet,
   asyncHandler(async (req, res) => {
     const { message } = req.body;
@@ -62,13 +66,13 @@ router.post(
       const tweet = await Tweet.create({ message, userId: req.user.id });
       res.json({ tweet });
     } catch (e) {
-      console.log('in catch', message);
+      console.log("in catch", message);
     }
   })
 );
 
 router.put(
-  '/:id',
+  "/:id",
   validateTweet,
   asyncHandler(async (req, res, next) => {
     const tweet = await Tweet.findOne({
@@ -77,10 +81,10 @@ router.put(
       },
     });
     if (req.user.id !== tweet.userId) {
-      const err = new Error('Unauthorized');
+      const err = new Error("Unauthorized");
       err.status = 401;
-      err.message = 'You are not authorized to edit this tweet.';
-      err.title = 'Unauthorized';
+      err.message = "You are not authorized to edit this tweet.";
+      err.title = "Unauthorized";
       throw err;
     }
     if (tweet) {
@@ -93,7 +97,7 @@ router.put(
 );
 
 router.delete(
-  '/:id',
+  "/:id",
   asyncHandler(async (req, res, next) => {
     const tweet = await Tweet.findOne({
       where: {
@@ -101,10 +105,10 @@ router.delete(
       },
     });
     if (req.user.id !== tweet.userId) {
-      const err = new Error('Unauthorized');
+      const err = new Error("Unauthorized");
       err.status = 401;
-      err.message = 'You are not authorized to delete this tweet.';
-      err.title = 'Unauthorized';
+      err.message = "You are not authorized to delete this tweet.";
+      err.title = "Unauthorized";
       throw err;
     }
     if (tweet) {

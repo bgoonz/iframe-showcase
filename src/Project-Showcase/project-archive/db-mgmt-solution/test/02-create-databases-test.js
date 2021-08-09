@@ -1,10 +1,10 @@
-const chai = require('chai');
-const fs = require('fs').promises;
-const path = require('path');
-const { Pool } = require('./db-utils');
+const chai = require("chai");
+const fs = require("fs").promises;
+const path = require("path");
+const { Pool } = require("./db-utils");
 const { expect } = chai;
 
-describe('When 02-create-databases.sql is run', () => {
+describe("When 02-create-databases.sql is run", () => {
   let pool;
 
   after(async () => {
@@ -13,20 +13,20 @@ describe('When 02-create-databases.sql is run', () => {
 
   before(async () => {
     pool = new Pool({
-      database: 'postgres',
+      database: "postgres",
     });
-    const sqlPath = path.resolve(__dirname, '..', '02-create-databases.sql');
-    const sql = await fs.readFile(sqlPath, 'utf8');
-    const sqls = sql.split(';');
+    const sqlPath = path.resolve(__dirname, "..", "02-create-databases.sql");
+    const sql = await fs.readFile(sqlPath, "utf8");
+    const sqls = sql.split(";");
     try {
       for (let s of sqls) {
         await pool.query(s);
       }
     } catch (e) {
       console.error(e);
-      if (!e.message.includes('must have either text')) {
+      if (!e.message.includes("must have either text")) {
         console.error(e);
-        expect.fail('Your SQL did not run properly.')
+        expect.fail("Your SQL did not run properly.");
       }
     }
   });
@@ -44,12 +44,15 @@ describe('When 02-create-databases.sql is run', () => {
     expect(table_owner).to.equal(owner);
   }
 
-  context('it creates the database', () => {
-    it('aa_times with owner aa_times', async () => {
-      await testDatabaseExistsWithOwner('aa_times', 'aa_times');
+  context("it creates the database", () => {
+    it("aa_times with owner aa_times", async () => {
+      await testDatabaseExistsWithOwner("aa_times", "aa_times");
     });
-    it('project_manager with owner project_management_app', async () => {
-      await testDatabaseExistsWithOwner('project_manager', 'project_management_app');
+    it("project_manager with owner project_management_app", async () => {
+      await testDatabaseExistsWithOwner(
+        "project_manager",
+        "project_management_app"
+      );
     });
   });
 });

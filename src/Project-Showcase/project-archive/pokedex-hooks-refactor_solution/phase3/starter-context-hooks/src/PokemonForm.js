@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { createPokemon, getPokemonTypes } from './fetches/pokemon';
+import React, { useState, useEffect } from "react";
+import { createPokemon, getPokemonTypes } from "./fetches/pokemon";
 
 const PokemonForm = ({ token, formVisible, setFormVisible }) => {
   const [attack, setAttack] = useState("");
@@ -12,11 +12,11 @@ const PokemonForm = ({ token, formVisible, setFormVisible }) => {
   const [types, setTypes] = useState([]);
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       const types = await getPokemonTypes(token);
       setTypes(types);
     })();
-  },[token])
+  }, [token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,13 +26,13 @@ const PokemonForm = ({ token, formVisible, setFormVisible }) => {
       defense,
       imageUrl,
       name,
-      type
+      type,
     };
     const success = await createPokemon(payload, token);
     if (success) {
       hideForm();
     }
-  }
+  };
 
   const updateProperty = (callback) => (e) => {
     callback(e.target.value);
@@ -40,7 +40,7 @@ const PokemonForm = ({ token, formVisible, setFormVisible }) => {
 
   const hideForm = () => {
     setFormVisible(!formVisible);
-  }
+  };
 
   return (
     <section className="new-form-holder centered middled">
@@ -99,6 +99,6 @@ const PokemonForm = ({ token, formVisible, setFormVisible }) => {
       </form>
     </section>
   );
-}
+};
 
 export default PokemonForm;

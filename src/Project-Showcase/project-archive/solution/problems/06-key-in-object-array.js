@@ -25,7 +25,7 @@ function keyInObjectArray(objArray, keyString) {
   // you can't explicitly return from within a `forEach` function so
   // the way we can get around that is by setting a variable for our boolean
   // and flipping it within our case statement
-  objArray.forEach(function(obj) {
+  objArray.forEach(function (obj) {
     if (obj[keyString] !== undefined) {
       keyFound = true;
     }

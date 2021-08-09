@@ -10,7 +10,13 @@ export class RowWinInspector {
       const entry3 = this.columns[2].getTokenAt(rowIndex);
       const entry4 = this.columns[3].getTokenAt(rowIndex);
 
-      if (entry1 === entry2 && entry2 === entry3 && entry3 == entry4 && entry1 !== undefined && entry1 !== null) {
+      if (
+        entry1 === entry2 &&
+        entry2 === entry3 &&
+        entry3 == entry4 &&
+        entry1 !== undefined &&
+        entry1 !== null
+      ) {
         return entry1;
       }
     }

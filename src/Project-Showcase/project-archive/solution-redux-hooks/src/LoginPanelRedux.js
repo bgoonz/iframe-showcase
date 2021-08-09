@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { login } from './store/authentication';
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { login } from "./store/authentication";
 
 class LoginPanelRedux extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class LoginPanelRedux extends Component {
 
   render() {
     if (this.props.currentUserId) {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
     return (
       <main className="centered middled">
@@ -50,15 +50,15 @@ class LoginPanelRedux extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    currentUserId: state.authentication.id
+    currentUserId: state.authentication.id,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    login: (email, password) => dispatch(login(email, password))
+    login: (email, password) => dispatch(login(email, password)),
   };
 };
 

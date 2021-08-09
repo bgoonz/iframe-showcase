@@ -2,7 +2,7 @@ const readline = require("readline");
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
 let SECRET_NUMBER;
@@ -10,8 +10,8 @@ let SECRET_NUMBER;
 askRange();
 
 function askRange() {
-  rl.question("Enter a max number: ", max => {
-    rl.question("Enter a min number: ", min => {
+  rl.question("Enter a max number: ", (max) => {
+    rl.question("Enter a min number: ", (min) => {
       console.log(`I'm thinking of number between ${min} and ${max}...`);
       SECRET_NUMBER = randomInRange(Number(min), Number(max));
       askGuess();
@@ -20,7 +20,7 @@ function askRange() {
 }
 
 function askGuess() {
-  rl.question("Enter a guess: ", num => {
+  rl.question("Enter a guess: ", (num) => {
     const isCorrect = checkGuess(Number(num));
     if (isCorrect) {
       console.log("YOU WON.");

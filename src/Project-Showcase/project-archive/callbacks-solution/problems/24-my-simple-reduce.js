@@ -31,11 +31,11 @@ console.log(result3); // 8
 *******************************************************************************/
 
 function mySimpleReduce(array, cb) {
-    let accumulator = array[0];
-    array.slice(1).forEach(function (el) {
-        accumulator = cb(accumulator, el);
-    });
-    return accumulator;
+  let accumulator = array[0];
+  array.slice(1).forEach(function (el) {
+    accumulator = cb(accumulator, el);
+  });
+  return accumulator;
 }
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/

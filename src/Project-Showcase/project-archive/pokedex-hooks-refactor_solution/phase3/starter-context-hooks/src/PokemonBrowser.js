@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink, Route } from 'react-router-dom';
-import { imageUrl } from './config';
-import LogoutButton from './LogoutButton';
-import PokemonDetail from './PokemonDetail';
-import PokemonForm from './PokemonForm';
-import Fab from './Fab';
-import { getPokemon } from './fetches/pokemon';
+import React, { useState, useEffect } from "react";
+import { NavLink, Route } from "react-router-dom";
+import { imageUrl } from "./config";
+import LogoutButton from "./LogoutButton";
+import PokemonDetail from "./PokemonDetail";
+import PokemonForm from "./PokemonForm";
+import Fab from "./Fab";
+import { getPokemon } from "./fetches/pokemon";
 
 const PokemonBrowser = ({ pokemon, setPokemon, token, setToken }) => {
   const [formVisible, setFormVisible] = useState(false);
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       const pokemon = await getPokemon(token);
       setPokemon(pokemon);
     })();
-  }, [setPokemon, token])
+  }, [setPokemon, token]);
 
   const showForm = () => {
     setFormVisible(!formVisible);
-  }
+  };
 
   if (!pokemon) {
     return null;
@@ -54,17 +54,16 @@ const PokemonBrowser = ({ pokemon, setPokemon, token, setToken }) => {
         <PokemonForm
           token={token}
           formVisible={formVisible}
-          setFormVisible={setFormVisible}/>
+          setFormVisible={setFormVisible}
+        />
       ) : (
         <Route
           path="/pokemon/:id"
-          render={(props) => (
-            <PokemonDetail {...props} token={token} />
-          )}
+          render={(props) => <PokemonDetail {...props} token={token} />}
         />
       )}
     </main>
   );
-}
+};
 
 export default PokemonBrowser;

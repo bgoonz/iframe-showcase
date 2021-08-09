@@ -1,9 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { logout } from './store/authentication';
+import React from "react";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { logout } from "./store/authentication";
 
-const LogoutButton = props => {
+const LogoutButton = (props) => {
   if (props.loggedOut) {
     return <Redirect to="/login" />;
   }
@@ -13,23 +13,18 @@ const LogoutButton = props => {
       <button onClick={props.logout}>Logout</button>
     </div>
   );
-}
+};
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     loggedOut: !state.authentication.token,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(logout()),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(
-  LogoutButton
-);
+export default connect(mapStateToProps, mapDispatchToProps)(LogoutButton);

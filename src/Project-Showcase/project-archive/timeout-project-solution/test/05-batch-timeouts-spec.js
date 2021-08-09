@@ -5,12 +5,12 @@ chai.use(spies);
 
 const batchTimeout = require("../problems/05-batch-timeouts.js");
 
-describe("batchTimeout()", function() {
-  afterEach(function() {
+describe("batchTimeout()", function () {
+  afterEach(function () {
     chai.spy.restore(global);
   });
 
-  it("should set a timeout for each callback with the correct delay", function() {
+  it("should set a timeout for each callback with the correct delay", function () {
     const callbackSpies = [chai.spy(), chai.spy(), chai.spy()];
     const delays = [500, 200, 900];
     const timeoutSpy = chai.spy.on(global, "setTimeout");
@@ -29,11 +29,13 @@ describe("batchTimeout()", function() {
     );
   });
 
-  it("should return an array containing the Timeout objects that are returned by each call to setTimeout", function() {
+  it("should return an array containing the Timeout objects that are returned by each call to setTimeout", function () {
     chai.spy.on(global, "setTimeout");
     const callbacks = [() => null, () => null];
-    const delays = [500, 200]
-    const everyValueTimeout = batchTimeout(callbacks, delays).every(val => val.constructor.name === 'Timeout');
+    const delays = [500, 200];
+    const everyValueTimeout = batchTimeout(callbacks, delays).every(
+      (val) => val.constructor.name === "Timeout"
+    );
     expect(everyValueTimeout).to.equal(true);
   });
 });

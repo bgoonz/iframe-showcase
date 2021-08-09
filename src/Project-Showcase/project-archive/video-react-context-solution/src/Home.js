@@ -1,5 +1,5 @@
-import React from 'react';
-import Profile from './Profile';
+import React from "react";
+import Profile from "./Profile";
 
 const Home = () => (
   <div id="home">

@@ -1,4 +1,3 @@
-
 # Pokedex Hooks: Phase 2
 
 As you might remember from the Redux-based Pokedex project, implementing Redux
@@ -37,14 +36,14 @@ receiving `loggedOut` and `logout` props.
 
 ```js
 // We'll convert this into a useSelector hook
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     loggedOut: !state.authentication.token,
   };
 };
 
 // We'll convert this into a useDispatch hook
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(logout()),
   };
@@ -57,7 +56,7 @@ Take a moment to import the `useSelector` and `useDispatch` from the Redux
 library into the file.
 
 ```js
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 ```
 
 Now you'll use Redux hooks within the `LoginButton` component so that you can
@@ -72,21 +71,21 @@ Add the `useSelector` to the top of your component.
 
 ```js
 const LogoutButton = () => {
-  const loggedOut = useSelector(state => !state.authentication.token);
+  const loggedOut = useSelector((state) => !state.authentication.token);
 
   // CODE SHORTENED FOR BREVITY
 };
 ```
 
 > Feel free to visit the Redux Hooks documentation to view [`useSelector`
-> examples].
+> > examples].
 
 Then inside the component you can convert the `props.loggedOut` to simply use
 the new variable `loggedOut`
 
 ```js
 const LogoutButton = () => {
-  const loggedOut = useSelector(state => !state.authentication.token);
+  const loggedOut = useSelector((state) => !state.authentication.token);
   if (loggedOut) {
     return <Redirect to="/login" />;
   }
@@ -116,7 +115,7 @@ So much simpler!
 
 ```js
 const LogoutButton = () => {
-  const loggedOut = useSelector(state => !state.authentication.token);
+  const loggedOut = useSelector((state) => !state.authentication.token);
   const dispatch = useDispatch();
   const handleClick = () => dispatch(logout());
 
@@ -125,11 +124,11 @@ const LogoutButton = () => {
 ```
 
 > Feel free to visit the Redux Hooks documentation to view [`useDispatch`
-> examples].
+> > examples].
 
 #### Removing `mapStateToProps`, `mapDispatchToProps`, and `connect`
 
-Now that we aren't referencing `props.logout` and `props.loggedOut`, you can 
+Now that we aren't referencing `props.logout` and `props.loggedOut`, you can
 remove all the old Redux boilerplate code.
 
 Lastly, you'll want to remove the `mapStateToProps` and `mapDispatchToProps`
@@ -171,12 +170,12 @@ class based component code to functional hooks components whereever you find the
 
 Now that you have practiced refactoring your application to implement Redux
 hooks, it's time to work on a Context-based project utilizing React's
-`useContext` hook!  However we can't very well do this in our Redux project since
+`useContext` hook! However we can't very well do this in our Redux project since
 it uses Redux to store all of the state instead of `Context`! So we'll be starting
 with an alternative Pokedex project which uses `Context` instead.
 
-[useParams]: https://reacttraining.com/blog/react-router-v5-1/#useparams
-[Redux-based Pokedex hooks starter project]: https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Modular-Curriculum/content/react-redux/topics/react-hooks/projects/pokedex-hooks/starter-redux-based-hooks.zip
-[`useSelector` examples]: https://react-redux.js.org/next/api/hooks#useselector-examples
-[`useDispatch` examples]: https://react-redux.js.org/next/api/hooks#examples
-[`useParams` hook]: https://reactrouter.com/web/api/Hooks/useparams
+[useparams]: https://reacttraining.com/blog/react-router-v5-1/#useparams
+[redux-based pokedex hooks starter project]: https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Modular-Curriculum/content/react-redux/topics/react-hooks/projects/pokedex-hooks/starter-redux-based-hooks.zip
+[`useselector` examples]: https://react-redux.js.org/next/api/hooks#useselector-examples
+[`usedispatch` examples]: https://react-redux.js.org/next/api/hooks#examples
+[`useparams` hook]: https://reactrouter.com/web/api/Hooks/useparams

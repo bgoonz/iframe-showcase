@@ -1,10 +1,10 @@
-const chai = require('chai');
-const fs = require('fs').promises;
-const path = require('path');
-const { Pool } = require('./db-utils');
+const chai = require("chai");
+const fs = require("fs").promises;
+const path = require("path");
+const { Pool } = require("./db-utils");
 const { expect } = chai;
 
-describe('When 03-create-aa-times-tables.sql is run', () => {
+describe("When 03-create-aa-times-tables.sql is run", () => {
   let pool;
 
   after(async () => {
@@ -13,17 +13,21 @@ describe('When 03-create-aa-times-tables.sql is run', () => {
 
   before(async () => {
     pool = new Pool({
-      database: 'aa_times',
+      database: "aa_times",
     });
-    const sqlPath = path.resolve(__dirname, '..', '03-create-aa-times-tables.sql');
-    const sql = await fs.readFile(sqlPath, 'utf8');
+    const sqlPath = path.resolve(
+      __dirname,
+      "..",
+      "03-create-aa-times-tables.sql"
+    );
+    const sql = await fs.readFile(sqlPath, "utf8");
     try {
       await pool.query(sql);
     } catch (e) {
       console.error(e);
-      if (!e.message.includes('must have either text')) {
+      if (!e.message.includes("must have either text")) {
         console.error(e);
-        expect.fail('Your SQL did not run properly.')
+        expect.fail("Your SQL did not run properly.");
       }
     }
   });
@@ -43,15 +47,20 @@ describe('When 03-create-aa-times-tables.sql is run', () => {
 
   async function testTableAndColumns(table, columns) {
     const { rows } = await pool.query(checkTable, [table]);
-    const { rows: [{ indexdef }] } = await pool.query(checkPk, [table]);
+    const {
+      rows: [{ indexdef }],
+    } = await pool.query(checkPk, [table]);
     expect(rows).to.have.length(columns.length);
     for (let i = 0; i < rows.length; i += 1) {
       const row = rows[i];
       const col = columns[i];
-      expect(row).to.eql(col, `expected ${table}.${col.column_name} to have type "${col.data_type}" and length ${col.character_maximum_length}`);
+      expect(row).to.eql(
+        col,
+        `expected ${table}.${col.column_name} to have type "${col.data_type}" and length ${col.character_maximum_length}`
+      );
     }
-    expect(indexdef).to.contain('(id)');
-    expect(indexdef).to.contain('CREATE UNIQUE INDEX');
+    expect(indexdef).to.contain("(id)");
+    expect(indexdef).to.contain("CREATE UNIQUE INDEX");
   }
 
   const getFks = `
@@ -62,7 +71,10 @@ describe('When 03-create-aa-times-tables.sql is run', () => {
 
   async function testTableAndForeignKeys(table, keys) {
     const { rows } = await pool.query(getFks, [table]);
-    expect(rows).to.have.length(keys.length, `${table} does not have ${keys.length} foreign key(s).`);
+    expect(rows).to.have.length(
+      keys.length,
+      `${table} does not have ${keys.length} foreign key(s).`
+    );
     for (let i = 0; i < rows.length; i += 1) {
       const row = rows[i];
       const col = keys[i];
@@ -72,34 +84,74 @@ describe('When 03-create-aa-times-tables.sql is run', () => {
     }
   }
 
-  context('it creates the table', () => {
-    it('people with four columns', async () => {
-      await testTableAndColumns('people', [
-        { column_name: 'email', data_type: 'character varying', character_maximum_length: 100 },
-        { column_name: 'first_name', data_type: 'character varying', character_maximum_length: 50 },
-        { column_name: 'id', data_type: 'integer', character_maximum_length: null },
-        { column_name: 'last_name', data_type: 'character varying', character_maximum_length: 50 },
+  context("it creates the table", () => {
+    it("people with four columns", async () => {
+      await testTableAndColumns("people", [
+        {
+          column_name: "email",
+          data_type: "character varying",
+          character_maximum_length: 100,
+        },
+        {
+          column_name: "first_name",
+          data_type: "character varying",
+          character_maximum_length: 50,
+        },
+        {
+          column_name: "id",
+          data_type: "integer",
+          character_maximum_length: null,
+        },
+        {
+          column_name: "last_name",
+          data_type: "character varying",
+          character_maximum_length: 50,
+        },
       ]);
     });
 
-    it('sections with two columns', async () => {
-      await testTableAndColumns('sections', [
-        { column_name: 'id', data_type: 'integer', character_maximum_length: null },
-        { column_name: 'name', data_type: 'character varying', character_maximum_length: 150 },
+    it("sections with two columns", async () => {
+      await testTableAndColumns("sections", [
+        {
+          column_name: "id",
+          data_type: "integer",
+          character_maximum_length: null,
+        },
+        {
+          column_name: "name",
+          data_type: "character varying",
+          character_maximum_length: 150,
+        },
       ]);
     });
 
-    it('stories with four columns', async () => {
-      await testTableAndColumns('stories', [
-        { column_name: 'author_id', data_type: 'integer', character_maximum_length: null },
-        { column_name: 'content', data_type: 'text', character_maximum_length: null },
-        { column_name: 'id', data_type: 'integer', character_maximum_length: null },
-        { column_name: 'section_id', data_type: 'integer', character_maximum_length: null },
+    it("stories with four columns", async () => {
+      await testTableAndColumns("stories", [
+        {
+          column_name: "author_id",
+          data_type: "integer",
+          character_maximum_length: null,
+        },
+        {
+          column_name: "content",
+          data_type: "text",
+          character_maximum_length: null,
+        },
+        {
+          column_name: "id",
+          data_type: "integer",
+          character_maximum_length: null,
+        },
+        {
+          column_name: "section_id",
+          data_type: "integer",
+          character_maximum_length: null,
+        },
       ]);
 
-      await testTableAndForeignKeys('stories', [
-        { source: 'author_id', table: 'people', column: 'id' },
-        { source: 'section_id', table: 'sections', column: 'id' },
+      await testTableAndForeignKeys("stories", [
+        { source: "author_id", table: "people", column: "id" },
+        { source: "section_id", table: "sections", column: "id" },
       ]);
     });
   });

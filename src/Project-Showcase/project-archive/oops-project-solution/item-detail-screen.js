@@ -39,15 +39,15 @@ class ItemDetailScreen {
   show() {
     const item = this.state.getItemByIndex(this.index);
     if (item) {
-      if (item.type === 'Note') {
+      if (item.type === "Note") {
         this.printNoteUi(item);
       } else {
         this.printTaskUi(item);
       }
-      console.log("Type \"C\" and hit \"Enter\" to complete this");
+      console.log('Type "C" and hit "Enter" to complete this');
       console.log("task and return to the list screen. Just");
-      console.log("hit \"Enter\" to return to the list screen.");
-      this.rl.question("> ", answer => {
+      console.log('hit "Enter" to return to the list screen.');
+      this.rl.question("> ", (answer) => {
         if (answer === "C") {
           item.complete();
           this.state.save();
@@ -65,4 +65,4 @@ class ItemDetailScreen {
 exports.ItemDetailScreen = ItemDetailScreen;
 
 // Requires at bottom to prevent circular dependencies problems in node
-const { ManageTasksScreen } = require('./manage-task-screen');
+const { ManageTasksScreen } = require("./manage-task-screen");

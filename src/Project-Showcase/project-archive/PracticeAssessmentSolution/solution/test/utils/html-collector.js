@@ -1,5 +1,5 @@
 async function htmlCollector(res, callback) {
-  let data = '';
+  let data = "";
   for await (let chunk of res) {
     data += chunk;
   }

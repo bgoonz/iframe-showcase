@@ -5,13 +5,13 @@ chai.use(spies);
 
 const myEvery = require("../problems/10-my-every.js");
 
-describe("myEvery", function() {
-  it("should mimic the built-in Array#myEvery", function() {
-    let isEven = function(num) {
+describe("myEvery", function () {
+  it("should mimic the built-in Array#myEvery", function () {
+    let isEven = function (num) {
       return num % 2 === 0;
     };
 
-    let hasO = function(string) {
+    let hasO = function (string) {
       return string.includes("o");
     };
 
@@ -21,9 +21,9 @@ describe("myEvery", function() {
     expect(myEvery(["book", "door", "pen"], hasO)).to.be.false;
   });
 
-  it("should not call the built-in Array#every", function() {
+  it("should not call the built-in Array#every", function () {
     const everySpy = chai.spy.on(Array.prototype, "every");
-    myEvery([4, 8, 6, 10], function(num) {
+    myEvery([4, 8, 6, 10], function (num) {
       return num % 2 === 0;
     });
     expect(everySpy).to.have.not.been.called();

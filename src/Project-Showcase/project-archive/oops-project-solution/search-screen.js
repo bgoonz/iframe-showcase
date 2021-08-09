@@ -39,7 +39,7 @@ class SearchScreen {
 
   show() {
     this.printUi();
-    this.rl.question("> ", term => {
+    this.rl.question("> ", (term) => {
       this.printResultsUi(term);
       this.rl.question("Enter to return to the main screen. ", () => {
         const screen = new MainScreen(this.rl, this.state);
@@ -51,4 +51,4 @@ class SearchScreen {
 
 exports.SearchScreen = SearchScreen;
 
-const { MainScreen } = require('./main-screen');
+const { MainScreen } = require("./main-screen");

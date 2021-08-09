@@ -24,13 +24,13 @@ console.log(result3);   // true
 *******************************************************************************/
 
 function mySome(array, cb) {
-    for (let i = 0; i < array.length; i++) {
-        let ele = array[i];
-        if (cb(ele, i)) {
-            return true;
-        }
+  for (let i = 0; i < array.length; i++) {
+    let ele = array[i];
+    if (cb(ele, i)) {
+      return true;
     }
-    return false;
+  }
+  return false;
 }
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/

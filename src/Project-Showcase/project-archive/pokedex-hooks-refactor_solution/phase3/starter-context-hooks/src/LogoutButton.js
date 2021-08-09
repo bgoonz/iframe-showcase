@@ -1,20 +1,20 @@
-import React from 'react';
-import { Redirect } from 'react-router-dom';
+import React from "react";
+import { Redirect } from "react-router-dom";
 
-const LogoutButton = ({token, setToken}) => {
+const LogoutButton = ({ token, setToken }) => {
   const handleClick = () => {
     window.localStorage.setItem("token", "");
-    setToken('');
-  }
+    setToken("");
+  };
 
   if (!token) {
-    return <Redirect to="/login"/>
+    return <Redirect to="/login" />;
   }
   return (
     <div id="logout-button-holder">
       <button onClick={handleClick}>Logout</button>
     </div>
   );
-}
+};
 
 export default LogoutButton;

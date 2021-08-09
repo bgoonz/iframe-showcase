@@ -30,7 +30,7 @@ class MainScreen {
 
   show() {
     this.printUi();
-    this.rl.question("> ", answer => {
+    this.rl.question("> ", (answer) => {
       let screen = this;
       if (answer === "1") {
         screen = new ManageTasksScreen(this.rl, this.state);
@@ -51,6 +51,6 @@ class MainScreen {
 exports.MainScreen = MainScreen;
 
 // Requires at bottom to prevent circular dependencies problems in node
-const { ManageCategoriesScreen } = require('./manage-categories-screen');
-const { ManageTasksScreen } = require('./manage-task-screen');
-const { SearchScreen } = require('./search-screen');
+const { ManageCategoriesScreen } = require("./manage-categories-screen");
+const { ManageTasksScreen } = require("./manage-task-screen");
+const { SearchScreen } = require("./search-screen");

@@ -11,5 +11,5 @@ function reciprocal(n) {
 
 module.exports = {
   returnsThree,
-  reciprocal
+  reciprocal,
 };

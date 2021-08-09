@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { createPokemon, getPokemonTypes, hideForm } from './store/pokemon';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { createPokemon, getPokemonTypes, hideForm } from "./store/pokemon";
 
-const PokemonForm = props => {
+const PokemonForm = (props) => {
   const [attack, setAttack] = useState("");
   const [defense, setDefense] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -16,7 +16,7 @@ const PokemonForm = props => {
   useEffect(() => {
     dispatch(getPokemonTypes());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,10 +26,10 @@ const PokemonForm = props => {
       defense,
       imageUrl,
       name,
-      type
+      type,
     };
     dispatch(createPokemon(payload));
-  }
+  };
 
   const updateProperty = (callback) => (e) => {
     callback(e.target.value);
@@ -92,6 +92,6 @@ const PokemonForm = props => {
       </form>
     </section>
   );
-}
+};
 
 export default PokemonForm;

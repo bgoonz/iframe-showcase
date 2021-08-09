@@ -1,9 +1,9 @@
-import React from 'react';
-import ThemeContext from './ThemeContext';
-import Home from './Home';
+import React from "react";
+import ThemeContext from "./ThemeContext";
+import Home from "./Home";
 
 const App = ({ color }) => (
-  <div id="app" style={{ backgroundColor: `${color}`}}>
+  <div id="app" style={{ backgroundColor: `${color}` }}>
     <Home />
   </div>
 );
@@ -12,14 +12,14 @@ class AppWithContext extends React.Component {
   constructor() {
     super();
     this.state = {
-      color: 'white',
+      color: "white",
       updateContext: this.updateContext,
     };
   }
 
   updateContext = (color) => {
     this.setState({ color });
-  }
+  };
 
   render() {
     return (

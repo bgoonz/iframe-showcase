@@ -29,7 +29,7 @@ function dynamicIntervalCount(cb, delay, amount) {
     return setInterval(cb, delay);
   }
 
-  const interval = setInterval(function() {
+  const interval = setInterval(function () {
     cb();
     amount--;
     if (amount === 0) {

@@ -21,8 +21,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
     "<li class='detail'>I like to drink iced lattes.</li>",
     "<li class='detail'>I have two cats and eight kittens.</li>",
     "<li class='detail'>My favorite place to get lunch is Chipotle.</li>",
-    "<li class='detail'>On the weekends, I play flag football.</li>"
-  ]
+    "<li class='detail'>On the weekends, I play flag football.</li>",
+  ];
   const liString = myDetailsArr.join(" ");
   const listElement = document.getElementById("details");
   listElement.innerHTML = liString;
@@ -37,8 +37,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const minutes = date.getMinutes();
     const hours = date.getHours();
 
-    clockDiv.innerHTML = "Current time is " + hours + ":" + minutes + ":" + seconds;
+    clockDiv.innerHTML =
+      "Current time is " + hours + ":" + minutes + ":" + seconds;
   };
   setInterval(time, 500);
-
 });

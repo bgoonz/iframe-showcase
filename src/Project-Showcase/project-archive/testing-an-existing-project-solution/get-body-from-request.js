@@ -1,10 +1,10 @@
 function getBodyFromRequest(req) {
-  let data = '';
-  return new Promise(resolve => {
-    req.on('data', chunk => {
+  let data = "";
+  return new Promise((resolve) => {
+    req.on("data", (chunk) => {
       data += chunk;
     });
-    req.on('end', () => {
+    req.on("end", () => {
       resolve(data);
     });
   });

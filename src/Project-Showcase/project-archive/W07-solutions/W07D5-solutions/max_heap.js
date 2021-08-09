@@ -26,13 +26,16 @@ class MaxHeap {
     let parentIdx = this.getParentIdx(idx);
 
     if (this.array[parentIdx] < this.array[idx]) {
-      [this.array[parentIdx], this.array[idx]] = [this.array[idx], this.array[parentIdx]];
+      [this.array[parentIdx], this.array[idx]] = [
+        this.array[idx],
+        this.array[parentIdx],
+      ];
       this.siftUp(parentIdx);
     }
   }
 
   deleteMax() {
-    if (this.array.length === 1) return null; 
+    if (this.array.length === 1) return null;
     if (this.array.length === 2) return this.array.pop();
 
     let max = this.array[1];
@@ -63,5 +66,5 @@ class MaxHeap {
 }
 
 module.exports = {
-  MaxHeap
+  MaxHeap,
 };

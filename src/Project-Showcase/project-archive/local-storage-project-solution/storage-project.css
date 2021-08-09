@@ -1,5 +1,6 @@
 body {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 .items {
   padding: 30px;
@@ -21,11 +22,11 @@ body {
 }
 
 .form__submit {
-  background-color: #3498DB;
+  background-color: #3498db;
   color: white;
 }
 
 .cart {
-  background-color: #D4EFDF;
+  background-color: #d4efdf;
   padding: 30px;
 }

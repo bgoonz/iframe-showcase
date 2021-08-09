@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { imageUrl } from './config';
-import { getOnePokemon } from './store/pokemon';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { imageUrl } from "./config";
+import { getOnePokemon } from "./store/pokemon";
 
 class PokemonDetail extends Component {
   async componentDidMount() {
@@ -29,26 +29,37 @@ class PokemonDetail extends Component {
     }
     return (
       <div className="pokemon-detail">
-        <div className={`pokemon-detail-image-background`}
-             style={{backgroundImage: `url('${imageUrl}/images/${pokemon.type}.jpg')`}}>
-          <div className="pokemon-detail-image"
-               style={{backgroundImage: `url('${imageUrl}${pokemon.imageUrl}')`}}>
-          </div>
+        <div
+          className={`pokemon-detail-image-background`}
+          style={{
+            backgroundImage: `url('${imageUrl}/images/${pokemon.type}.jpg')`,
+          }}
+        >
+          <div
+            className="pokemon-detail-image"
+            style={{ backgroundImage: `url('${imageUrl}${pokemon.imageUrl}')` }}
+          ></div>
           <h1 className="bigger">{pokemon.name}</h1>
         </div>
         <div className="pokemon-detail-lists">
           <div>
             <h2>Information</h2>
             <ul>
-              <li><b>Type</b> {pokemon.type}</li>
-              <li><b>Attack</b> {pokemon.attack}</li>
-              <li><b>Defense</b> {pokemon.defense}</li>
+              <li>
+                <b>Type</b> {pokemon.type}
+              </li>
+              <li>
+                <b>Attack</b> {pokemon.attack}
+              </li>
+              <li>
+                <b>Defense</b> {pokemon.defense}
+              </li>
               <li>
                 <b>Moves</b>
                 <ul>
-                  {pokemon.moves.map(move =>
+                  {pokemon.moves.map((move) => (
                     <li key={move}>{move}</li>
-                  )}
+                  ))}
                 </ul>
               </li>
             </ul>
@@ -65,41 +76,39 @@ class PokemonDetail extends Component {
                 </tr>
               </thead>
               <tbody>
-                {pokemon.items.map(item =>
+                {pokemon.items.map((item) => (
                   <tr key={item.price * item.happiness}>
                     <td>
-                      <img className="item-image" alt={item.imageUrl} src={`${imageUrl}${item.imageUrl}`} />
+                      <img
+                        className="item-image"
+                        alt={item.imageUrl}
+                        src={`${imageUrl}${item.imageUrl}`}
+                      />
                     </td>
                     <td>{item.name}</td>
                     <td className="centered">{item.happiness}</td>
                     <td className="centered">${item.price}</td>
                   </tr>
-                )}
+                ))}
               </tbody>
             </table>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     current: state.pokemon.current,
   };
-}
+};
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    getOnePokemon: id => dispatch(getOnePokemon(id))
-  }
-}
+    getOnePokemon: (id) => dispatch(getOnePokemon(id)),
+  };
+};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(
-  PokemonDetail
-);
+export default connect(mapStateToProps, mapDispatchToProps)(PokemonDetail);

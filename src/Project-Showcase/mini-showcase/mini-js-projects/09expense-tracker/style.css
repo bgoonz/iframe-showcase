@@ -16,7 +16,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   margin: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 .container {
@@ -49,12 +49,12 @@ h4 {
   margin: 20px 0;
 }
 
-.inc-exp-container>div {
+.inc-exp-container > div {
   flex: 1;
   text-align: center;
 }
 
-.inc-exp-container>div:first-of-type {
+.inc-exp-container > div:first-of-type {
   border-right: 1px solid #dedede;
 }
 

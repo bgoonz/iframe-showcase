@@ -9,13 +9,8 @@ import { getPokemon } from "./fetches/pokemon";
 import PokemonContext from "./PokemonContext";
 
 const PokemonBrowser = () => {
-  const {
-    token,
-    pokemon,
-    setPokemon,
-    formVisible,
-    setFormVisible,
-  } = useContext(PokemonContext);
+  const { token, pokemon, setPokemon, formVisible, setFormVisible } =
+    useContext(PokemonContext);
 
   useEffect(() => {
     (async () => {
@@ -33,7 +28,7 @@ const PokemonBrowser = () => {
   }
   return (
     <main>
-      <LogoutButton/>
+      <LogoutButton />
       <nav>
         <Fab hidden={formVisible} onClick={showForm} />
         {pokemon.map((pokemon) => {

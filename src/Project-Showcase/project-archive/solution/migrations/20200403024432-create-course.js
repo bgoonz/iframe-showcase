@@ -41,51 +41,51 @@
 //   }
 // };
 
-'use strict';
+"use strict";
 module.exports = {
-  up: ( queryInterface, Sequelize ) => {
-    return queryInterface.createTable( 'Courses', {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable("Courses", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       name: {
-        type: Sequelize.STRING( 50 ),
-        allowNull: false
+        type: Sequelize.STRING(50),
+        allowNull: false,
       },
       level: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       campusId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Campuses'
-        }
+          model: "Campuses",
+        },
       },
       departmentId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: {
-            tableName: 'Departments'
-          }
-        }
+            tableName: "Departments",
+          },
+        },
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
-    } );
+        type: Sequelize.DATE,
+      },
+    });
   },
-  down: ( queryInterface, Sequelize ) => {
-    return queryInterface.dropTable( 'Courses' );
-  }
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable("Courses");
+  },
 };

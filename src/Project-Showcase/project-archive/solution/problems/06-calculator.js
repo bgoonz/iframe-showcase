@@ -37,7 +37,7 @@ const calculator = {
   multiply: function (num) {
     this.total *= num;
     return this.total;
-  }
+  },
 };
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/

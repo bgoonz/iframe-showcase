@@ -1,4 +1,4 @@
-import { useCoffee } from '../context/CoffeeContext.js';
+import { useCoffee } from "../context/CoffeeContext.js";
 
 const SetCoffeeBean = ({ coffeeBeans }) => {
   const { coffeeBean, setCoffeeBeanId } = useCoffee();
@@ -11,17 +11,14 @@ const SetCoffeeBean = ({ coffeeBeans }) => {
         name="coffee-bean"
         onChange={(e) => setCoffeeBeanId(e.target.value)}
       >
-        {coffeeBeans.map(bean => (
-          <option
-            key={bean.id}
-            value={bean.id}
-          >
+        {coffeeBeans.map((bean) => (
+          <option key={bean.id} value={bean.id}>
             {bean.name}
           </option>
         ))}
       </select>
     </div>
   );
-}
+};
 
 export default SetCoffeeBean;

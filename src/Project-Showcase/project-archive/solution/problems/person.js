@@ -31,7 +31,7 @@ class Person {
     return true;
   }
   static greetAll(people) {
-    return people.map(person => person.sayHello());
+    return people.map((person) => person.sayHello());
   }
 }
 

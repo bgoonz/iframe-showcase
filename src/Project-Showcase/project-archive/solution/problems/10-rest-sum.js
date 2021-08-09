@@ -11,7 +11,7 @@ restSum(0); // => 0
 
 function restSum(...otherNums) {
   let sum = 0;
-  otherNums.forEach(function(num) {
+  otherNums.forEach(function (num) {
     sum += num;
   });
 

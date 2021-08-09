@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import ThemeContext from './ThemeContext';
+import ThemeContext from "./ThemeContext";
 import Home from "./Home";
 
 class App extends React.Component {
@@ -8,9 +8,9 @@ class App extends React.Component {
 
   render() {
     return (
-        <div id="app" style={{ backgroundColor: `${this.context.color}` }}>
-          <Home />
-        </div>
+      <div id="app" style={{ backgroundColor: `${this.context.color}` }}>
+        <Home />
+      </div>
     );
   }
 }

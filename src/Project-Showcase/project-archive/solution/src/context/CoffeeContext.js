@@ -1,5 +1,5 @@
-import { createContext, useState, useContext } from 'react';
-import coffeeBeans from '../mockData/coffeeBeans.json';
+import { createContext, useState, useContext } from "react";
+import coffeeBeans from "../mockData/coffeeBeans.json";
 
 export const CoffeeContext = createContext();
 export const useCoffee = () => useContext(CoffeeContext);
@@ -8,8 +8,8 @@ export default function CoffeeProvider(props) {
   const [coffeeBean, setCoffeeBean] = useState(coffeeBeans[0]);
 
   const setCoffeeBeanId = (coffeeBeanId) => {
-    const bean = coffeeBeans.find(bean => {
-      return Number(bean.id) === Number(coffeeBeanId)
+    const bean = coffeeBeans.find((bean) => {
+      return Number(bean.id) === Number(coffeeBeanId);
     });
     setCoffeeBean(bean);
   };
@@ -18,7 +18,7 @@ export default function CoffeeProvider(props) {
     <CoffeeContext.Provider
       value={{
         coffeeBean,
-        setCoffeeBeanId
+        setCoffeeBeanId,
       }}
     >
       {props.children}

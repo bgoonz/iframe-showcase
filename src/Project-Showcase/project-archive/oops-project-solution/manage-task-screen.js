@@ -39,7 +39,7 @@ class ManageTasksScreen {
 
   show() {
     this.printUi();
-    this.rl.question("> ", answer => {
+    this.rl.question("> ", (answer) => {
       const index = Number.parseInt(answer);
       let screen = this;
       if (answer === "A") {
@@ -57,6 +57,6 @@ class ManageTasksScreen {
 exports.ManageTasksScreen = ManageTasksScreen;
 
 // Requires at bottom to prevent circular dependencies problems in node
-const { AddItemScreen } = require('./add-item-screen');
-const { MainScreen } = require('./main-screen');
-const { ItemDetailScreen } = require('./item-detail-screen');
+const { AddItemScreen } = require("./add-item-screen");
+const { MainScreen } = require("./main-screen");
+const { ItemDetailScreen } = require("./item-detail-screen");

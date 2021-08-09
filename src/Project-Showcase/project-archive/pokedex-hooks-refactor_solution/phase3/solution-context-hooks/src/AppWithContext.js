@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-import PokemonContext from './PokemonContext';
-import App from './App';
+import PokemonContext from "./PokemonContext";
+import App from "./App";
 
 const AppWithContext = (props) => {
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState("");
   const [pokemon, setPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState();
   const [formVisible, setFormVisible] = useState(false);
@@ -19,19 +19,19 @@ const AppWithContext = (props) => {
   }, []);
 
   const value = {
-      token,
-      setToken,
-      pokemon,
-      setPokemon,
-      selectedPokemon,
-      setSelectedPokemon,
-      formVisible,
-      setFormVisible
+    token,
+    setToken,
+    pokemon,
+    setPokemon,
+    selectedPokemon,
+    setSelectedPokemon,
+    formVisible,
+    setFormVisible,
   };
 
   return (
     <PokemonContext.Provider value={value}>
-        <App/>
+      <App />
     </PokemonContext.Provider>
   );
 };

@@ -1,16 +1,16 @@
-const express = require('express');
+const express = require("express");
 
-const { environment } = require('../config');
+const { environment } = require("../config");
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.render('index', { title: 'Home' });
+router.get("/", (req, res) => {
+  res.render("index", { title: "Home" });
 });
 
-if (environment !== 'production') {
-  router.get('/error-test', () => {
-    throw new Error('This is a test error.');
+if (environment !== "production") {
+  router.get("/error-test", () => {
+    throw new Error("This is a test error.");
   });
 }
 

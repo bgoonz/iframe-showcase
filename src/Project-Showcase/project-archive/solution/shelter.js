@@ -1,33 +1,30 @@
-import Dog from './dog.js';
-
+import Dog from "./dog.js";
 
 class Shelter {
-	constructor(dogs=[]) {
-		this.dogs = dogs;
+  constructor(dogs = []) {
+    this.dogs = dogs;
 
-		this.registerListeners();
-	}
+    this.registerListeners();
+  }
 
-	registerListeners() {
-		let form = document.getElementById('dog-form');
-		form.addEventListener('submit', event => this.receiveDog(event))
-	}
+  registerListeners() {
+    let form = document.getElementById("dog-form");
+    form.addEventListener("submit", (event) => this.receiveDog(event));
+  }
 
-	receiveDog(event) {
-		event.preventDefault();
+  receiveDog(event) {
+    event.preventDefault();
 
-		let name = document.getElementById('name');
-		let age = document.getElementById('age');
-		let imgSrc = document.getElementById('img-src');
-		let newDog = new Dog(name.value, age.value, imgSrc.value);
-		this.dogs.push(newDog);
+    let name = document.getElementById("name");
+    let age = document.getElementById("age");
+    let imgSrc = document.getElementById("img-src");
+    let newDog = new Dog(name.value, age.value, imgSrc.value);
+    this.dogs.push(newDog);
 
-		name.value = '';
-		age.value = '';
-		imgSrc.value = '';
-
-	}
+    name.value = "";
+    age.value = "";
+    imgSrc.value = "";
+  }
 }
 
 export default Shelter;
-

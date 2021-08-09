@@ -1,10 +1,9 @@
 window.addEventListener("DOMContentLoaded", (event) => {
-
   const showCart = () => {
     // get shopping cart element
     const cart = document.getElementById("shopping-cart");
     // loop over storage object and get key-value pairs
-    for (i=0; i < localStorage.length; i++) {
+    for (i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
       const value = localStorage.getItem(key);
       // create a new div for each item
@@ -18,7 +17,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       basketItem.appendChild(removeBtn);
       // append items to cart element
       cart.appendChild(basketItem);
-    };
+    }
   };
 
   const storeItem = () => {
@@ -50,5 +49,4 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   storeItem();
   removeItem();
-
 });

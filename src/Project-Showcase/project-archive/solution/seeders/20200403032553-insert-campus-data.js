@@ -1,35 +1,36 @@
-'use strict';
+"use strict";
 
 module.exports = {
-  up: ( queryInterface, Sequelize ) => {
-    return queryInterface.bulkInsert( 'Campuses', [ {
-        name: 'Valdivia',
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.bulkInsert("Campuses", [
+      {
+        name: "Valdivia",
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       {
-        name: 'Bangor',
+        name: "Bangor",
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       {
-        name: 'Chatillon',
+        name: "Chatillon",
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       {
-        name: 'Filacciano',
+        name: "Filacciano",
         createdAt: new Date(),
-        updatedAt: new Date()
-      }
-    ] );
+        updatedAt: new Date(),
+      },
+    ]);
   },
 
-  down: ( queryInterface, Sequelize ) => {
-    return queryInterface.bulkDelete( 'Campuses', {
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete("Campuses", {
       id: {
-        [ Sequelize.Op.gt ]: 0
-      }
-    } );
-  }
+        [Sequelize.Op.gt]: 0,
+      },
+    });
+  },
 };

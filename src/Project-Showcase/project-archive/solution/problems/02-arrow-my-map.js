@@ -21,7 +21,7 @@ console.log(result2);   // [ 'RUN!', 'FORREST!' ]
 const arrowMyMap = (array, cb) => {
   let mapped = [];
 
-  array.forEach(el => mapped.push(cb(el)));
+  array.forEach((el) => mapped.push(cb(el)));
   return mapped;
 };
 

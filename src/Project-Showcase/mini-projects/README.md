@@ -3,8 +3,8 @@
 <img src="https://dessaskod.files.wordpress.com/2018/05/1_l4xicbiiylz1otymwcoutw.jpeg?w=816" width="100%" />
 
 **Project examples and code repository for those who are new to html, css and js and want to improve themselves.**
-> Note: All projects belong to me.
 
+> Note: All projects belong to me.
 
 - <a href="https://github.com/Furkan-Gulsen/HTML-CSS-JAVASCRIPT/tree/master/3D%20Box">3D Box</a>
 - <a href="https://github.com/Furkan-Gulsen/HTML-CSS-JAVASCRIPT/tree/master/3D%20Hover%20Effect%20-%20Alita%20Card">3D Hover Box - Alita Card</a>

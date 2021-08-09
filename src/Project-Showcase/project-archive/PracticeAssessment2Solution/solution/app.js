@@ -5,11 +5,11 @@
  *       bottom of the file.
  */
 
-const express = require('express');
+const express = require("express");
 const app = express();
-const { Noodle, Sauce, Pasta } = require('./models');
+const { Noodle, Sauce, Pasta } = require("./models");
 
-app.set('view engine', 'pug');
+app.set("view engine", "pug");
 
 app.use((req, res, next) => {
   req.setTimeout(1000, () => {
@@ -22,71 +22,71 @@ app.use((req, res, next) => {
 });
 
 app.use(express.urlencoded({ extended: false }));
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
 app.use(cookieParser());
-const csrfProtection = require('csurf')({ cookie: true });
+const csrfProtection = require("csurf")({ cookie: true });
 app.use(csrfProtection);
 
-app.get('/pasta/create', async (req, res) => {
+app.get("/pasta/create", async (req, res) => {
   const noodles = await Noodle.findAll();
   const sauces = await Sauce.findAll();
-  
-  res.render('pasta/create', { 
-    noodles, 
-    sauces, 
-    csrfToken: req.csrfToken()
+
+  res.render("pasta/create", {
+    noodles,
+    sauces,
+    csrfToken: req.csrfToken(),
   });
 });
 
-app.post('/pasta/create', async (req, res, next) => {
+app.post("/pasta/create", async (req, res, next) => {
   try {
     req.body.taste = Number(req.body.taste);
     await Pasta.create(req.body);
-    res.redirect('/')
-  } catch(err) {
+    res.redirect("/");
+  } catch (err) {
     next(err);
   }
 });
 
-app.get('/', async (req, res) => {
+app.get("/", async (req, res) => {
   const pastas = await Pasta.findAll({
-    include: [Noodle, Sauce]
+    include: [Noodle, Sauce],
   });
 
-  res.render('pasta/index', { pastas });
+  res.render("pasta/index", { pastas });
 });
 
-app.get('/noodle/:id', async (req, res) => {
+app.get("/noodle/:id", async (req, res) => {
   const noodle = await Noodle.findByPk(req.params.id);
   if (!noodle) res.status(404).end();
   const pastas = await Pasta.findAll({
     where: { noodleId: req.params.id },
-    include: [Noodle, Sauce]
+    include: [Noodle, Sauce],
   });
 
-  res.render('noodle/show', { pastas, noodle });
+  res.render("noodle/show", { pastas, noodle });
 });
 
-app.get('/sauce/:id', async (req, res) => {
+app.get("/sauce/:id", async (req, res) => {
   const sauce = await Sauce.findByPk(req.params.id);
   if (!sauce) res.status(404).end();
   const pastas = await Pasta.findAll({
     where: { sauceId: sauce.id },
-    include: [Noodle, Sauce]
+    include: [Noodle, Sauce],
   });
 
-  res.render('sauce/show', { pastas, sauce });
+  res.render("sauce/show", { pastas, sauce });
 });
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 const port = 8081;
 
-app.listen(port, () => console.log('Server is listening on port', port));
+app.listen(port, () => console.log("Server is listening on port", port));
 
 /* Do not change this export. The tests depend on it. */
 try {
   exports.app = app;
-} catch(e) {
+} catch (e) {
   exports.app = null;
 }

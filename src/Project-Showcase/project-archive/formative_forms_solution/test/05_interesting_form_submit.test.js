@@ -13,14 +13,14 @@ describe("submit-interesting", () => {
     token = getText("input[type='hidden'][name='_csrf']").attr("value");
   });
 
-  const submit = async formData => {
+  const submit = async (formData) => {
     const res = await request(app)
       .post("/create-interesting")
       .type("form")
       .set("Cookie", cookies)
       .send({
         _csrf: token,
-        ...formData
+        ...formData,
       });
     $ = cheerio.load(res.text);
   };
@@ -101,7 +101,7 @@ describe("submit-interesting", () => {
         lastName: "North",
         email: "joe@gmail.com",
         password: "abcdefg",
-        confirmedPassword: "abc123"
+        confirmedPassword: "abc123",
       });
     });
     it("render li elements for each error message ", () => {
@@ -120,14 +120,14 @@ describe("submit-interesting", () => {
     confirmedPassword: "abcdefg2",
     age: 30,
     favoriteBeatle: "John",
-    iceCream: "on"
+    iceCream: "on",
   };
 
   describe("age field", () => {
     it("renders an error message if age is not submitted", async () => {
       await submit({
         ...formData,
-        age: null
+        age: null,
       });
       const messages = $("li");
       expect(messages.eq(0).text()).to.equal("age is required");
@@ -136,7 +136,7 @@ describe("submit-interesting", () => {
     it("renders an error message if age is not a number", async () => {
       await submit({
         ...formData,
-        age: "abc"
+        age: "abc",
       });
       const messages = $("li");
       expect(messages.eq(0).text()).to.equal("age must be a valid age");
@@ -145,7 +145,7 @@ describe("submit-interesting", () => {
     it("renders an error message if age is greater than 120", async () => {
       await submit({
         ...formData,
-        age: "121"
+        age: "121",
       });
       const messages = $("li");
       expect(messages.eq(0).text()).to.equal("age must be a valid age");
@@ -154,7 +154,7 @@ describe("submit-interesting", () => {
     it("renders an error message if age is less than 0", async () => {
       await submit({
         ...formData,
-        age: "-1"
+        age: "-1",
       });
       const messages = $("li");
       expect(messages.eq(0).text()).to.equal("age must be a valid age");
@@ -163,7 +163,7 @@ describe("submit-interesting", () => {
     it("prefills the age input value with the submitted age value", async () => {
       await submit({
         ...formData,
-        email: null
+        email: null,
       });
       expect($("input[name='age']").attr("value")).to.equal(
         formData.age.toString()
@@ -175,7 +175,7 @@ describe("submit-interesting", () => {
     it("renders an error message if favoriteBeatle is not submitted", async () => {
       await submit({
         ...formData,
-        favoriteBeatle: null
+        favoriteBeatle: null,
       });
       const messages = $("li");
       expect(messages.eq(0).text()).to.equal("favoriteBeatle is required");
@@ -184,7 +184,7 @@ describe("submit-interesting", () => {
     it("renders an error message if favoriteBeatle is not a valid member of the Beatles", async () => {
       await submit({
         ...formData,
-        favoriteBeatle: "Scooby-Doo"
+        favoriteBeatle: "Scooby-Doo",
       });
       const messages = $("li");
       expect(messages.eq(0).text()).to.equal(
@@ -195,7 +195,7 @@ describe("submit-interesting", () => {
     it("marks the submitted favoriteBeatle value as 'selected'", async () => {
       await submit({
         ...formData,
-        email: null
+        email: null,
       });
 
       expect($("option[selected]").attr("value")).to.equal(
@@ -208,7 +208,7 @@ describe("submit-interesting", () => {
     it("marks the iceCream field as checked", async () => {
       await submit({
         ...formData,
-        email: null
+        email: null,
       });
 
       expect($("input[type='checkbox']").attr("checked")).to.equal("checked");
@@ -223,7 +223,7 @@ describe("submit-interesting", () => {
         .set("Cookie", cookies)
         .send({
           _csrf: token,
-          ...formData
+          ...formData,
         })
         .expect(302)
         .expect("Location", "/");

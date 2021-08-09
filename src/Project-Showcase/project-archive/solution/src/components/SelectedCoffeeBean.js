@@ -1,4 +1,4 @@
-import { useCoffee } from '../context/CoffeeContext.js';
+import { useCoffee } from "../context/CoffeeContext.js";
 
 const SelectedCoffeeBean = () => {
   const { coffeeBean } = useCoffee();
@@ -8,6 +8,6 @@ const SelectedCoffeeBean = () => {
       <h2>{coffeeBean.name}</h2>
     </div>
   );
-}
+};
 
 export default SelectedCoffeeBean;

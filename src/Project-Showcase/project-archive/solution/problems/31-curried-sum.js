@@ -48,7 +48,7 @@ function curriedSum(numArgs) {
     if (numbers.length === numArgs) {
       let total = 0;
 
-      numbers.forEach(n => {
+      numbers.forEach((n) => {
         total += n;
       });
 

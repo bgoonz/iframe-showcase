@@ -1,7 +1,7 @@
 import harvardArt from "./data/harvardArt";
 import GalleryNavigation from "./components/GalleryNavigation";
 
-import {Route, Switch} from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import GalleryView from "./components/GalleryView";
 
 function App() {
@@ -23,7 +23,6 @@ function App() {
           <h2>Page Not Found</h2>
         </Route>
       </Switch>
-      
     </div>
   );
 }

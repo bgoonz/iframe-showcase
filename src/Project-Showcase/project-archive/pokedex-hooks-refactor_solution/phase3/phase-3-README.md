@@ -1,4 +1,3 @@
-
 # Pokedex Hooks: Phase 3
 
 At this point, you've converted a class based project with the `useState` and
@@ -31,8 +30,8 @@ The first major difference is that there's no Redux here. This app is simply
 storing it's state in the `<App>` component and prop threading it down to every
 component under it that needs it.
 
-Also you may notice that  the fetch calls have been moved into modules in the
-`fetches` folder.  This is a good way to keep your `useEffect` hooks in the
+Also you may notice that the fetch calls have been moved into modules in the
+`fetches` folder. This is a good way to keep your `useEffect` hooks in the
 components small.
 
 If you look at the `<App>` component you'll see it uses several `useState()` hooks,
@@ -102,7 +101,7 @@ components:
 const context = useContext(PokemonContext);
 
 // Access context with the `useContext` hook:
-context
+context;
 ```
 
 Now it's time to set up how your application components _consume_ the
@@ -159,47 +158,38 @@ refactored `App` component should look something like this:
 
 ```js
 // App.js
-const App = () =>  {
+const App = () => {
   const { token, setToken } = useContext(PokemonContext);
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       const localToken = window.localStorage.getItem("token");
       if (localToken) {
         setToken(localToken);
       }
     })();
-  },[setToken]);
+  }, [setToken]);
 
   const needLogin = !token;
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route
-          path="/login"
-          render={(props) => (
-            <LoginPanel {...props}/>
-          )}
-        />
-        <PrivateRoute
-          path="/"
-          exact={true}
-          needLogin={needLogin}>
-          <PokemonBrowser
-          />
+        <Route path="/login" render={(props) => <LoginPanel {...props} />} />
+        <PrivateRoute path="/" exact={true} needLogin={needLogin}>
+          <PokemonBrowser />
         </PrivateRoute>
         <PrivateRoute
           path="/pokemon/:pokemonId"
           exact={true}
-          needLogin={needLogin}>
-          <PokemonBrowser
-          />
+          needLogin={needLogin}
+        >
+          <PokemonBrowser />
         </PrivateRoute>
       </Switch>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
 ```
@@ -215,7 +205,7 @@ Let's begin by refactoring your `LoginPanel` component! The `LoginPanel` should
 access the context's `setToken` function `token` value.
 
 ```js
-const {token, setToken} = useContext(PokemonContext);
+const { token, setToken } = useContext(PokemonContext);
 console.log(authToken);
 ```
 
@@ -233,10 +223,9 @@ After you have finished refactoring your context based hooks application, compar
 it to the earlier redux solution. Using Redux instead of Context results in a lot of
 boilerplate code in your application. React 16 revamped the Context API and
 deemed the `useContext` hook as a basic hook to improve React's built-in state
-management.  For simple applications `Context` can be a good option without
+management. For simple applications `Context` can be a good option without
 having to rely on Redux, but you do lose the nice Redux debugging tools to inspect
 the state of your application. In your career you may encounter apps using either
 approach or even applications that use a combination of both.
 
-
-[React Router v5.1]: https://reacttraining.com/blog/react-router-v5-1/
+[react router v5.1]: https://reacttraining.com/blog/react-router-v5-1/

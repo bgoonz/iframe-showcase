@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require("fs");
 
 class State {
   constructor(filePath) {
@@ -46,10 +46,7 @@ class State {
   }
 
   loadFromJson(json) {
-    const {
-      categories,
-      tasks,
-    } = JSON.parse(json);
+    const { categories, tasks } = JSON.parse(json);
 
     for (let i = 0; i < categories.length; i += 1) {
       this.categories[i] = categories[i];
@@ -58,15 +55,10 @@ class State {
     for (let i = 0; i < tasks.length; i += 1) {
       const taskData = tasks[i];
       let task = null;
-      if (taskData.type === 'Note') {
+      if (taskData.type === "Note") {
         task = new Note(taskData.text, taskData.completed);
-      } else if (taskData.type === 'Task') {
-        const {
-          title,
-          description,
-          categoryId,
-          completed,
-        } = taskData;
+      } else if (taskData.type === "Task") {
+        const { title, description, categoryId, completed } = taskData;
         task = new Task(title, description, categoryId, completed);
       }
       this.tasks.push(task);
@@ -78,7 +70,7 @@ class State {
       tasks: this.tasks,
       categories: this.categories,
     };
-    fs.writeFile(this.filePath, JSON.stringify(data), err => {});
+    fs.writeFile(this.filePath, JSON.stringify(data), (err) => {});
   }
 
   searchByTerm(term) {
@@ -101,7 +93,7 @@ class State {
 
 class Note {
   constructor(text, completed) {
-    this.type = 'Note';
+    this.type = "Note";
     this.text = text;
     this.completed = completed;
   }
@@ -121,7 +113,7 @@ class Note {
 
 class Task {
   constructor(title, description, categoryIndex, completed) {
-    this.type = 'Task';
+    this.type = "Task";
     this.title = title;
     this.description = description;
     this.categoryIndex = categoryIndex;
@@ -137,8 +129,7 @@ class Task {
   }
 
   matches(term) {
-    return this.title.indexOf(term) > -1 ||
-           this.description.indexOf(term) > -1;
+    return this.title.indexOf(term) > -1 || this.description.indexOf(term) > -1;
   }
 }
 

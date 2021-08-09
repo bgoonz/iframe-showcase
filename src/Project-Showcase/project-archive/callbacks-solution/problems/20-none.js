@@ -29,12 +29,12 @@ console.log(result4);   // false
 *******************************************************************************/
 
 function none(array, cb) {
-    for (let i = 0; i < array.length; i++) {
-        if (cb(array[i]) === true) {
-            return false;
-        }
+  for (let i = 0; i < array.length; i++) {
+    if (cb(array[i]) === true) {
+      return false;
     }
-    return true;
+  }
+  return true;
 }
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/

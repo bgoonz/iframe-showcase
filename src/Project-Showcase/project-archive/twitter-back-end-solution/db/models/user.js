@@ -1,9 +1,9 @@
-'use strict';
-const bcrypt = require('bcryptjs');
+"use strict";
+const bcrypt = require("bcryptjs");
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
-    'User',
+    "User",
     {
       email: { type: DataTypes.STRING, allowNull: false, unique: true },
       username: { type: DataTypes.STRING, allowNull: false, unique: true },
@@ -16,21 +16,21 @@ module.exports = (sequelize, DataTypes) => {
   );
   User.associate = function (models) {
     User.hasMany(models.Tweet, {
-      as: 'tweets',
-      foreignKey: 'userId',
+      as: "tweets",
+      foreignKey: "userId",
     });
 
     User.belongsToMany(models.User, {
-      as: 'followers',
-      through: 'Follow',
-      otherKey: 'followerId',
-      foreignKey: 'followeeId',
+      as: "followers",
+      through: "Follow",
+      otherKey: "followerId",
+      foreignKey: "followeeId",
     });
     User.belongsToMany(models.User, {
-      as: 'follows',
-      through: 'Follow',
-      otherKey: 'followeeId',
-      foreignKey: 'followerId',
+      as: "follows",
+      through: "Follow",
+      otherKey: "followeeId",
+      foreignKey: "followerId",
     });
   };
 

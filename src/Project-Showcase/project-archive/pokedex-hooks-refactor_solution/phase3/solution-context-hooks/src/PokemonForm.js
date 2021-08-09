@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { createPokemon, getPokemonTypes } from './fetches/pokemon';
-import PokemonContext from './PokemonContext';
+import React, { useState, useEffect, useContext } from "react";
+import { createPokemon, getPokemonTypes } from "./fetches/pokemon";
+import PokemonContext from "./PokemonContext";
 
 const PokemonForm = () => {
   const { token, formVisible, setFormVisible } = useContext(PokemonContext);
@@ -14,11 +14,11 @@ const PokemonForm = () => {
   const [types, setTypes] = useState([]);
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       const types = await getPokemonTypes(token);
       setTypes(types);
     })();
-  },[token])
+  }, [token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,13 +28,13 @@ const PokemonForm = () => {
       defense,
       imageUrl,
       name,
-      type
+      type,
     };
     const success = await createPokemon(payload, token);
     if (success) {
       hideForm();
     }
-  }
+  };
 
   const updateProperty = (callback) => (e) => {
     callback(e.target.value);
@@ -42,7 +42,7 @@ const PokemonForm = () => {
 
   const hideForm = () => {
     setFormVisible(!formVisible);
-  }
+  };
 
   return (
     <section className="new-form-holder centered middled">
@@ -101,6 +101,6 @@ const PokemonForm = () => {
       </form>
     </section>
   );
-}
+};
 
 export default PokemonForm;

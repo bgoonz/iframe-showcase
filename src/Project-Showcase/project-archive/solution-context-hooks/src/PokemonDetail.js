@@ -1,19 +1,20 @@
 import React, { useEffect, useContext } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import { imageUrl } from "./config";
 import { getOnePokemon } from "./fetches/pokemon";
-import PokemonContext from './PokemonContext';
+import PokemonContext from "./PokemonContext";
 
 const PokemonDetail = () => {
-  const { token, selectedPokemon, setSelectedPokemon } = useContext(PokemonContext);
+  const { token, selectedPokemon, setSelectedPokemon } =
+    useContext(PokemonContext);
   const { id } = useParams();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       const pokemon = await getOnePokemon(id, token);
       setSelectedPokemon(pokemon);
     })();
-  }, [id, token, setSelectedPokemon])
+  }, [id, token, setSelectedPokemon]);
 
   if (!selectedPokemon) {
     return null;

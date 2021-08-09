@@ -17,7 +17,7 @@ intervalCount(function() {
 ***********************************************************************/
 
 function intervalCount(cb, delay, amount) {
-  const interval = setInterval(function() {
+  const interval = setInterval(function () {
     cb();
     amount--;
     if (amount === 0) {
