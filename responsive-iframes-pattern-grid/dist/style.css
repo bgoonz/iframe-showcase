@@ -10,6 +10,7 @@
 }
 body {
   overflow: scroll;
+  background-image: url(./../../200w.gif);
 }
 .iframe iframe {
   width: 100%;
