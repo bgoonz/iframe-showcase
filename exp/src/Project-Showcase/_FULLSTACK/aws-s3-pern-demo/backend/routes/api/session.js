@@ -22,8 +22,8 @@ const validateLogin = [
 router.post(
   "/",
   validateLogin,
-  asyncHandler(async (req, res, next) => {
-    const { credential, password } = req.body;
+  asyncHandler(async ({body}, res, next) => {
+    const { credential, password } = body;
 
     const user = await User.login({ credential, password });
 

@@ -20,22 +20,22 @@ export function genre_list(req, res, next) {
 }
 
 // Display detail page for a specific Genre.
-export function genre_detail(req, res, next) {
+export function genre_detail({params}, res, next) {
   async.parallel(
     {
       genre(callback) {
-        Genre.findById(req.params.id).exec(callback);
+        Genre.findById(params.id).exec(callback);
       },
 
       genre_books(callback) {
-        Book.find({ genre: req.params.id }).exec(callback);
+        Book.find({ genre: params.id }).exec(callback);
       },
     },
-    (err, results) => {
+    (err, {genre, genre_books}) => {
       if (err) {
         return next(err);
       }
-      if (results.genre == null) {
+      if (genre == null) {
         // No results.
         var err = new Error("Genre not found");
         err.status = 404;
@@ -44,8 +44,8 @@ export function genre_detail(req, res, next) {
       // Successful, so render.
       res.render("genre_detail", {
         title: "Genre Detail",
-        genre: results.genre,
-        genre_books: results.genre_books,
+        genre: genre,
+        genre_books: genre_books,
       });
     }
   );
@@ -57,7 +57,7 @@ export function genre_create_get(req, res, next) {
 }
 
 // Handle Genre create on POST.
-export var genre_create_post = [
+export const genre_create_post = [
   // Validate and santise the name field.
   body("name", "Genre name must contain at least 3 characters")
     .trim()
@@ -106,29 +106,29 @@ export var genre_create_post = [
 ];
 
 // Display Genre delete form on GET.
-export function genre_delete_get(req, res, next) {
+export function genre_delete_get({params}, res, next) {
   async.parallel(
     {
       genre(callback) {
-        Genre.findById(req.params.id).exec(callback);
+        Genre.findById(params.id).exec(callback);
       },
       genre_books(callback) {
-        Book.find({ genre: req.params.id }).exec(callback);
+        Book.find({ genre: params.id }).exec(callback);
       },
     },
-    (err, results) => {
+    (err, {genre, genre_books}) => {
       if (err) {
         return next(err);
       }
-      if (results.genre == null) {
+      if (genre == null) {
         // No results.
         res.redirect("/catalog/genres");
       }
       // Successful, so render.
       res.render("genre_delete", {
         title: "Delete Genre",
-        genre: results.genre,
-        genre_books: results.genre_books,
+        genre: genre,
+        genre_books: genre_books,
       });
     }
   );
@@ -145,17 +145,17 @@ export function genre_delete_post(req, res, next) {
         Book.find({ genre: req.params.id }).exec(callback);
       },
     },
-    (err, results) => {
+    (err, {genre_books, genre}) => {
       if (err) {
         return next(err);
       }
       // Success
-      if (results.genre_books.length > 0) {
+      if (genre_books.length > 0) {
         // Genre has books. Render in same way as for GET route.
         res.render("genre_delete", {
           title: "Delete Genre",
-          genre: results.genre,
-          genre_books: results.genre_books,
+          genre: genre,
+          genre_books: genre_books,
         });
         return;
       } else {
@@ -173,8 +173,8 @@ export function genre_delete_post(req, res, next) {
 }
 
 // Display Genre update form on GET.
-export function genre_update_get(req, res, next) {
-  Genre.findById(req.params.id, (err, genre) => {
+export function genre_update_get({params}, res, next) {
+  Genre.findById(params.id, (err, genre) => {
     if (err) {
       return next(err);
     }
@@ -190,7 +190,7 @@ export function genre_update_get(req, res, next) {
 }
 
 // Handle Genre update on POST.
-export var genre_update_post = [
+export const genre_update_post = [
   // Validate and sanitze the name field.
   body("name", "Genre name must contain at least 3 characters")
     .trim()
@@ -222,12 +222,12 @@ export var genre_update_post = [
         req.params.id,
         genre,
         {},
-        (err, thegenre) => {
+        (err, {url}) => {
           if (err) {
             return next(err);
           }
           // Successful - redirect to genre detail page.
-          res.redirect(thegenre.url);
+          res.redirect(url);
         }
       );
     }

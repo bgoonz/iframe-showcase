@@ -20,8 +20,8 @@ export function bookinstance_list(req, res, next) {
 }
 
 // Display detail page for a specific BookInstance.
-export function bookinstance_detail(req, res, next) {
-  BookInstance.findById(req.params.id)
+export function bookinstance_detail({params}, res, next) {
+  BookInstance.findById(params.id)
     .populate("book")
     .exec((err, bookinstance) => {
       if (err) {
@@ -56,7 +56,7 @@ export function bookinstance_create_get(req, res, next) {
 }
 
 // Handle BookInstance create on POST.
-export var bookinstance_create_post = [
+export const bookinstance_create_post = [
   // Validate and sanitize fields.
   body("book", "Book must be specified").trim().isLength({ min: 1 }).escape(),
   body("imprint", "Imprint must be specified")
@@ -112,8 +112,8 @@ export var bookinstance_create_post = [
 ];
 
 // Display BookInstance delete form on GET.
-export function bookinstance_delete_get(req, res, next) {
-  BookInstance.findById(req.params.id)
+export function bookinstance_delete_get({params}, res, next) {
+  BookInstance.findById(params.id)
     .populate("book")
     .exec((err, bookinstance) => {
       if (err) {
@@ -144,22 +144,22 @@ export function bookinstance_delete_post(req, res, next) {
 }
 
 // Display BookInstance update form on GET.
-export function bookinstance_update_get(req, res, next) {
+export function bookinstance_update_get({params}, res, next) {
   // Get book, authors and genres for form.
   async.parallel(
     {
       bookinstance(callback) {
-        BookInstance.findById(req.params.id).populate("book").exec(callback);
+        BookInstance.findById(params.id).populate("book").exec(callback);
       },
       books(callback) {
         Book.find(callback);
       },
     },
-    (err, results) => {
+    (err, {bookinstance, books}) => {
       if (err) {
         return next(err);
       }
-      if (results.bookinstance == null) {
+      if (bookinstance == null) {
         // No results.
         var err = new Error("Book copy not found");
         err.status = 404;
@@ -168,16 +168,16 @@ export function bookinstance_update_get(req, res, next) {
       // Success.
       res.render("bookinstance_form", {
         title: "Update  BookInstance",
-        book_list: results.books,
-        selected_book: results.bookinstance.book._id,
-        bookinstance: results.bookinstance,
+        book_list: books,
+        selected_book: bookinstance.book._id,
+        bookinstance: bookinstance,
       });
     }
   );
 }
 
 // Handle BookInstance update on POST.
-export var bookinstance_update_post = [
+export const bookinstance_update_post = [
   // Validate and sanitize fields.
   body("book", "Book must be specified").trim().isLength({ min: 1 }).escape(),
   body("imprint", "Imprint must be specified")
@@ -226,12 +226,12 @@ export var bookinstance_update_post = [
         req.params.id,
         bookinstance,
         {},
-        (err, thebookinstance) => {
+        (err, {url}) => {
           if (err) {
             return next(err);
           }
           // Successful - redirect to detail page.
-          res.redirect(thebookinstance.url);
+          res.redirect(url);
         }
       );
     }

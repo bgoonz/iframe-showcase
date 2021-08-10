@@ -80,7 +80,7 @@ router.post(
       await book.save();
       res.redirect("/");
     } else {
-      const errors = validatorErrors.array().map((error) => error.msg);
+      const errors = validatorErrors.array().map(({msg}) => msg);
       res.render("book-add", {
         title: "Add Book",
         book,
@@ -129,7 +129,7 @@ router.post(
       await bookToUpdate.update(book);
       res.redirect("/");
     } else {
-      const errors = validatorErrors.array().map((error) => error.msg);
+      const errors = validatorErrors.array().map(({msg}) => msg);
       res.render("book-edit", {
         title: "Edit Book",
         book: { ...book, id: bookId },
@@ -157,8 +157,8 @@ router.get(
 router.post(
   "/book/delete/:id(\\d+)",
   csrfProtection,
-  asyncHandler(async (req, res) => {
-    const bookId = parseInt(req.params.id, 10);
+  asyncHandler(async ({params}, res) => {
+    const bookId = parseInt(params.id, 10);
     const book = await db.Book.findByPk(bookId);
     await book.destroy();
     res.redirect("/");

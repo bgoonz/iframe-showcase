@@ -71,12 +71,12 @@ export const logout = () => async (dispatch) => {
 
 const initialState = { user: null };
 
-function reducer(state = initialState, action) {
+function reducer(state = initialState, {type, payload}) {
   let newState;
-  switch (action.type) {
+  switch (type) {
     case SET_USER:
       // I prefer this syntax rather than the Object.assign(...)
-      return { ...state, user: action.payload };
+      return { ...state, user: payload };
     case REMOVE_USER:
       newState = Object.assign({}, state, { user: null });
       return newState;

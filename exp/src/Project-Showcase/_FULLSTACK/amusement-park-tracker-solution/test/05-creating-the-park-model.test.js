@@ -62,7 +62,7 @@ const runSpecs = () => {
 
         expect(result.length).to.be.greaterThan(0);
 
-        const parksTable = result[0].find((table) => table.name === "Parks");
+        const parksTable = result[0].find(({name}) => name === "Parks");
 
         expect(parksTable).to.not.be.undefined;
       });
@@ -78,13 +78,13 @@ const runSpecs = () => {
           { name: "description", dataType: "TEXT", nullable: false },
         ];
 
-        expectedColumns.forEach((expectedColumn) => {
-          describe(expectedColumn.name, () => {
+        expectedColumns.forEach(({name, dataType, nullable}) => {
+          describe(name, () => {
             let column = null;
 
             before(async () => {
               const result = await sequelize.query("PRAGMA table_info(Parks);");
-              column = result[0].find((c) => c.name === expectedColumn.name);
+              column = result[0].find(({name}) => name === name);
             });
 
             it("should be defined", () => {
@@ -92,11 +92,11 @@ const runSpecs = () => {
             });
 
             it("should have the correct type", () => {
-              expect(column.type).to.be.equal(expectedColumn.dataType);
+              expect(column.type).to.be.equal(dataType);
             });
 
             it("should have the correct nullability", () => {
-              expect(column.notnull).to.equal(expectedColumn.nullable ? 0 : 1);
+              expect(column.notnull).to.equal(nullable ? 0 : 1);
             });
           });
         });

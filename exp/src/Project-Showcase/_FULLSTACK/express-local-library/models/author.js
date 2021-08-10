@@ -12,12 +12,12 @@ const AuthorSchema = new Schema({
 
 // Virtual for author "full" name.
 AuthorSchema.virtual("name").get(function () {
-  return this.family_name + ", " + this.first_name;
+  return `${this.family_name}, ${this.first_name}`;
 });
 
 // Virtual for this author instance URL.
 AuthorSchema.virtual("url").get(function () {
-  return "/catalog/author/" + this._id;
+  return `/catalog/author/${this._id}`;
 });
 
 AuthorSchema.virtual("lifespan").get(function () {

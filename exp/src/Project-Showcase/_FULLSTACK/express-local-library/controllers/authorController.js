@@ -20,21 +20,21 @@ export function author_list(req, res, next) {
 }
 
 // Display detail page for a specific Author.
-export function author_detail(req, res, next) {
+export function author_detail({params}, res, next) {
   async.parallel(
     {
       author(callback) {
-        Author.findById(req.params.id).exec(callback);
+        Author.findById(params.id).exec(callback);
       },
       authors_books(callback) {
-        Book.find({ author: req.params.id }, "title summary").exec(callback);
+        Book.find({ author: params.id }, "title summary").exec(callback);
       },
     },
-    (err, results) => {
+    (err, {author, authors_books}) => {
       if (err) {
         return next(err);
       } // Error in API usage.
-      if (results.author == null) {
+      if (author == null) {
         // No results.
         var err = new Error("Author not found");
         err.status = 404;
@@ -43,8 +43,8 @@ export function author_detail(req, res, next) {
       // Successful, so render.
       res.render("author_detail", {
         title: "Author Detail",
-        author: results.author,
-        author_books: results.authors_books,
+        author: author,
+        author_books: authors_books,
       });
     }
   );
@@ -56,7 +56,7 @@ export function author_create_get(req, res, next) {
 }
 
 // Handle Author create on POST.
-export var author_create_post = [
+export const author_create_post = [
   // Validate and sanitize fields.
   body("first_name")
     .trim()
@@ -118,29 +118,29 @@ export var author_create_post = [
 ];
 
 // Display Author delete form on GET.
-export function author_delete_get(req, res, next) {
+export function author_delete_get({params}, res, next) {
   async.parallel(
     {
       author(callback) {
-        Author.findById(req.params.id).exec(callback);
+        Author.findById(params.id).exec(callback);
       },
       authors_books(callback) {
-        Book.find({ author: req.params.id }).exec(callback);
+        Book.find({ author: params.id }).exec(callback);
       },
     },
-    (err, results) => {
+    (err, {author, authors_books}) => {
       if (err) {
         return next(err);
       }
-      if (results.author == null) {
+      if (author == null) {
         // No results.
         res.redirect("/catalog/authors");
       }
       // Successful, so render.
       res.render("author_delete", {
         title: "Delete Author",
-        author: results.author,
-        author_books: results.authors_books,
+        author: author,
+        author_books: authors_books,
       });
     }
   );
@@ -157,17 +157,17 @@ export function author_delete_post(req, res, next) {
         Book.find({ author: req.body.authorid }).exec(callback);
       },
     },
-    (err, results) => {
+    (err, {authors_books, author}) => {
       if (err) {
         return next(err);
       }
       // Success.
-      if (results.authors_books.length > 0) {
+      if (authors_books.length > 0) {
         // Author has books. Render in same way as for GET route.
         res.render("author_delete", {
           title: "Delete Author",
-          author: results.author,
-          author_books: results.authors_books,
+          author: author,
+          author_books: authors_books,
         });
         return;
       } else {
@@ -185,8 +185,8 @@ export function author_delete_post(req, res, next) {
 }
 
 // Display Author update form on GET.
-export function author_update_get(req, res, next) {
-  Author.findById(req.params.id, (err, author) => {
+export function author_update_get({params}, res, next) {
+  Author.findById(params.id, (err, author) => {
     if (err) {
       return next(err);
     }
@@ -202,7 +202,7 @@ export function author_update_get(req, res, next) {
 }
 
 // Handle Author update on POST.
-export var author_update_post = [
+export const author_update_post = [
   // Validate and santize fields.
   body("first_name")
     .trim()
@@ -255,12 +255,12 @@ export var author_update_post = [
         req.params.id,
         author,
         {},
-        (err, theauthor) => {
+        (err, {url}) => {
           if (err) {
             return next(err);
           }
           // Successful - redirect to genre detail page.
-          res.redirect(theauthor.url);
+          res.redirect(url);
         }
       );
     }

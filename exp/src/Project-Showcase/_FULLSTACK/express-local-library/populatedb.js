@@ -43,7 +43,7 @@ function authorCreate(first_name, family_name, d_birth, d_death, cb) {
       cb(err, null);
       return;
     }
-    console.log("New Author: " + author);
+    console.log(`New Author: ${author}`);
     authors.push(author);
     cb(null, author);
   });
@@ -57,7 +57,7 @@ function genreCreate(name, cb) {
       cb(err, null);
       return;
     }
-    console.log("New Genre: " + genre);
+    console.log(`New Genre: ${genre}`);
     genres.push(genre);
     cb(null, genre);
   });
@@ -78,7 +78,7 @@ function bookCreate(title, summary, isbn, author, genre, cb) {
       cb(err, null);
       return;
     }
-    console.log("New Book: " + book);
+    console.log(`New Book: ${book}`);
     books.push(book);
     cb(null, book);
   });
@@ -95,11 +95,11 @@ function bookInstanceCreate(book, imprint, due_back, status, cb) {
   const bookinstance = new BookInstance(bookinstancedetail);
   bookinstance.save(err => {
     if (err) {
-      console.log("ERROR CREATING BookInstance: " + bookinstance);
+      console.log(`ERROR CREATING BookInstance: ${bookinstance}`);
       cb(err, null);
       return;
     }
-    console.log("New BookInstance: " + bookinstance);
+    console.log(`New BookInstance: ${bookinstance}`);
     bookinstances.push(bookinstance);
     cb(null, book);
   });
@@ -318,9 +318,9 @@ async.series(
   // Optional callback
   (err, results) => {
     if (err) {
-      console.log("FINAL ERR: " + err);
+      console.log(`FINAL ERR: ${err}`);
     } else {
-      console.log("BOOKInstances: " + bookinstances);
+      console.log(`BOOKInstances: ${bookinstances}`);
     }
     // All done, disconnect from database
     mongoose.connection.close();

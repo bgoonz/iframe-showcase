@@ -29,8 +29,8 @@ const validateSignup = [
               resolve();
             }
           })
-          .catch((err) => {
-            rej("Database error: ", err.message);
+          .catch(({message}) => {
+            rej("Database error: ", message);
           });
       });
     }),
@@ -47,8 +47,8 @@ const validateSignup = [
               resolve();
             }
           })
-          .catch((err) => {
-            rej("Database error: ", err.message);
+          .catch(({message}) => {
+            rej("Database error: ", message);
           });
       });
     }),
@@ -64,9 +64,9 @@ router.post(
   "/",
   singleMulterUpload("image"),
   validateSignup,
-  asyncHandler(async (req, res) => {
-    const { email, password, username } = req.body;
-    const profileImageUrl = await singlePublicFileUpload(req.file);
+  asyncHandler(async ({body, file}, res) => {
+    const { email, password, username } = body;
+    const profileImageUrl = await singlePublicFileUpload(file);
     const user = await User.signup({
       username,
       email,
@@ -96,9 +96,9 @@ router.post(
 router.put(
   "/:id",
   singleMulterUpload("image"),
-  asyncHandler(async (req, res) => {
-    const id = req.params.id;
-    const profileImageUrl = await singlePublicFileUpload(req.file);
+  asyncHandler(async ({params, file}, res) => {
+    const id = params.id;
+    const profileImageUrl = await singlePublicFileUpload(file);
     await User.update({ profileImageUrl }, { where: { id } });
 
     res.json({ profileImageUrl });

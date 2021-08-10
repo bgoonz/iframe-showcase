@@ -40,13 +40,13 @@ app.use((err, req, res, next) => {
 });
 
 // Generic error handler.
-app.use((err, req, res, next) => {
-  res.status(err.status || 500);
+app.use(({status, message, stack}, req, res, next) => {
+  res.status(status || 500);
   const isProduction = process.env.NODE_ENV === "production";
   res.render("error", {
     title: "Server Error",
-    message: isProduction ? null : err.message,
-    stack: isProduction ? null : err.stack,
+    message: isProduction ? null : message,
+    stack: isProduction ? null : stack,
   });
 });
 

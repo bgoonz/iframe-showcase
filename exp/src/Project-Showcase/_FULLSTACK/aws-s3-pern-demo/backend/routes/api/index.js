@@ -36,8 +36,8 @@ import usersRouter from "./users.js";
 //   }
 // );
 
-router.post("/test", (req, res) => {
-  res.json({ requestBody: req.body });
+router.post("/test", ({body}, res) => {
+  res.json({ requestBody: body });
 });
 
 router.use("/session", sessionRouter);

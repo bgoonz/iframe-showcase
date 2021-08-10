@@ -49,24 +49,24 @@ export function book_list(req, res, next) {
 }
 
 // Display detail page for a specific book.
-export function book_detail(req, res, next) {
+export function book_detail({params}, res, next) {
   async.parallel(
     {
       book(callback) {
-        Book.findById(req.params.id)
+        Book.findById(params.id)
           .populate("author")
           .populate("genre")
           .exec(callback);
       },
       book_instance(callback) {
-        BookInstance.find({ book: req.params.id }).exec(callback);
+        BookInstance.find({ book: params.id }).exec(callback);
       },
     },
-    (err, results) => {
+    (err, {book, book_instance}) => {
       if (err) {
         return next(err);
       }
-      if (results.book == null) {
+      if (book == null) {
         // No results.
         var err = new Error("Book not found");
         err.status = 404;
@@ -74,9 +74,9 @@ export function book_detail(req, res, next) {
       }
       // Successful, so render.
       res.render("book_detail", {
-        title: results.book.title,
-        book: results.book,
-        book_instances: results.book_instance,
+        title: book.title,
+        book: book,
+        book_instances: book_instance,
       });
     }
   );
@@ -94,21 +94,21 @@ export function book_create_get(req, res, next) {
         Genre.find(callback);
       },
     },
-    (err, results) => {
+    (err, {authors, genres}) => {
       if (err) {
         return next(err);
       }
       res.render("book_form", {
         title: "Create Book",
-        authors: results.authors,
-        genres: results.genres,
+        authors: authors,
+        genres: genres,
       });
     }
   );
 }
 
 // Handle book create on POST.
-export var book_create_post = [
+export const book_create_post = [
   // Convert the genre to an array.
   (req, res, next) => {
     if (!(req.body.genre instanceof Array)) {
@@ -160,21 +160,21 @@ export var book_create_post = [
             Genre.find(callback);
           },
         },
-        (err, results) => {
+        (err, {genres, authors}) => {
           if (err) {
             return next(err);
           }
 
           // Mark our selected genres as checked.
-          for (let i = 0; i < results.genres.length; i++) {
-            if (book.genre.indexOf(results.genres[i]._id) > -1) {
-              results.genres[i].checked = "true";
+          for (let i = 0; i < genres.length; i++) {
+            if (book.genre.includes(genres[i]._id)) {
+              genres[i].checked = "true";
             }
           }
           res.render("book_form", {
             title: "Create Book",
-            authors: results.authors,
-            genres: results.genres,
+            authors: authors,
+            genres: genres,
             book: book,
             errors: errors.array(),
           });
@@ -195,32 +195,32 @@ export var book_create_post = [
 ];
 
 // Display book delete form on GET.
-export function book_delete_get(req, res, next) {
+export function book_delete_get({params}, res, next) {
   async.parallel(
     {
       book(callback) {
-        Book.findById(req.params.id)
+        Book.findById(params.id)
           .populate("author")
           .populate("genre")
           .exec(callback);
       },
       book_bookinstances(callback) {
-        BookInstance.find({ book: req.params.id }).exec(callback);
+        BookInstance.find({ book: params.id }).exec(callback);
       },
     },
-    (err, results) => {
+    (err, {book, book_bookinstances}) => {
       if (err) {
         return next(err);
       }
-      if (results.book == null) {
+      if (book == null) {
         // No results.
         res.redirect("/catalog/books");
       }
       // Successful, so render.
       res.render("book_delete", {
         title: "Delete Book",
-        book: results.book,
-        book_instances: results.book_bookinstances,
+        book: book,
+        book_instances: book_bookinstances,
       });
     }
   );
@@ -242,17 +242,17 @@ export function book_delete_post(req, res, next) {
         BookInstance.find({ book: req.body.id }).exec(callback);
       },
     },
-    (err, results) => {
+    (err, {book_bookinstances, book}) => {
       if (err) {
         return next(err);
       }
       // Success
-      if (results.book_bookinstances.length > 0) {
+      if (book_bookinstances.length > 0) {
         // Book has book_instances. Render in same way as for GET route.
         res.render("book_delete", {
           title: "Delete Book",
-          book: results.book,
-          book_instances: results.book_bookinstances,
+          book: book,
+          book_instances: book_bookinstances,
         });
         return;
       } else {
@@ -270,12 +270,12 @@ export function book_delete_post(req, res, next) {
 }
 
 // Display book update form on GET.
-export function book_update_get(req, res, next) {
+export function book_update_get({params}, res, next) {
   // Get book, authors and genres for form.
   async.parallel(
     {
       book(callback) {
-        Book.findById(req.params.id)
+        Book.findById(params.id)
           .populate("author")
           .populate("genre")
           .exec(callback);
@@ -287,11 +287,11 @@ export function book_update_get(req, res, next) {
         Genre.find(callback);
       },
     },
-    (err, results) => {
+    (err, {book, genres, authors}) => {
       if (err) {
         return next(err);
       }
-      if (results.book == null) {
+      if (book == null) {
         // No results.
         var err = new Error("Book not found");
         err.status = 404;
@@ -301,34 +301,34 @@ export function book_update_get(req, res, next) {
       // Mark our selected genres as checked.
       for (
         let all_g_iter = 0;
-        all_g_iter < results.genres.length;
+        all_g_iter < genres.length;
         all_g_iter++
       ) {
         for (
           let book_g_iter = 0;
-          book_g_iter < results.book.genre.length;
+          book_g_iter < book.genre.length;
           book_g_iter++
         ) {
           if (
-            results.genres[all_g_iter]._id.toString() ===
-            results.book.genre[book_g_iter]._id.toString()
+            genres[all_g_iter]._id.toString() ===
+            book.genre[book_g_iter]._id.toString()
           ) {
-            results.genres[all_g_iter].checked = "true";
+            genres[all_g_iter].checked = "true";
           }
         }
       }
       res.render("book_form", {
         title: "Update Book",
-        authors: results.authors,
-        genres: results.genres,
-        book: results.book,
+        authors: authors,
+        genres: genres,
+        book: book,
       });
     }
   );
 }
 
 // Handle book update on POST.
-export var book_update_post = [
+export const book_update_post = [
   // Convert the genre to an array.
   (req, res, next) => {
     if (!(req.body.genre instanceof Array)) {
@@ -382,21 +382,21 @@ export var book_update_post = [
             Genre.find(callback);
           },
         },
-        (err, results) => {
+        (err, {genres, authors}) => {
           if (err) {
             return next(err);
           }
 
           // Mark our selected genres as checked.
-          for (let i = 0; i < results.genres.length; i++) {
-            if (book.genre.indexOf(results.genres[i]._id) > -1) {
-              results.genres[i].checked = "true";
+          for (let i = 0; i < genres.length; i++) {
+            if (book.genre.includes(genres[i]._id)) {
+              genres[i].checked = "true";
             }
           }
           res.render("book_form", {
             title: "Update Book",
-            authors: results.authors,
-            genres: results.genres,
+            authors: authors,
+            genres: genres,
             book: book,
             errors: errors.array(),
           });
@@ -405,12 +405,12 @@ export var book_update_post = [
       return;
     } else {
       // Data from form is valid. Update the record.
-      Book.findByIdAndUpdate(req.params.id, book, {}, (err, thebook) => {
+      Book.findByIdAndUpdate(req.params.id, book, {}, (err, {url}) => {
         if (err) {
           return next(err);
         }
         // Successful - redirect to book detail page.
-        res.redirect(thebook.url);
+        res.redirect(url);
       });
     }
   },

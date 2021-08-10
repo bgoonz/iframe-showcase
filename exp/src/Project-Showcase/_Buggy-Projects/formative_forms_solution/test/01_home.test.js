@@ -4,7 +4,8 @@ import {expect} from "chai";
 import cheerio from "cheerio";
 
 describe("home", () => {
-  let res, $;
+  let res;
+  let $;
   before(async () => {
     res = await request(app)
       .get("/")

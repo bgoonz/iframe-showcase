@@ -25,8 +25,8 @@ router.get(
 
 router.get(
   "/park/:id(\\d+)",
-  asyncHandler(async (req, res) => {
-    const parkId = parseInt(req.params.id, 10);
+  asyncHandler(async ({params}, res) => {
+    const parkId = parseInt(params.id, 10);
     const park = await db.Park.findByPk(parkId);
     res.render("park-detail", { title: "Park Detail", park });
   })
@@ -108,7 +108,7 @@ router.post(
       await park.save();
       res.redirect("/");
     } else {
-      const errors = validatorErrors.array().map((error) => error.msg);
+      const errors = validatorErrors.array().map(({msg}) => msg);
       res.render("park-add", {
         title: "Add Park",
         park,
@@ -167,7 +167,7 @@ router.post(
       await parkToUpdate.update(park);
       res.redirect(`/park/${parkId}`);
     } else {
-      const errors = validatorErrors.array().map((error) => error.msg);
+      const errors = validatorErrors.array().map(({msg}) => msg);
       res.render("park-edit", {
         title: "Edit Park",
         park: { ...park, id: parkId },
@@ -195,8 +195,8 @@ router.get(
 router.post(
   "/park/delete/:id(\\d+)",
   csrfProtection,
-  asyncHandler(async (req, res) => {
-    const parkId = parseInt(req.params.id, 10);
+  asyncHandler(async ({params}, res) => {
+    const parkId = parseInt(params.id, 10);
     const park = await db.Park.findByPk(parkId);
     await park.destroy();
     res.redirect("/parks");

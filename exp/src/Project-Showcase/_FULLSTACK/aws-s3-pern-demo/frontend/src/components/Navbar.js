@@ -12,7 +12,7 @@ const NavWrapper = styled.div`
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user);
+  const user = useSelector(({session}) => session.user);
   const history = useHistory();
   const handleLogout = () => {
     if (user) {

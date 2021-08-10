@@ -65,11 +65,11 @@ const readFile = (filePath) => {
   return fileContents;
 };
 
-const suppressRequestLogging = (app) => {
+const suppressRequestLogging = ({_router}) => {
   // Find the "logger" middleware (i.e. `morgan`)
   // the replace it with a "no op" middleware function
   // to suppress request logging when running specs.
-  const logger = app._router.stack.find((m) => m.name === "logger");
+  const logger = _router.stack.find(({name}) => name === "logger");
   if (logger !== null) {
     logger.handle = (req, res, next) => {
       next();
@@ -88,9 +88,9 @@ const testEnvFile = (fileName, expectedEnvVars) => {
       return;
     }
 
-    expectedEnvVars.forEach((envVar) => {
-      it(`should define and set a \`${envVar.name}\` variable value`, () => {
-        expect(fileContents).to.match(envVar.pattern);
+    expectedEnvVars.forEach(({name, pattern}) => {
+      it(`should define and set a \`${name}\` variable value`, () => {
+        expect(fileContents).to.match(pattern);
       });
     });
   });

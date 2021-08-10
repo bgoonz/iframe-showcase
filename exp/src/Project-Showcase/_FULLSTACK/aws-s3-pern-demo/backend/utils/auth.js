@@ -30,13 +30,13 @@ const restoreUser = (req, res, next) => {
   // token parsed from cookies
   const { token } = req.cookies;
 
-  return jwt.verify(token, secret, null, async (err, jwtPayload) => {
+  return jwt.verify(token, secret, null, async (err, {data}) => {
     if (err) {
       return next();
     }
 
     try {
-      const { id } = jwtPayload.data;
+      const { id } = data;
       req.user = await User.scope("currentUser").findByPk(id);
     } catch (e) {
       res.clearCookie("token");
@@ -52,8 +52,8 @@ const restoreUser = (req, res, next) => {
 // If there is no current user, return an error
 const requireAuth = [
   restoreUser,
-  (req, res, next) => {
-    if (req.user) return next();
+  ({user}, res, next) => {
+    if (user) return next();
 
     const err = new Error("Unauthorized");
     err.title = "Unauthorized";

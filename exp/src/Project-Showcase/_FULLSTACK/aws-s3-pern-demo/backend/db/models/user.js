@@ -2,7 +2,7 @@
 import {Model, Validator} from "sequelize";
 import bcrypt from "bcryptjs";
 
-export default (sequelize, DataTypes) => {
+export default (sequelize, {STRING}) => {
   class User extends Model {
     toSafeObject() {
       const { id, username, email, profileImageUrl } = this; // context will be the User instance
@@ -46,7 +46,7 @@ export default (sequelize, DataTypes) => {
   User.init(
     {
       username: {
-        type: DataTypes.STRING,
+        type: STRING,
         allowNull: false,
         validate: {
           len: [4, 30],
@@ -58,18 +58,18 @@ export default (sequelize, DataTypes) => {
         },
       },
       email: {
-        type: DataTypes.STRING,
+        type: STRING,
         allowNull: false,
         validate: {
           len: [3, 256],
         },
       },
       profileImageUrl: {
-        type: DataTypes.STRING,
+        type: STRING,
         allowNull: false,
       },
       hashedPassword: {
-        type: DataTypes.STRING.BINARY,
+        type: STRING.BINARY,
         allowNull: false,
         validate: {
           len: [60, 60],

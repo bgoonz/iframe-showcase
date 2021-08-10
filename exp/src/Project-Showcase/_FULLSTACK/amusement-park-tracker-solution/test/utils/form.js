@@ -152,8 +152,8 @@ const checkValidationMessage = (message) => {
  * so the form helper methods have access to the DOM elements.
  * @param {object} response - The SuperTest response.
  */
-const setDomElements = (response) => {
-  $ = cheerio.load(response.text);
+const setDomElements = ({text}) => {
+  $ = cheerio.load(text);
   return $;
 };
 

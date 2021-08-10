@@ -133,16 +133,16 @@ const runSpecs = () => {
             { name: "updatedAt", type: Date },
           ];
 
-          expectedProperties.forEach((property) => {
-            it(`should have a property named \`${property.name}\``, () => {
-              expect(hasProperty(property.name).length).to.equal(
+          expectedProperties.forEach(({name, type}) => {
+            it(`should have a property named \`${name}\``, () => {
+              expect(hasProperty(name).length).to.equal(
                 queryInterface.insertRecords.length
               );
             });
 
-            it(`with the type \`${getTypeName(property.type)}\``, () => {
+            it(`with the type \`${getTypeName(type)}\``, () => {
               expect(
-                hasPropertyWithType(property.name, property.type).length
+                hasPropertyWithType(name, type).length
               ).to.equal(queryInterface.insertRecords.length);
             });
           });

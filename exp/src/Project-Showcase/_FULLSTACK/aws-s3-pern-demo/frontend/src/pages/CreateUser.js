@@ -12,7 +12,7 @@ const CreateUser = () => {
   const [errors, setErrors] = useState([]);
 
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user);
+  const user = useSelector(({session}) => session.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,8 +33,8 @@ const CreateUser = () => {
       });
   };
 
-  const updateFile = (e) => {
-    const file = e.target.files[0];
+  const updateFile = ({target}) => {
+    const file = target.files[0];
     if (file) setImage(file);
   };
 
@@ -58,7 +58,7 @@ const CreateUser = () => {
             type="text"
             placeholder="Username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={({target}) => setUsername(target.value)}
           />
         </label>
         <label>
@@ -66,7 +66,7 @@ const CreateUser = () => {
             type="email"
             placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={({target}) => setEmail(target.value)}
           />
         </label>
         <label>
@@ -74,7 +74,7 @@ const CreateUser = () => {
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={({target}) => setPassword(target.value)}
           />
         </label>
         <label>

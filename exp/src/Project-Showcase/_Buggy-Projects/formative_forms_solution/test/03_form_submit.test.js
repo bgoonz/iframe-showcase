@@ -4,7 +4,9 @@ import {expect} from "chai";
 import cheerio from "cheerio";
 
 describe("form-submit", () => {
-  let $, token, cookies;
+  let $;
+  let token;
+  let cookies;
   before(async () => {
     const getRes = await request(app).get("/create");
     cookies = getRes.headers["set-cookie"];
