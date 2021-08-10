@@ -5,7 +5,6 @@ $(document).ready(function () {
   });
 });
 
-
 (function ($) {
   $.responsiveIframes = function (el, options) {
     var self = this;

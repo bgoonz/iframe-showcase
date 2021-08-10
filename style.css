@@ -16,7 +16,6 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-
   background: #555;
 }
 
@@ -72,7 +71,6 @@ iframe {
   height: 44px;
   line-height: 44px;
   text-align: center;
-
 }
 
 .iframe-full-screen body {
