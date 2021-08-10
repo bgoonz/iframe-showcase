@@ -5,13 +5,7 @@ $(document).ready(function () {
   });
 });
 
-/**
- * jQuery Responsive IFrames
- * @author Armin Solecki
- * @source https://github.com/arminsolecki/responsive-iframes/
- * Licensed under the MIT License (http://creativecommons.org/licenses/MIT/)
- *
- **/
+
 (function ($) {
   $.responsiveIframes = function (el, options) {
     var self = this;
