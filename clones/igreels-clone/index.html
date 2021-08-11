@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Instagram Reels Clone</title>
     <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="app__videos">
@@ -24,7 +27,11 @@
         <!-- footer starts -->
         <div class="videoFooter">
           <div class="videoFooter__text">
-            <img class="user__avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="" />
+            <img
+              class="user__avatar"
+              src="https://www.w3schools.com/howto/img_avatar.png"
+              alt=""
+            />
             <h3>Bryan Guner • <button>Follow</button></h3>
           </div>
 
@@ -69,7 +76,11 @@
         <!-- footer starts -->
         <div class="videoFooter">
           <div class="videoFooter__text">
-            <img class="user__avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="" />
+            <img
+              class="user__avatar"
+              src="https://www.w3schools.com/howto/img_avatar.png"
+              alt=""
+            />
             <h3>Bryan Guner • <button>Follow</button></h3>
           </div>
 
@@ -102,10 +113,10 @@
     </div>
 
     <script>
-      const videos = document.querySelectorAll('video');
+      const videos = document.querySelectorAll("video");
 
       for (const video of videos) {
-        video.addEventListener('click', function () {
+        video.addEventListener("click", function () {
           if (video.paused) {
             video.play();
           } else {

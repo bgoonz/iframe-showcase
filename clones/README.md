@@ -1,11 +1,17 @@
 # CLONES With HTML and CSS
 
+#### Hulu Clone
 
-#### Hulu Clone  
-#### Twitter Clone 
-#### Netflix Clone 
-#### Facebook Clone 
+#### Twitter Clone
+
+#### Netflix Clone
+
+#### Facebook Clone
+
 #### GMAIL Clone
-#### Google Clone 
-#### LinkedIn Clone 
-#### Youtube Clone 
+
+#### Google Clone
+
+#### LinkedIn Clone
+
+#### Youtube Clone

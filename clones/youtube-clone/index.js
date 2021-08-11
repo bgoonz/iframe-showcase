@@ -1,8 +1,8 @@
-const menu = document.querySelector('#menu');
+const menu = document.querySelector("#menu");
 console.log(menu);
 
-const sidebar = document.querySelector('.sidebar');
+const sidebar = document.querySelector(".sidebar");
 
-menu.addEventListener('click', function () {
-  sidebar.classList.toggle('show-sidebar');
+menu.addEventListener("click", function () {
+  sidebar.classList.toggle("show-sidebar");
 });

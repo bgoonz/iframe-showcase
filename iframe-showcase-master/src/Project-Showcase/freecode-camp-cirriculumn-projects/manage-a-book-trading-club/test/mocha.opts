@@ -1,5 +1,0 @@
---reporter list
---watch-extensions pug
---check-leaks
---bail
---timeout 5s
