@@ -1,4 +1,4 @@
-# [Iframe Embed Showcase:](https://bgoonz.github.io/iframe-showcase/)
+# Iframe Embed Showcase:
 
 ![gif](./iframes.gif)
 ![img](./embed-playground.png)
