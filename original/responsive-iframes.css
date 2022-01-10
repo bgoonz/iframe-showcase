@@ -32,7 +32,7 @@
 .iframe-header a {
   font-size: 15px;
   color: white;
-  background: #3B4658;
+  background: #000000;
   display: block;
   padding: 15px;
   text-align: center;
@@ -41,7 +41,7 @@
 
 .iframe-header a:hover,
 .iframe-header a:focus {
-  background: #6A798E;
+  background: #000000;
 }
 
 .iframe-full-screen .iframe-header {

@@ -33,7 +33,7 @@ body {
 .iframe-content {
   /* ipad iframe hack */
   height: 600px;
-  overflow: auto;
+  /* overflow: auto; */
   -webkit-overflow-scrolling: auto;
 }
 
@@ -78,7 +78,7 @@ body {
   overflow: scroll;
 }
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 4px;
   background-color: #f5f5f5;
 }
 
@@ -105,7 +105,7 @@ body {
   margin-left: 30px;
   float: left;
   height: 300px;
-  width: 65px;
+
   background: #f5f5f5;
   overflow-y: scroll;
   margin-bottom: 25px;
@@ -131,7 +131,7 @@ body {
 }
 
 .wrapper {
-  max-width: 1500px;
+  max-width: 1700px;
   margin: 6px auto;
   resize: both;
   display: flex;
@@ -171,11 +171,6 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-/* iframe */
-iframe {
-  width: 250px !important;
 }
 
 .js .iframe-header {
@@ -246,7 +241,7 @@ resize: both;
 .iframe-header a {
   font-size: 15px;
   color: white;
-  background: #3b4658;
+  background: #000000;
   display: block;
   padding: 15px;
   text-align: center;
@@ -255,7 +250,7 @@ resize: both;
 
 .iframe-header a:hover,
 .iframe-header a:focus {
-  background: #6a798e;
+  background: #000000;
 }
 
 .iframe-full-screen .iframe-header {
