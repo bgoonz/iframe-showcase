@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <title>CodePen - Responsive iFrames Pattern Grid</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+      <link rel="stylesheet" href="./style.css">
+      <script async defer src="./responsive-iframes-pattern-grid/dist/script.js"></script>
+      <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+      <noscript>
+            <img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""
+                  referrerpolicy="no-referrer-when-downgrade" /></noscript>
+      <script async src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title></title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script>
+            document.getElementsByTagName("html")[0].className = "js";
+      </script>
+      <style>
+            body {
+                  overflow: auto;
+            }
+
+            ::-webkit-scrollbar {
+                  width: 25px;
+            }
+
+            ::-webkit-scrollbar-track {
+                  background: black;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                  background: rgb(255, 255, 255);
+                  border-radius: 10px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+
+                  background: rgb(139, 139, 139);
+            }
+
+            /* iframe */
+            iframe {
+                  width: 280px !important;
+                  height: 500px;
+            }
+
+            .js .iframe-header {
+                  display: block;
+            }
+
+            .iframe-content {
+                  /* ipad iframe hack */
+
+                  height: 400px;
+                  overflow: auto;
+                  -webkit-overflow: auto;
+                  -scrolling: touch;
+            }
+
+            .iframe-header a {
+                  font-size: 30px;
+                  color: white;
+                  background: #000000;
+                  display: block;
+                  padding: 15px;
+                  text-align: center;
+                  border-bottom: 3px solid gold;
+            }
+
+            .iframe-header a:hover,
+            .iframe-header a:focus {
+                  background: #000000;
+            }
+
+            .iframe-full-screen .iframe-header {
+                  display: block;
+                  position: absolute;
+                  height: 50px;
+                  width: 100%;
+            }
+
+            .iframe-full-screen .iframe-content {
+                  position: absolute;
+                  top: 50px;
+                  bottom: 0;
+                  width: 100%;
+                  height: auto;
+            }
+
+            .iframe-full-screen .iframe-header a {
+                  padding: 0;
+                  height: 44px;
+                  line-height: 44px;
+                  text-align: center;
+
+            }
+
+            .iframe-full-screen body {
+                  width: 100%;
+                  height: 100%;
+                  overflow: auto;
+
+            }
+
+            .iframe-full-screen .iframe.iframe-active {
+                  width: 100%;
+                  height: 100%;
+                  position: fixed;
+                  left: 0;
+                  top: 0;
+                  bottom: 0;
+                  right: 0;
+                  z-index: 9999;
+                  border: none;
+            }
+
+            .iframe-full-screen .iframe iframe {
+                  position: absolute;
+                  height: 100%;
+                  width: 100%;
+                  border: none;
+            }
+
+            .wrapper {
+                  max-width: 1350px;
+                  margin: 30px auto;
+                  padding: 0 20px;
+                  display: flex;
+                  flex-wrap: wrap;
+                  background-color: whitesmoke !important;
+                  overflow: auto;
+            }
+
+            .item {
+                  display: inline-block;
+                  flex: 1 300px;
+            }
+
+            @media all and(max-height: 400px) {
+                  .iframe {
+                        height: 300px;
+                  }
+            }
+      </style>
+</head>
+
+<body>
+      <div class="wrapper">
+
+
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/explore-react-without-react/clock-demo.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/explore-react-without-react/comment-demo.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/explore-react-without-react/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/explore-react-without-react/state-clock-demo.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/explore-react-without-react/tick-demo.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/explore-react-without-react/welcome-demo.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/american-british-translator/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/anonymous-message-board/views/board.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/anonymous-message-board/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/anonymous-message-board/views/thread.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/build-a-pinterest-clone/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/chart-the-stock-market/public/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/exercise-tracker/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/file-metadata-microservice/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/forum-proxy/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/image-search-abstraction-layer/public/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/issue-tracker/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/issue-tracker/views/issue.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/metric-imperial-converter/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/p2p-video-chat-application/public/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/personal-library/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/request-header-parser-microservice/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/secure-real-time-multiplayer-game/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/stock-price-checker-proxy/public/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/stock-price-checker/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/sudoku-solver/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/timestamp-microservice/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/twitch-proxy/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/url-shortener-microservice/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/freecode-camp-cirriculumn-projects/weather-proxy/views/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/Box2D/assets/balls.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/Box2D/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/Gary Ad/Baked/garyad.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/GaryPewPew/Animate/PlanetaryGary_art.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/GaryPewPew/index_done.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/GaryPewPew/index_orig.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/MusicViz/index_forexample.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/MusicViz/index_orig.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/MusicViz/index_starter.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/MusicViz2/index_JAM.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/MusicViz2/index_SoundJS.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/Performance/Context2DLog/example.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/Performance/FauxCanvas/example.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/Performance/Snowmark/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/Performance/Zombie/Zombie!.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/Performance/framerate/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/future-tech-innov-creative/etc/Planetary Gary/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/guessing-game-project/guessing-game-project-master/README.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/guessing-game-project/guessing-game-project-master/browser-version/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/javascript-text-to-speech/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/jsanimate/jsanimate-master/index.html">
+                        </iframe>
+                  </div>
+            </div>
+            <div class="item">
+                  <div class="iframe">
+                        <iframe loading="lazy" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"
+                              src="./src/Project-Showcase/index.html">
+                        </iframe>
+                  </div>
+            </div>
+
+      </div>
+</body>
+
+</html>
