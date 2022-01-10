@@ -173,7 +173,6 @@ body {
   background: #555;
 }
 
-
 .js .iframe-header {
   display: block;
 }
@@ -202,7 +201,7 @@ body {
 }
 
 .item {
-	  padding: 15px;
+  padding: 15px;
   display: inline-block;
   flex: 1 300px;
 }
@@ -222,9 +221,9 @@ body {
   width: 100%;
   height: 400px;
   border: 0;
-  padding:4px;
-  margin:4px;
-    padding: 15px;
+  padding: 4px;
+  margin: 4px;
+  padding: 15px;
   display: block;
 }
 

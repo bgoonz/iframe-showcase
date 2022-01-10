@@ -7,6 +7,7 @@ Responsive iFrames jQuery Plugin.
 
 ##Sample usage
 HTML
+
 ```HTML
 <div class="iframe">
 	<iframe src="http://smashingmagazine.com" />
@@ -14,6 +15,7 @@ HTML
 ```
 
 JS
+
 ```JavaScript
 $('.iframe').responsiveIframes();
 ```
@@ -21,11 +23,10 @@ $('.iframe').responsiveIframes();
 ##Browser Support
 Tested using the following browsers/devices:
 
-+ Latest desktop versions of Chrome, Firefox and Safari.
-+ Internet Explorer 8 and above.
-+ Android 4.4 (Google Chrome)
-+ iOS 6.0 7.0 (Mobile Safari and Google Chrome)
+- Latest desktop versions of Chrome, Firefox and Safari.
+- Internet Explorer 8 and above.
+- Android 4.4 (Google Chrome)
+- iOS 6.0 7.0 (Mobile Safari and Google Chrome)
 
 ##Dependencies
 [jQuery](http://jquery.com/)
-

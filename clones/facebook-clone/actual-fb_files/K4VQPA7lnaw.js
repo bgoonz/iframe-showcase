@@ -2375,15 +2375,13 @@ __d(
       var c = [];
       return b.seq([
         function (c) {
-          return b.db
-            .table(5)
-            .add({
-              a: void 0,
-              b: a[0],
-              d: b.i64.to_string(a[1]),
-              c: a[2],
-              e: b.i64.of_float(Date.now()),
-            });
+          return b.db.table(5).add({
+            a: void 0,
+            b: a[0],
+            d: b.i64.to_string(a[1]),
+            c: a[2],
+            e: b.i64.of_float(Date.now()),
+          });
         },
         function (a) {
           return b.resolve(c);
@@ -2405,17 +2403,15 @@ __d(
       var c = [];
       return b.seq([
         function (c) {
-          return b.db
-            .table(154)
-            .add({
-              a: void 0,
-              b: a[0],
-              c: b.i64.of_float(Date.now()),
-              d: a[1],
-              e: a[2],
-              f: a[3],
-              g: a[4],
-            });
+          return b.db.table(154).add({
+            a: void 0,
+            b: a[0],
+            c: b.i64.of_float(Date.now()),
+            d: a[1],
+            e: a[2],
+            f: a[3],
+            g: a[4],
+          });
         },
         function (a) {
           return b.resolve(c);

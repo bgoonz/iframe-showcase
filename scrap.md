@@ -1,5 +1,3 @@
-
-
 https://bgoonz-cv.netlify.app/"
 https://bgoonz-games.netlify.app/"
 https://determined-dijkstra-ee7390.netlify.app/"

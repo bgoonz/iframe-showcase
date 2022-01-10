@@ -7,8 +7,6 @@
 
 - [NEW FEATURE: LOCATION FINDER](https://iframe-showcase-7gnnch97t-bgoonz.vercel.app/location-finder/index.html)
 
-
-
 https://bgoonz-cv.netlify.app/"
 https://bgoonz-games.netlify.app/"
 https://determined-dijkstra-ee7390.netlify.app/"

@@ -18,8 +18,6 @@
 ./clones/twitter-clone/index.html
 ./clones/youtube-clone/index.html
 
-
-
 ./html-pages.html
 ./index.html
 ./location-finder/index.html
@@ -65,7 +63,7 @@
 ./Project-Showcase/future-tech-innov-creative/etc/Box2D/assets/balls.html
 ./Project-Showcase/future-tech-innov-creative/etc/Box2D/index.html
 ./Project-Showcase/future-tech-innov-creative/etc/Gary Ad/Baked/garyad.html
-./Project-Showcase/future-tech-innov-creative/etc/GaryPewPew/Animate/PlanetaryGary_art.html
+./Project-Showcase/future-tech-innov-creative/etc/GaryPewPew/Animate/PlanetaryGary*art.html
 ./Project-Showcase/future-tech-innov-creative/etc/GaryPewPew/index_done.html
 ./Project-Showcase/future-tech-innov-creative/etc/GaryPewPew/index_orig.html
 ./Project-Showcase/future-tech-innov-creative/etc/MusicViz/index_forexample.html
@@ -85,7 +83,7 @@
 ./Project-Showcase/javascript-text-to-speech/index.html
 ./Project-Showcase/jsanimate/jsanimate-master/index.html
 ./Project-Showcase/memorygame/index.html
-./Project-Showcase/mini-projects/3D_Hover_Effect_-_Alita_Card/3D_Hover_Effect_-_Alita_Card.html
+./Project-Showcase/mini-projects/3D_Hover_Effect*-_Alita_Card/3D_Hover_Effect_-_Alita_Card.html
 ./Project-Showcase/mini-projects/Accordion_Menu_2/Accordion_Menu_2.html
 ./Project-Showcase/mini-projects/Accordion_Menu_4/Accordion_Menu_4.html
 ./Project-Showcase/mini-projects/Accordion_Menu_5/Accordion_Menu_5.html
@@ -151,7 +149,7 @@
 ./Project-Showcase/project-archive/ToDoListSolution/solution/public/index.html
 ./Project-Showcase/project-archive/art-museum-solution/public/index.html
 ./Project-Showcase/project-archive/grocery-store-solution/public/index.html
-./Project-Showcase/project-archive/local-storage-project-solution/._storage-project.html
+./Project-Showcase/project-archive/local-storage-project-solution/.\_storage-project.html
 ./Project-Showcase/project-archive/local-storage-project-solution/storage-project.html
 ./Project-Showcase/project-archive/my-profile-solution/myProfile.html
 ./Project-Showcase/project-archive/pokedex-hooks-refactor_solution/phase1-2/solution-redux-hooks/public/index.html
@@ -172,7 +170,7 @@
 ./Project-Showcase/project-archive/solution/public/index.html
 ./Project-Showcase/project-archive/solution/templates/package_status.html
 ./Project-Showcase/project-archive/solution/templates/shipping_request.html
-./Project-Showcase/project-archive/spud-face-project-solution/._spud-face.html
+./Project-Showcase/project-archive/spud-face-project-solution/.\_spud-face.html
 ./Project-Showcase/project-archive/spud-face-project-solution/spud-face.html
 ./Project-Showcase/project-archive/star-trek-solution/public/index.html
 ./Project-Showcase/project-archive/testing-an-existing-project-solution/category-list-screen.html
