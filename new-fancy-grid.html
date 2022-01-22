@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    iframe {
+      width: 600px;
+      /* It should not be 100% */
+      height: 450px;
+
+    }
+
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <style>
+    body {
+      overflow: auto;
+    }
+
+    ::-webkit-scrollbar {
+      width: 25px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: black;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgb(255, 255, 255);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+
+      background: rgb(139, 139, 139);
+    }
+
+    /* iframe */
+    iframe {
+      width: 280px !important;
+      height: 500px;
+    }
+
+    .js .iframe-header {
+      display: block;
+    }
+
+    .iframe-content {
+      /* ipad iframe hack */
+
+      height: 400px;
+      overflow: auto;
+      -webkit-overflow: auto;
+      -scrolling: touch;
+    }
+
+    .iframe-header a {
+      font-size: 30px;
+      color: white;
+      background: #000000;
+      display: block;
+      padding: 15px;
+      text-align: center;
+      border-bottom: 3px solid gold;
+    }
+
+    .iframe-header a:hover,
+    .iframe-header a:focus {
+      background: #000000;
+    }
+
+    .iframe-full-screen .iframe-header {
+      display: block;
+      position: absolute;
+      height: 50px;
+      width: 100%;
+    }
+
+    .iframe-full-screen .iframe-content {
+      position: absolute;
+      top: 50px;
+      bottom: 0;
+      width: 100%;
+      height: auto;
+    }
+
+    .iframe-full-screen .iframe-header a {
+      padding: 0;
+      height: 44px;
+      line-height: 44px;
+      text-align: center;
+
+    }
+
+    .iframe-full-screen body {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+
+    }
+
+    .iframe-full-screen .iframe.iframe-active {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 9999;
+      border: none;
+    }
+
+    .iframe-full-screen .iframe iframe {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      border: none;
+    }
+
+    iframe {
+      resize: both;
+      border: 0.5px solid whitesmoke;
+      padding: 10px
+    }
+
+    .wrapper {
+      max-width: 1350px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      background-color: whitesmoke !important;
+      overflow: auto;
+    }
+
+    .item {
+      display: inline-block;
+      flex: 1 300px;
+    }
+
+    @media all and(max-height: 400px) {
+      .iframe {
+        height: 300px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div align="center">
+
+
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+            <center>
+              <table width="95%" cellpadding="0" cellspacing="0" border="0"
+                style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+                <tbody>
+                  <tr>
+                    <td align="left" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;"><a
+                        target="_blank" href="https://search.freefind.com/siteindex.html?si=14588965">index</a></td>
+                    <td align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;"><a
+                        target="_blank"
+                        href="https://search.freefind.com/find.html?si=14588965&amp;m=0&amp;p=0">sitemap</a>
+                    </td>
+                    <td align="right" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;"><a
+                        target="_blank" href="https://search.freefind.com/find.html?si=14588965&amp;pid=a">advanced</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </center>
+            <form action="https://search.freefind.com/find.html" method="get" accept-charset="utf-8" target="_self"
+              style="margin: 2px 0px 0px;"><input type="hidden" name="si" value="14588965"><input type="hidden"
+                name="pid" value="r"><input type="hidden" name="n" value="0"><input type="hidden" name="_charset_"
+                value="true"><input type="hidden" name="bcd" value="÷"><input type="text" name="query" size="15"><input
+                type="submit"></form>
+          </td>
+        </tr>
+        <tr>
+          <td
+            style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt; padding-top: 4px;">
+            <a href="https://www.freefind.com" rel="nofollow" style="text-decoration: none; color: transparent;">search
+              engine</a><a href="https://www.freefind.com" rel="nofollow"
+              style="text-decoration: none; color: transparent;">by<span style="color: transparent;">freefind</span></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <iframe style="z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://bgoonz-cv.netlify.app/" scrolling="yes" frameborder="no" loading="lazy" allowtransparency="true"
+      allowfullscreen="true" frameborder="0"></iframe>
+
+
+    <iframe style="z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://bgoonz-games.netlify.app/" scrolling="yes" frameborder="no" loading="lazy" allowtransparency="true"
+      allowfullscreen="true" frameborder="0"></iframe>
+
+
+    <iframe style="z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://determined-dijkstra-ee7390.netlify.app/" scrolling="yes" frameborder="no" loading="lazy"
+      allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+
+
+    <iframe style="z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://devtools42.netlify.app/" scrolling="yes" frameborder="no" loading="lazy" allowtransparency="true"
+      allowfullscreen="true" frameborder="0"></iframe>
+
+
+
+    <iframe style="z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://githtmlpreview.netlify.app/" scrolling="yes" frameborder="no" loading="lazy" allowtransparency="true"
+      allowfullscreen="true" frameborder="0"></iframe>
+
+
+    <iframe style="z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://lambda-resources.netlify.app/" scrolling="yes" frameborder="no" loading="lazy"
+      allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+
+
+    <iframe style="z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://meditate42app.netlify.app/" scrolling="yes" frameborder="no" loading="lazy" allowtransparency="true"
+      allowfullscreen="true" frameborder="0"></iframe>
+
+
+    <iframe style="z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://potluck-landing.netlify.app/" scrolling="yes" frameborder="no" loading="lazy"
+      allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+
+
+    <iframe style="z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://project-portfolio42.netlify.app/" scrolling="yes" frameborder="no" loading="lazy"
+      allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+
+
+    <iframe style="z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://random-static-html-deploys.netlify.app/blm.html" scrolling="yes" frameborder="no" loading="lazy"
+      allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+
+
+    <iframe style=" z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://ternary42.netlify.app/" scrolling="yes" frameborder="no" loading="lazy" allowtransparency="true"
+      allowfullscreen="true" frameborder="0"></iframe>
+
+
+    <iframe style="z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://web-dev-interview-prep-quiz-website.netlify.app/" scrolling="yes" frameborder="no" loading="lazy"
+      allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+
+
+    <iframe style="z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://web-dev-resource-hub.netlify.app/" scrolling="yes" frameborder="no" loading="lazy"
+      allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+
+
+    <iframe style="z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://blog-w-comments.vercel.app/" scrolling="yes" frameborder="no" loading="lazy" allowtransparency="true"
+      allowfullscreen="true" frameborder="0"></iframe>
+
+
+    <iframe style="z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://www.addthis.com/website-tools/overview?utm_source=AddThis%20Tools&utm_medium=image" scrolling="yes"
+      frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+
+
+<iframe style="z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://bgoonz.blogspot.com/" scrolling="yes" frameborder="no" loading="lazy" allowtransparency="true"
+      allowfullscreen="true" frameborder="0"></iframe>
+
+
+
+
+
+
+
+
+
+
+
+    <iframe style="z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://web-dev-hub.com/" scrolling="yes" frameborder="no" loading="lazy" allowtransparency="true"
+      allowfullscreen="true" frameborder="0"></iframe>
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xGZSWvFess8" title="YouTube video player"
+  frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen></iframe>
+
+<iframe  style=" z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://a.familypromiseservicetracker.dev/" scrolling="yes" frameborder="no" loading="lazy"
+      allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+
+
+
+
+
+
+
+
+
+    <iframe style=" z-index:-1!important; overflow:scroll;resize:both;" class="block-content"
+      src="https://bgoonz.github.io/github-stats-website/" scrolling="yes" frameborder="no" loading="lazy"
+      allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------->
+
+    <script>
+      $( document ).ready( function () {
+        $( ".iframe" ).responsiveIframes( {
+          openMessage: "Full screen",
+          closeMessage: "Close full screen",
+        } );
+      } );
+
+      /**
+       * jQuery Responsive IFrames
+       * @author Armin Solecki
+       * @source https://github.com/arminsolecki/responsive-iframes/
+       * Licensed under the MIT License (http://creativecommons.org/licenses/MIT/)
+       *
+       **/
+      ( function ( $ ) {
+          $.responsiveIframes = function ( el, options ) {
+            var self = this;
+
+            // Access to jQuery and DOM versions of element
+            self.$el = $( el );
+            self.el = el;
+
+            // Add a reverse reference to the DOM object
+            self.$el.data( "responsiveIframes", self );
+
+            self.init = function () {
+              self.options = $.extend( {}, $.responsiveIframes.defaultOptions, options );
+
+              // wrap iframe
+              var iframeSrc = self.$el
+                .find( "iframe" )
+                .wrap( ' <
+                  div class = "iframe-content" / > ')
+                  .attr( "src" );
+
+                  //generate header
+                  var header =
+                    '<div class="iframe-header">' +
+                    '<a href="' +
+                    iframeSrc +
+                    '" class="iframe-trigger">' +
+                    self.options.openMessage +
+                    "</a>" +
+                    "</div>";
+
+                  var trigger = self.$el.prepend( header ).find( ".iframe-trigger" );
+
+                  // click event
+                  $( trigger ).click( function ( e ) {
+                    e.preventDefault();
+
+                    var $this = $( this ),
+                      $html = $( "html" ),
+                      isFullScreen = $html.hasClass( "iframe-full-screen" ),
+                      message = isFullScreen ?
+                      self.options.openMessage :
+                      self.options.closeMessage;
+
+                    $this.text( message );
+
+                    if ( isFullScreen ) {
+                      self.$el.removeClass( "iframe-active" );
+                      $html.removeClass( "iframe-full-screen" );
+                      setTimeout( function () {
+                        $( window ).scrollTop( $this.data( "iframe-scroll-position" ) );
+                      }, 1 );
+                    } else {
+                      $this.data( "iframe-scroll-position", $( window ).scrollTop() );
+                      self.$el.addClass( "iframe-active" );
+                      $html.addClass( "iframe-full-screen" );
+                    }
+                  } );
+                };
+
+              // Run initializer
+              self.init();
+            };
+
+            $.responsiveIframes.defaultOptions = {
+              openMessage: "Full screen",
+              closeMessage: "Close",
+            };
+
+            $.fn.responsiveIframes = function ( options ) {
+              return this.each( function () {
+                new $.responsiveIframes( this, options );
+              } );
+            };
+          } )( jQuery );
+
+    </script>
+    <script>
+      // t: current time, b: begInnIng value, c: change In value, d: duration
+      jQuery.easing[ 'jswing' ] = jQuery.easing[ 'swing' ];
+
+      jQuery.extend( jQuery.easing, {
+        def: 'easeOutQuad',
+        swing: function ( x, t, b, c, d ) {
+          //alert(jQuery.easing.default);
+          return jQuery.easing[ jQuery.easing.def ]( x, t, b, c, d );
+        },
+        easeInQuad: function ( x, t, b, c, d ) {
+          return c * ( t /= d ) * t + b;
+        },
+        easeOutQuad: function ( x, t, b, c, d ) {
+          return -c * ( t /= d ) * ( t - 2 ) + b;
+        },
+        easeInOutQuad: function ( x, t, b, c, d ) {
+          if ( ( t /= d / 2 ) < 1 ) return c / 2 * t * t + b;
+          return -c / 2 * ( ( --t ) * ( t - 2 ) - 1 ) + b;
+        },
+        easeInCubic: function ( x, t, b, c,
+          d ) {
+          return c * ( t /= d ) * t * t + b;
+        },
+        easeOutCubic: function ( x, t, b, c, d ) {
+          return c * ( ( t = t / d - 1 ) * t * t + 1 ) + b;
+        },
+        easeInOutCubic: function ( x, t, b, c, d ) {
+          if ( ( t /= d / 2 ) < 1 ) return c / 2 * t * t * t + b;
+          return c / 2 * ( ( t -= 2 ) * t * t + 2 ) +
+            b;
+        },
+        easeInQuart: function ( x, t, b, c, d ) {
+          return c * ( t /= d ) * t * t * t + b;
+        },
+        easeOutQuart: function ( x, t, b,
+          c, d ) {
+          return -c * ( ( t = t / d - 1 ) * t * t * t - 1 ) + b;
+        },
+        easeInOutQuart: function ( x, t, b, c, d ) {
+          if ( ( t /= d / 2 ) < 1 )
+            return c / 2 * t * t * t * t + b;
+          return -c / 2 * ( ( t -= 2 ) * t * t * t - 2 ) + b;
+        },
+        easeInQuint: function ( x, t, b, c, d ) {
+          return c * ( t /= d ) * t * t * t * t + b;
+        },
+        easeOutQuint: function ( x, t, b, c, d ) {
+          return c * ( ( t = t / d - 1 ) * t * t * t * t + 1 ) + b;
+        },
+        easeInOutQuint: function ( x, t, b, c, d ) {
+          if ( ( t /= d / 2 ) < 1 ) return c / 2 * t * t * t * t * t + b;
+          return
+          c / 2 * ( ( t -= 2 ) * t * t * t * t + 2 ) + b;
+        },
+        easeInSine: function ( x, t, b, c, d ) {
+          return -c * Math.cos( t / d *
+            ( Math.PI / 2 ) ) + c + b;
+        },
+        easeOutSine: function ( x, t, b, c, d ) {
+          return c * Math.sin( t / d * ( Math.PI / 2 ) ) + b;
+        },
+        easeInOutSine: function ( x, t, b, c, d ) {
+          return -c / 2 * ( Math.cos( Math.PI * t / d ) - 1 ) + b;
+        },
+        easeInExpo: function ( x, t, b, c, d ) {
+          return ( t == 0 ) ? b : c * Math.pow( 2, 10 * ( t / d - 1 ) ) + b;
+        },
+        easeOutExpo: function ( x, t, b, c, d ) {
+          return ( t == d ) ? b + c : c * ( -Math.pow( 2, -10 * t / d ) + 1 ) + b;
+        },
+        easeInOutExpo: function ( x,
+          t, b, c, d ) {
+          if ( t == 0 ) return b;
+          if ( t == d ) return b + c;
+          if ( ( t /= d / 2 ) < 1 ) return c / 2 * Math.pow( 2, 10 * ( t -
+            1 ) ) + b;
+          return c / 2 * ( -Math.pow( 2, -10 * --t ) + 2 ) + b;
+        },
+        easeInCirc: function ( x, t, b, c, d ) {
+          return -c *
+            ( Math.sqrt( 1 - ( t /= d ) * t ) - 1 ) + b;
+        },
+        easeOutCirc: function ( x, t, b, c, d ) {
+          return c * Math.sqrt( 1 -
+            ( t = t / d - 1 ) * t ) + b;
+        },
+        easeInOutCirc: function ( x, t, b, c, d ) {
+          if ( ( t /= d / 2 ) < 1 ) return -c / 2 * ( Math.sqrt( 1 -
+            t * t ) - 1 ) + b;
+          return c / 2 * ( Math.sqrt( 1 - ( t -= 2 ) * t ) + 1 ) + b;
+        },
+        easeInElastic: function ( x, t, b, c, d ) {
+          var s = 1.70158;
+          var p = 0;
+          var a = c;
+          if ( t == 0 ) return b;
+          if ( ( t /= d ) == 1 ) return b + c;
+          if ( !p ) p = d * .3;
+          if ( a <
+            Math.abs( c ) ) {
+            a = c;
+            var s = p / 4;
+          } else var s = p / ( 2 * Math.PI ) * Math.asin( c / a );
+          return -( a * Math.pow( 2, 10 * ( t -= 1 ) ) *
+            Math.sin( ( t * d - s ) * ( 2 * Math.PI ) / p ) ) + b;
+        },
+        easeOutElastic: function ( x, t, b, c, d ) {
+          var s = 1.70158;
+          var
+            p = 0;
+          var a = c;
+          if ( t == 0 ) return b;
+          if ( ( t /= d ) == 1 ) return b + c;
+          if ( !p ) p = d * .3;
+          if ( a < Math.abs( c ) ) {
+            a = c;
+            var
+              s = p / 4;
+          } else var s = p / ( 2 * Math.PI ) * Math.asin( c / a );
+          return a * Math.pow( 2, -10 * t ) * Math.sin(
+            ( t * d - s ) * ( 2 * Math.PI ) / p ) + c + b;
+        },
+        easeInOutElastic: function ( x, t, b, c, d ) {
+          var s = 1.70158;
+          var p = 0;
+          var
+            a = c;
+          if ( t == 0 ) return b;
+          if ( ( t /= d / 2 ) == 2 ) return b + c;
+          if ( !p ) p = d * ( .3 * 1.5 );
+          if ( a < Math.abs( c ) ) {
+            a = c;
+            var
+              s = p / 4;
+          } else var s = p / ( 2 * Math.PI ) * Math.asin( c / a );
+          if ( t < 1 ) return -.5 * ( a * Math.pow( 2, 10 * ( t -= 1 ) ) *
+            Math.sin( ( t * d - s ) * ( 2 * Math.PI ) / p ) ) + b;
+          return a * Math.pow( 2, -10 * ( t -= 1 ) ) * Math.sin( ( t * d - s ) * ( 2 * Math.PI ) / p ) * .5 +
+            c + b;
+        },
+        easeInBack: function ( x, t, b, c, d, s ) {
+          if ( s == undefined ) s = 1.70158;
+          return c * ( t /= d ) * t * ( ( s + 1 ) * t -
+            s ) + b;
+        },
+        easeOutBack: function ( x, t, b, c, d, s ) {
+          if ( s == undefined ) s = 1.70158;
+          return
+          c * ( ( t = t / d - 1 ) * t * ( ( s + 1 ) * t + s ) + 1 ) + b;
+        },
+        easeInOutBack: function ( x, t, b, c, d, s ) {
+          if ( s == undefined )
+            s = 1.70158;
+          if ( ( t /= d / 2 ) < 1 ) return c / 2 * ( t * t * ( ( ( s *= ( 1.525 ) ) + 1 ) * t - s ) ) + b;
+          return
+          c / 2 * ( ( t -= 2 ) * t * ( ( ( s *= ( 1.525 ) ) + 1 ) * t + s ) + 2 ) + b;
+        },
+        easeInBounce: function ( x, t, b, c, d ) {
+          return c -
+            jQuery.easing.easeOutBounce( x, d - t, 0, c, d ) + b;
+        },
+        easeOutBounce: function ( x, t, b, c, d ) {
+          if ( ( t /= d ) <
+            ( 1 / 2.75 ) ) {
+            return c * ( 7.5625 * t * t ) + b;
+          } else if ( t < ( 2 / 2.75 ) ) {
+            return c * ( 7.5625 * ( t -= ( 1.5 / 2.75 ) ) * t + .75 ) +
+              b;
+          } else if ( t < ( 2.5 / 2.75 ) ) {
+            return c * ( 7.5625 * ( t -= ( 2.25 / 2.75 ) ) * t + .9375 ) + b;
+          } else {
+            return
+            c * ( 7.5625 * ( t -= ( 2.625 / 2.75 ) ) * t + .984375 ) + b;
+          }
+        },
+        easeInOutBounce: function ( x, t, b, c, d ) {
+          if ( t < d / 2 )
+            return jQuery.easing.easeInBounce( x, t * 2, 0, c, d ) * .5 + b;
+          return jQuery.easing.easeOutBounce( x, t * 2 - d, 0,
+            c, d ) * .5 + c * .5 + b;
+        }
+      } );
+
+    </script>
+  </div>
+</body>
+
+</html>
