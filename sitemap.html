@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Markmap</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #mindmap {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.2.0/dist/style.css">
+</head>
+
+<body>
+  <svg id="mindmap"></svg>
+  <script src="https://cdn.jsdelivr.net/npm/d3@6.7.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.2.7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.2.0/dist/index.umd.min.js"></script>
+  <script>
+    ( r => {
+      setTimeout( r );
+    } )( () => {
+      const {
+        markmap,
+        mm
+      } = window;
+      const toolbar = new markmap.Toolbar();
+      toolbar.attach( mm );
+      const el = toolbar.render();
+      el.setAttribute( 'style', 'position:absolute;bottom:20px;right:20px' );
+      document.body.append( el );
+    } )
+
+  </script>
+  <script>
+    ( ( getMarkmap, getOptions, data ) => {
+      const {
+        Markmap
+      } = getMarkmap();
+      window.mm = Markmap.create( 'svg#mindmap', getOptions == null ? void 0 : getOptions(), data );
+    } )( () => window.markmap, null, {
+      "t": "root",
+      "d": 0,
+      "v": "",
+      "c": [ {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 3, 4 ]
+        },
+        "v": "204. <a href=\"https://bgoonz-blog.netlify.app/privacy-policy\"><strong>🖥️privacy-policy🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 5, 6 ]
+        },
+        "v": "205. <a href=\"https://bgoonz-blog.netlify.app/readme\"><strong>🖥️readme🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 7, 8 ]
+        },
+        "v": "206. <a href=\"https://bgoonz-blog.netlify.app/showcase\"><strong>🏆showcase🏆</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 9, 10 ]
+        },
+        "v": "207. <a href=\"https://bgoonz-blog.netlify.app/\"><strong>🏠Home🏠</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 14, 15 ]
+        },
+        "v": "0. <a href=\"https://bgoonz-blog.netlify.app/blog/300-react-questions\"><strong>🖥️blog/300-react-questions🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 16, 17 ]
+        },
+        "v": "1. <a href=\"https://bgoonz-blog.netlify.app/blog/awesome-graphql\"><strong>🖥️blog/awesome-graphql🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 18, 19 ]
+        },
+        "v": "2. <a href=\"https://bgoonz-blog.netlify.app/blog/big-o-complexity\"><strong>🖥️blog/big-o-complexity🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 20, 21 ]
+        },
+        "v": "3. <a href=\"https://bgoonz-blog.netlify.app/blog/blog-archive\"><strong>🖥️blog/blog-archive🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 22, 23 ]
+        },
+        "v": "4. <a href=\"https://bgoonz-blog.netlify.app/blog/blogwcomments\"><strong>🖥️blog/blogwcomments🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 24, 25 ]
+        },
+        "v": "5. <a href=\"https://bgoonz-blog.netlify.app/blog/data-structures\"><strong>🖥️blog/data-structures🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 26, 27 ]
+        },
+        "v": "6. <a href=\"https://bgoonz-blog.netlify.app/blog/flow-control-in-python\"><strong>🖥️blog/flow-control-in-python🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 28, 29 ]
+        },
+        "v": "7. <a href=\"https://bgoonz-blog.netlify.app/blog/functions-in-python\"><strong>🖥️blog/functions-in-python🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 30, 31 ]
+        },
+        "v": "8. <a href=\"https://bgoonz-blog.netlify.app/blog/git-gateway\"><strong>🖥️blog/git-gateway🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 32, 33 ]
+        },
+        "v": "9. <a href=\"https://bgoonz-blog.netlify.app/blog/interview-questions-js\"><strong>🖥️blog/interview-questions-js🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 34, 35 ]
+        },
+        "v": "10. <a href=\"https://bgoonz-blog.netlify.app/blog/netlify-cms\"><strong>🖥️blog/netlify-cms🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 36, 37 ]
+        },
+        "v": "11. <a href=\"https://bgoonz-blog.netlify.app/blog/platform-docs\"><strong>🖥️blog/platform-docs🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 38, 39 ]
+        },
+        "v": "12. <a href=\"https://bgoonz-blog.netlify.app/blog/python-for-js-dev\"><strong>🖥️blog/python-for-js-dev🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 40, 41 ]
+        },
+        "v": "13. <a href=\"https://bgoonz-blog.netlify.app/blog/python-resources\"><strong>🖥️blog/python-resources🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 42, 43 ]
+        },
+        "v": "14. <a href=\"https://bgoonz-blog.netlify.app/blog/web-dev-trends\"><strong>🖥️blog/web-dev-trends🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 44, 45 ]
+        },
+        "v": "15. <a href=\"https://bgoonz-blog.netlify.app/blog/web-scraping\"><strong>🖥️blog/web-scraping🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 46, 47 ]
+        },
+        "v": "16. <a href=\"https://bgoonz-blog.netlify.app/blog\"><strong>🖥️blog🌍</strong></a>"
+      }, {
+        "t": "heading",
+        "d": 1,
+        "p": {
+          "lines": [ 51, 52 ]
+        },
+        "v": "DOCS:",
+        "c": [ {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 53, 54 ]
+          },
+          "v": "17. <a href=\"https://bgoonz-blog.netlify.app/docs/about/README\"><strong>📖docs/about/README🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 55, 56 ]
+          },
+          "v": "18. <a href=\"https://bgoonz-blog.netlify.app/docs/about/eng-portfolio\"><strong>📖docs/about/eng-portfolio🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 57, 58 ]
+          },
+          "v": "19. <a href=\"https://bgoonz-blog.netlify.app/docs/about/intrests\"><strong>📖docs/about/intrests🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 59, 60 ]
+          },
+          "v": "20. <a href=\"https://bgoonz-blog.netlify.app/docs/about/job-search\"><strong>📖docs/about/job-search🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 61, 62 ]
+          },
+          "v": "21. <a href=\"https://bgoonz-blog.netlify.app/docs/about/resume\"><strong>📖docs/about/resume🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 63, 64 ]
+          },
+          "v": "22. <a href=\"https://bgoonz-blog.netlify.app/docs/about\"><strong>📖docs/about🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 65, 66 ]
+          },
+          "v": "23. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/basic-web-dev\"><strong>📖docs/articles/basic-web-dev🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 67, 68 ]
+          },
+          "v": "24. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/buffers\"><strong>📖docs/articles/buffers🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 69, 70 ]
+          },
+          "v": "25. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/dev-dep\"><strong>📖docs/articles/dev-dep🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 71, 72 ]
+          },
+          "v": "26. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/event-loop\"><strong>📖docs/articles/event-loop🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 73, 74 ]
+          },
+          "v": "27. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/fs-module\"><strong>📖docs/articles/fs-module🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 75, 76 ]
+          },
+          "v": "28. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/how-search-engines-work\"><strong>📖docs/articles/how-search-engines-work🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 77, 78 ]
+          },
+          "v": "29. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/how-the-web-works\"><strong>📖docs/articles/how-the-web-works🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 79, 80 ]
+          },
+          "v": "30. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/http\"><strong>📖docs/articles/http🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 81, 82 ]
+          },
+          "v": "31. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/install\"><strong>📖docs/articles/install🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 83, 84 ]
+          },
+          "v": "32. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/intro\"><strong>📖docs/articles/intro🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 85, 86 ]
+          },
+          "v": "33. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/modules\"><strong>📖docs/articles/modules🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 87, 88 ]
+          },
+          "v": "34. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/nextjs\"><strong>📖docs/articles/nextjs🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 89, 90 ]
+          },
+          "v": "35. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/node-api-express\"><strong>📖docs/articles/node-api-express🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 91, 92 ]
+          },
+          "v": "36. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/node-cli-args\"><strong>📖docs/articles/node-cli-args🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 93, 94 ]
+          },
+          "v": "37. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/node-common-modules\"><strong>📖docs/articles/node-common-modules🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 95, 96 ]
+          },
+          "v": "38. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/node-env-variables\"><strong>📖docs/articles/node-env-variables🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 97, 98 ]
+          },
+          "v": "39. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/node-js-language\"><strong>📖docs/articles/node-js-language🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 99, 100 ]
+          },
+          "v": "40. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/node-package-manager\"><strong>📖docs/articles/node-package-manager🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 101, 102 ]
+          },
+          "v": "41. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/node-repl\"><strong>📖docs/articles/node-repl🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 103, 104 ]
+          },
+          "v": "42. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/node-run-cli\"><strong>📖docs/articles/node-run-cli🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 105, 106 ]
+          },
+          "v": "43. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/nodejs\"><strong>📖docs/articles/nodejs🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 107, 108 ]
+          },
+          "v": "44. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/nodevsbrowser\"><strong>📖docs/articles/nodevsbrowser🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 109, 110 ]
+          },
+          "v": "45. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/npm\"><strong>📖docs/articles/npm🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 111, 112 ]
+          },
+          "v": "46. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/npx\"><strong>📖docs/articles/npx🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 113, 114 ]
+          },
+          "v": "47. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/os-module\"><strong>📖docs/articles/os-module🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 115, 116 ]
+          },
+          "v": "48. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/reading-files\"><strong>📖docs/articles/reading-files🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 117, 118 ]
+          },
+          "v": "49. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/semantic-html\"><strong>📖docs/articles/semantic-html🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 119, 120 ]
+          },
+          "v": "50. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/semantic\"><strong>📖docs/articles/semantic🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 121, 122 ]
+          },
+          "v": "51. [<strong>📖docs/articles/the-uniform-resource-locator-(url)🌍</strong>](https://bgoonz-blog.netlify.app/docs/articles/ [**🖥️the-uniform-resource-locator-(url))"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 123, 124 ]
+          },
+          "v": "52. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/understanding-firebase\"><strong>📖docs/articles/understanding-firebase🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 125, 126 ]
+          },
+          "v": "53. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/v8\"><strong>📖docs/articles/v8🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 127, 128 ]
+          },
+          "v": "54. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/web-standards-checklist\"><strong>📖docs/articles/web-standards-checklist🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 129, 130 ]
+          },
+          "v": "55. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/webdev-tools\"><strong>📖docs/articles/webdev-tools🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 131, 132 ]
+          },
+          "v": "56. <a href=\"https://bgoonz-blog.netlify.app/docs/articles/writing-files\"><strong>📖docs/articles/writing-files🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 133, 134 ]
+          },
+          "v": "57. <a href=\"https://bgoonz-blog.netlify.app/docs/articles\"><strong>📖docs/articles🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 135, 136 ]
+          },
+          "v": "58. <a href=\"https://bgoonz-blog.netlify.app/docs/audio/audio-feature-extraction\"><strong>📖docs/audio/audio-feature-extraction🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 137, 138 ]
+          },
+          "v": "59. <a href=\"https://bgoonz-blog.netlify.app/docs/audio/audio\"><strong>📖docs/audio/audio🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 139, 140 ]
+          },
+          "v": "60. <a href=\"https://bgoonz-blog.netlify.app/docs/audio/dfft\"><strong>📖docs/audio/dfft🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 141, 142 ]
+          },
+          "v": "61. <a href=\"https://bgoonz-blog.netlify.app/docs/audio/discrete-fft\"><strong>📖docs/audio/discrete-fft🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 143, 144 ]
+          },
+          "v": "62. <a href=\"https://bgoonz-blog.netlify.app/docs/audio/dtw-python-explained\"><strong>📖docs/audio/dtw-python-explained🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 145, 146 ]
+          },
+          "v": "63. <a href=\"https://bgoonz-blog.netlify.app/docs/audio/dynamic-time-warping\"><strong>📖docs/audio/dynamic-time-warping🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 147, 148 ]
+          },
+          "v": "64. <a href=\"https://bgoonz-blog.netlify.app/docs/audio/web-audio-api\"><strong>📖docs/audio/web-audio-api🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 149, 150 ]
+          },
+          "v": "65. <a href=\"https://bgoonz-blog.netlify.app/docs/audio\"><strong>📖docs/audio🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 151, 152 ]
+          },
+          "v": "66. <a href=\"https://bgoonz-blog.netlify.app/docs/career/dev-interview\"><strong>📖docs/career/dev-interview🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 153, 154 ]
+          },
+          "v": "67. <a href=\"https://bgoonz-blog.netlify.app/docs/career/interview-dos-n-donts\"><strong>📖docs/career/interview-dos-n-donts🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 155, 156 ]
+          },
+          "v": "68. <a href=\"https://bgoonz-blog.netlify.app/docs/career/job-boards\"><strong>📖docs/career/job-boards🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 157, 158 ]
+          },
+          "v": "69. <a href=\"https://bgoonz-blog.netlify.app/docs/career\"><strong>📖docs/career🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 159, 160 ]
+          },
+          "v": "71. <a href=\"https://bgoonz-blog.netlify.app/docs/community/bookmarks\"><strong>📖docs/community/bookmarks🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 161, 162 ]
+          },
+          "v": "72. <a href=\"https://bgoonz-blog.netlify.app/docs/community/video-chat\"><strong>📖docs/community/video-chat🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 163, 164 ]
+          },
+          "v": "73. <a href=\"https://bgoonz-blog.netlify.app/docs/community\"><strong>📖docs/community🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 165, 166 ]
+          },
+          "v": "74. <a href=\"https://bgoonz-blog.netlify.app/docs/content/algo\"><strong>📖docs/content/algo🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 167, 168 ]
+          },
+          "v": "75. <a href=\"https://bgoonz-blog.netlify.app/docs/content/archive\"><strong>📖docs/content/archive🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 169, 170 ]
+          },
+          "v": "76. <a href=\"https://bgoonz-blog.netlify.app/docs/content/gatsby-Queries-Mutations\"><strong>📖docs/content/gatsby-Queries-Mutations🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 171, 172 ]
+          },
+          "v": "77. <a href=\"https://bgoonz-blog.netlify.app/docs/content/history-api\"><strong>📖docs/content/history-api🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 173, 174 ]
+          },
+          "v": "78. <a href=\"https://bgoonz-blog.netlify.app/docs/content/main-projects\"><strong>📖docs/content/main-projects🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 175, 176 ]
+          },
+          "v": "79. <a href=\"https://bgoonz-blog.netlify.app/docs/content/trouble-shooting\"><strong>📖docs/content/trouble-shooting🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 177, 178 ]
+          },
+          "v": "80. <a href=\"https://bgoonz-blog.netlify.app/docs/content\"><strong>📖docs/content🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 179, 180 ]
+          },
+          "v": "81. <a href=\"https://bgoonz-blog.netlify.app/docs/data-structures\"><strong>📖docs/data-structures🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 181, 182 ]
+          },
+          "v": "82. <a href=\"https://bgoonz-blog.netlify.app/docs/docs/appendix\"><strong>📖docs/docs/appendix🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 183, 184 ]
+          },
+          "v": "83. <a href=\"https://bgoonz-blog.netlify.app/docs/docs/art-of-command-line\"><strong>📖docs/docs/art-of-command-line🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 185, 186 ]
+          },
+          "v": "84. <a href=\"https://bgoonz-blog.netlify.app/docs/docs/bash\"><strong>📖docs/docs/bash🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 187, 188 ]
+          },
+          "v": "85. <a href=\"https://bgoonz-blog.netlify.app/docs/docs/content\"><strong>📖docs/docs/content🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 189, 190 ]
+          },
+          "v": "86. <a href=\"https://bgoonz-blog.netlify.app/docs/docs/css\"><strong>📖docs/docs/css🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 191, 192 ]
+          },
+          "v": "87. <a href=\"https://bgoonz-blog.netlify.app/docs/docs/data-structures-docs\"><strong>📖docs/docs/data-structures-docs🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 193, 194 ]
+          },
+          "v": "88. <a href=\"https://bgoonz-blog.netlify.app/docs/docs/es-6-features\"><strong>📖docs/docs/es-6-features🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 195, 196 ]
+          },
+          "v": "89. <a href=\"https://bgoonz-blog.netlify.app/docs/docs/git-reference\"><strong>📖docs/docs/git-reference🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 197, 198 ]
+          },
+          "v": "90. <a href=\"https://bgoonz-blog.netlify.app/docs/docs/git-repos\"><strong>📖docs/docs/git-repos🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 199, 200 ]
+          },
+          "v": "91. <a href=\"https://bgoonz-blog.netlify.app/docs/docs/html-spec\"><strong>📖docs/docs/html-spec🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 201, 202 ]
+          },
+          "v": "92. <a href=\"https://bgoonz-blog.netlify.app/docs/docs/markdown\"><strong>📖docs/docs/markdown🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 203, 204 ]
+          },
+          "v": "93. <a href=\"https://bgoonz-blog.netlify.app/docs/docs/no-whiteboarding\"><strong>📖docs/docs/no-whiteboarding🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 205, 206 ]
+          },
+          "v": "94. <a href=\"https://bgoonz-blog.netlify.app/docs/docs/node-docs-complete\"><strong>📖docs/docs/node-docs-complete🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 207, 208 ]
+          },
+          "v": "95. <a href=\"https://bgoonz-blog.netlify.app/docs/docs/node-docs-full\"><strong>📖docs/docs/node-docs-full🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 209, 210 ]
+          },
+          "v": "96. <a href=\"https://bgoonz-blog.netlify.app/docs/docs/regex-in-js\"><strong>📖docs/docs/regex-in-js🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 211, 212 ]
+          },
+          "v": "97. <a href=\"https://bgoonz-blog.netlify.app/docs/docs/sitemap\"><strong>📖docs/docs/sitemap🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 213, 214 ]
+          },
+          "v": "98. <a href=\"https://bgoonz-blog.netlify.app/docs/docs\"><strong>📖docs/docs🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 215, 216 ]
+          },
+          "v": "99. <a href=\"https://bgoonz-blog.netlify.app/docs/faq/contact\"><strong>📖docs/faq/contact🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 217, 218 ]
+          },
+          "v": "100. <a href=\"https://bgoonz-blog.netlify.app/docs/faq/plug-ins\"><strong>📖docs/faq/plug-ins🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 219, 220 ]
+          },
+          "v": "101. <a href=\"https://bgoonz-blog.netlify.app/docs/faq\"><strong>📖docs/faq🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 221, 222 ]
+          },
+          "v": "102. <a href=\"https://bgoonz-blog.netlify.app/docs/gists\"><strong>📖docs/gists🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 223, 224 ]
+          },
+          "v": "103. <a href=\"https://bgoonz-blog.netlify.app/docs/interact/callstack-visual\"><strong>📖docs/interact/callstack-visual🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 225, 226 ]
+          },
+          "v": "104. <a href=\"https://bgoonz-blog.netlify.app/docs/interact/clock\"><strong>📖docs/interact/clock🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 227, 228 ]
+          },
+          "v": "105. <a href=\"https://bgoonz-blog.netlify.app/docs/interact/jupyter-notebooks\"><strong>📖docs/interact/jupyter-notebooks🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 229, 230 ]
+          },
+          "v": "106. <a href=\"https://bgoonz-blog.netlify.app/docs/interact/other-sites\"><strong>📖docs/interact/other-sites🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 231, 232 ]
+          },
+          "v": "107. <a href=\"https://bgoonz-blog.netlify.app/docs/interact/video-chat\"><strong>📖docs/interact/video-chat🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 233, 234 ]
+          },
+          "v": "108. <a href=\"https://bgoonz-blog.netlify.app/docs/interact\"><strong>📖docs/interact🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 235, 236 ]
+          },
+          "v": "109. <a href=\"https://bgoonz-blog.netlify.app/docs/interview/job-search-nav\"><strong>📖docs/interview/job-search-nav🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 237, 238 ]
+          },
+          "v": "110. <a href=\"https://bgoonz-blog.netlify.app/docs/interview/review-concepts\"><strong>📖docs/interview/review-concepts🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 239, 240 ]
+          },
+          "v": "111. <a href=\"https://bgoonz-blog.netlify.app/docs/interview\"><strong>📖docs/interview🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 241, 242 ]
+          },
+          "v": "112. <a href=\"https://bgoonz-blog.netlify.app/docs/javascript/arrow-functions\"><strong>📖docs/javascript/arrow-functions🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 243, 244 ]
+          },
+          "v": "113. <a href=\"https://bgoonz-blog.netlify.app/docs/javascript/asyncjs\"><strong>📖docs/javascript/asyncjs🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 245, 246 ]
+          },
+          "v": "114. <a href=\"https://bgoonz-blog.netlify.app/docs/javascript/await-keyword\"><strong>📖docs/javascript/await-keyword🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 247, 248 ]
+          },
+          "v": "115. <a href=\"https://bgoonz-blog.netlify.app/docs/javascript/bigo\"><strong>📖docs/javascript/bigo🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 249, 250 ]
+          },
+          "v": "116. <a href=\"https://bgoonz-blog.netlify.app/docs/javascript/clean-code\"><strong>📖docs/javascript/clean-code🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 251, 252 ]
+          },
+          "v": "117. <a href=\"https://bgoonz-blog.netlify.app/docs/javascript/constructor-functions\"><strong>📖docs/javascript/constructor-functions🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 253, 254 ]
+          },
+          "v": "118. <a href=\"https://bgoonz-blog.netlify.app/docs/javascript/for-loops\"><strong>📖docs/javascript/for-loops🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 255, 256 ]
+          },
+          "v": "119. <a href=\"https://bgoonz-blog.netlify.app/docs/javascript/promises\"><strong>📖docs/javascript/promises🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 257, 258 ]
+          },
+          "v": "120. <a href=\"https://bgoonz-blog.netlify.app/docs/javascript/review\"><strong>📖docs/javascript/review🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 259, 260 ]
+          },
+          "v": "121. <a href=\"https://bgoonz-blog.netlify.app/docs/javascript/this-is-about-this\"><strong>📖docs/javascript/this-is-about-this🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 261, 262 ]
+          },
+          "v": "122. <a href=\"https://bgoonz-blog.netlify.app/docs/javascript\"><strong>📖docs/javascript🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 263, 264 ]
+          },
+          "v": "123. <a href=\"https://bgoonz-blog.netlify.app/docs/leetcode\"><strong>📖docs/leetcode🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 265, 266 ]
+          },
+          "v": "124. <a href=\"https://bgoonz-blog.netlify.app/docs/privacy-policy\"><strong>📖docs/privacy-policy🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 267, 268 ]
+          },
+          "v": "125. <a href=\"https://bgoonz-blog.netlify.app/docs/projects/embeded-websites\"><strong>📖docs/projects/embeded-websites🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 269, 270 ]
+          },
+          "v": "126. <a href=\"https://bgoonz-blog.netlify.app/docs/projects/list-of-projects\"><strong>📖docs/projects/list-of-projects🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 271, 272 ]
+          },
+          "v": "127. <a href=\"https://bgoonz-blog.netlify.app/docs/projects/mini-projects2\"><strong>📖docs/projects/mini-projects2🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 273, 274 ]
+          },
+          "v": "128. <a href=\"https://bgoonz-blog.netlify.app/docs/projects/mini-projects\"><strong>📖docs/projects/mini-projects🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 275, 276 ]
+          },
+          "v": "129. <a href=\"https://bgoonz-blog.netlify.app/docs/projects/my-websites\"><strong>📖docs/projects/my-websites🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 277, 278 ]
+          },
+          "v": "130. <a href=\"https://bgoonz-blog.netlify.app/docs/projects\"><strong>📖docs/projects🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 279, 280 ]
+          },
+          "v": "131. <a href=\"https://bgoonz-blog.netlify.app/docs/python/at-length\"><strong>📖docs/python/at-length🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 281, 282 ]
+          },
+          "v": "132. <a href=\"https://bgoonz-blog.netlify.app/docs/python/cheat-sheet\"><strong>📖docs/python/cheat-sheet🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 283, 284 ]
+          },
+          "v": "133. <a href=\"https://bgoonz-blog.netlify.app/docs/python/comprehensive-guide\"><strong>📖docs/python/comprehensive-guide🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 285, 286 ]
+          },
+          "v": "134. <a href=\"https://bgoonz-blog.netlify.app/docs/python/examples\"><strong>📖docs/python/examples🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 287, 288 ]
+          },
+          "v": "135. <a href=\"https://bgoonz-blog.netlify.app/docs/python/flow-control\"><strong>📖docs/python/flow-control🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 289, 290 ]
+          },
+          "v": "136. <a href=\"https://bgoonz-blog.netlify.app/docs/python/functions\"><strong>📖docs/python/functions🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 291, 292 ]
+          },
+          "v": "137. <a href=\"https://bgoonz-blog.netlify.app/docs/python/google-sheets-api\"><strong>📖docs/python/google-sheets-api🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 293, 294 ]
+          },
+          "v": "138. <a href=\"https://bgoonz-blog.netlify.app/docs/python/intro-for-js-devs\"><strong>📖docs/python/intro-for-js-devs🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 295, 296 ]
+          },
+          "v": "139. <a href=\"https://bgoonz-blog.netlify.app/docs/python/python-ds\"><strong>📖docs/python/python-ds🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 297, 298 ]
+          },
+          "v": "140. <a href=\"https://bgoonz-blog.netlify.app/docs/python/snippets\"><strong>📖docs/python/snippets🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 299, 300 ]
+          },
+          "v": "141. <a href=\"https://bgoonz-blog.netlify.app/docs/python\"><strong>📖docs/python🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 301, 302 ]
+          },
+          "v": "142. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/Emmet\"><strong>📖docs/quick-reference/Emmet🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 303, 304 ]
+          },
+          "v": "143. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/all-emojis\"><strong>📖docs/quick-reference/all-emojis🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 305, 306 ]
+          },
+          "v": "144. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/create-react-app\"><strong>📖docs/quick-reference/create-react-app🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 307, 308 ]
+          },
+          "v": "145. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/git-bash\"><strong>📖docs/quick-reference/git-bash🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 309, 310 ]
+          },
+          "v": "146. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/git-tricks\"><strong>📖docs/quick-reference/git-tricks🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 311, 312 ]
+          },
+          "v": "147. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/google-firebase\"><strong>📖docs/quick-reference/google-firebase🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 313, 314 ]
+          },
+          "v": "148. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/heroku-error-codes\"><strong>📖docs/quick-reference/heroku-error-codes🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 315, 316 ]
+          },
+          "v": "149. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/installation\"><strong>📖docs/quick-reference/installation🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 317, 318 ]
+          },
+          "v": "150. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/markdown-dropdowns\"><strong>📖docs/quick-reference/markdown-dropdowns🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 319, 320 ]
+          },
+          "v": "151. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/minifiction\"><strong>📖docs/quick-reference/minifiction🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 321, 322 ]
+          },
+          "v": "152. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/new-repo-instructions\"><strong>📖docs/quick-reference/new-repo-instructions🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 323, 324 ]
+          },
+          "v": "153. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/psql-setup\"><strong>📖docs/quick-reference/psql-setup🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 325, 326 ]
+          },
+          "v": "154. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/pull-request-rubric\"><strong>📖docs/quick-reference/pull-request-rubric🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 327, 328 ]
+          },
+          "v": "155. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/quick-links\"><strong>📖docs/quick-reference/quick-links🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 329, 330 ]
+          },
+          "v": "156. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/topRepos\"><strong>📖docs/quick-reference/topRepos🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 331, 332 ]
+          },
+          "v": "157. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/understanding-path\"><strong>📖docs/quick-reference/understanding-path🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 333, 334 ]
+          },
+          "v": "158. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference/vscode-themes\"><strong>📖docs/quick-reference/vscode-themes🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 335, 336 ]
+          },
+          "v": "159. <a href=\"https://bgoonz-blog.netlify.app/docs/quick-reference\"><strong>📖docs/quick-reference🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 337, 338 ]
+          },
+          "v": "160. <a href=\"https://bgoonz-blog.netlify.app/docs/react/ajax-n-apis\"><strong>📖docs/react/ajax-n-apis🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 339, 340 ]
+          },
+          "v": "161. <a href=\"https://bgoonz-blog.netlify.app/docs/react/cheatsheet\"><strong>📖docs/react/cheatsheet🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 341, 342 ]
+          },
+          "v": "162. <a href=\"https://bgoonz-blog.netlify.app/docs/react/createReactApp\"><strong>📖docs/react/createReactApp🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 343, 344 ]
+          },
+          "v": "163. <a href=\"https://bgoonz-blog.netlify.app/docs/react/demo\"><strong>📖docs/react/demo🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 345, 346 ]
+          },
+          "v": "164. <a href=\"https://bgoonz-blog.netlify.app/docs/react/dont-use-index-as-keys\"><strong>📖docs/react/dont-use-index-as-keys🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 347, 348 ]
+          },
+          "v": "165. <a href=\"https://bgoonz-blog.netlify.app/docs/react/jsx\"><strong>📖docs/react/jsx🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 349, 350 ]
+          },
+          "v": "166. <a href=\"https://bgoonz-blog.netlify.app/docs/react/react-docs\"><strong>📖docs/react/react-docs🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 351, 352 ]
+          },
+          "v": "167. <a href=\"https://bgoonz-blog.netlify.app/docs/react/react-in-depth\"><strong>📖docs/react/react-in-depth🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 353, 354 ]
+          },
+          "v": "168. <a href=\"https://bgoonz-blog.netlify.app/docs/react/react2\"><strong>📖docs/react/react2🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 355, 356 ]
+          },
+          "v": "169. <a href=\"https://bgoonz-blog.netlify.app/docs/react/render-elements\"><strong>📖docs/react/render-elements🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 357, 358 ]
+          },
+          "v": "170. <a href=\"https://bgoonz-blog.netlify.app/docs/react\"><strong>📖docs/react🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 359, 360 ]
+          },
+          "v": "171. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/awesome-lists\"><strong>📖docs/reference/awesome-lists🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 361, 362 ]
+          },
+          "v": "172. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/awesome-nodejs\"><strong>📖docs/reference/awesome-nodejs🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 363, 364 ]
+          },
+          "v": "173. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/awesome-static\"><strong>📖docs/reference/awesome-static🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 365, 366 ]
+          },
+          "v": "174. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/bash-commands\"><strong>📖docs/reference/bash-commands🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 367, 368 ]
+          },
+          "v": "175. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/bookmarks\"><strong>📖docs/reference/bookmarks🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 369, 370 ]
+          },
+          "v": "176. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/embed-the-web\"><strong>📖docs/reference/embed-the-web🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 371, 372 ]
+          },
+          "v": "177. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/github-search\"><strong>📖docs/reference/github-search🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 373, 374 ]
+          },
+          "v": "178. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/google-cloud\"><strong>📖docs/reference/google-cloud🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 375, 376 ]
+          },
+          "v": "179. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/how-2-reinstall-npm\"><strong>📖docs/reference/how-2-reinstall-npm🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 377, 378 ]
+          },
+          "v": "180. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/how-to-kill-a-process\"><strong>📖docs/reference/how-to-kill-a-process🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 379, 380 ]
+          },
+          "v": "181. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/installing-node\"><strong>📖docs/reference/installing-node🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 381, 382 ]
+          },
+          "v": "182. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/intro-to-nodejs\"><strong>📖docs/reference/intro-to-nodejs🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 383, 384 ]
+          },
+          "v": "183. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/markdown-styleguide\"><strong>📖docs/reference/markdown-styleguide🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 385, 386 ]
+          },
+          "v": "184. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/notes-template\"><strong>📖docs/reference/notes-template🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 387, 388 ]
+          },
+          "v": "185. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/psql\"><strong>📖docs/reference/psql🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 389, 390 ]
+          },
+          "v": "186. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/resources\"><strong>📖docs/reference/resources🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 391, 392 ]
+          },
+          "v": "187. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/vscode\"><strong>📖docs/reference/vscode🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 393, 394 ]
+          },
+          "v": "188. <a href=\"https://bgoonz-blog.netlify.app/docs/reference/web-api's\"><strong>📖docs/reference/web-api's🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 395, 396 ]
+          },
+          "v": "189. <a href=\"https://bgoonz-blog.netlify.app/docs/reference\"><strong>📖docs/reference🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 397, 398 ]
+          },
+          "v": "190. <a href=\"https://bgoonz-blog.netlify.app/docs/search\"><strong>📖docs/search🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 399, 400 ]
+          },
+          "v": "191. <a href=\"https://bgoonz-blog.netlify.app/docs/sitemap\"><strong>📖docs/sitemap🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 401, 402 ]
+          },
+          "v": "192. <a href=\"https://bgoonz-blog.netlify.app/docs/tips/array-methods\"><strong>📖docs/tips/array-methods🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 403, 404 ]
+          },
+          "v": "193. <a href=\"https://bgoonz-blog.netlify.app/docs/tips/insert-into-array\"><strong>📖docs/tips/insert-into-array🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 405, 406 ]
+          },
+          "v": "194. <a href=\"https://bgoonz-blog.netlify.app/docs/tips/sorting-strings\"><strong>📖docs/tips/sorting-strings🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 407, 408 ]
+          },
+          "v": "195. <a href=\"https://bgoonz-blog.netlify.app/docs/tips\"><strong>📖docs/tips🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 409, 410 ]
+          },
+          "v": "196. <a href=\"https://bgoonz-blog.netlify.app/docs/tools/Archive\"><strong>📖docs/tools/Archive🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 411, 412 ]
+          },
+          "v": "197. <a href=\"https://bgoonz-blog.netlify.app/docs/tools/data-structures\"><strong>📖docs/tools/data-structures🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 413, 414 ]
+          },
+          "v": "198. <a href=\"https://bgoonz-blog.netlify.app/docs/tools/dev-utilities\"><strong>📖docs/tools/dev-utilities🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 415, 416 ]
+          },
+          "v": "199. <a href=\"https://bgoonz-blog.netlify.app/docs/tools/markdown-html\"><strong>📖docs/tools/markdown-html🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 417, 418 ]
+          },
+          "v": "200. <a href=\"https://bgoonz-blog.netlify.app/docs/tools\"><strong>📖docs/tools🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 419, 420 ]
+          },
+          "v": "201. <a href=\"https://bgoonz-blog.netlify.app/docs/tutorials/enviorment-setup\"><strong>📖docs/tutorials/enviorment-setup🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 421, 422 ]
+          },
+          "v": "202. <a href=\"https://bgoonz-blog.netlify.app/docs/tutorials\"><strong>📖docs/tutorials🌍</strong></a>"
+        }, {
+          "t": "heading",
+          "d": 2,
+          "p": {
+            "lines": [ 423, 424 ]
+          },
+          "v": "203. <a href=\"https://bgoonz-blog.netlify.app/docs\"><strong>🖥️docs🌍</strong></a>"
+        } ]
+      } ],
+      "p": {}
+    } )
+
+  </script>
+</body>
+
+</html>
