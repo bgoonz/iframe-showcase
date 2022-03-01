@@ -2,6 +2,10 @@
 
 - [NETLIFY](https://app.netlify.com/sites/)
 
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fccf9eab-2a07-4ba6-b91b-c7abcb8e6820/deploy-status)](https://app.netlify.com/sites/iframeshowcase/deploys)
+
+
 ![gif](./iframes.gif)
 ![img](./embed-playground.png)
 
